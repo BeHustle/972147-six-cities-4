@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Владислав Клева](https://up.htmlacademy.ru/react/4/user/972147).
-* Наставник: `Неизвестно`.
+* Наставник: [Владислав Пономарев](https://up.htmlacademy.ru/react/4/user/1366303).
 
 ---
 

@@ -90,7 +90,7 @@ const Main = ({countOffers, userEmail, cardPrice, cardName, cardType}) => {
               <div className="cities__places-list places__list tabs__content">
                 <Card
                   price={cardPrice}
-                  description={cardName}
+                  name={cardName}
                   type={cardType}
                 />
               </div>
@@ -109,8 +109,8 @@ Main.propTypes = {
   countOffers: PropTypes.number.isRequired,
   userEmail: PropTypes.string.isRequired,
   cardPrice: PropTypes.number.isRequired,
-  cardName: PropTypes.oneOf(CARD_NAMES),
-  cardType: PropTypes.oneOf(CARD_TYPES),
+  cardName: PropTypes.oneOf(CARD_NAMES).isRequired,
+  cardType: PropTypes.oneOf(CARD_TYPES).isRequired,
 };
 
 export default Main;

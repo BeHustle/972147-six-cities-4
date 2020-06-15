@@ -43,8 +43,8 @@ const Card = ({price, name, type}) => {
 
 Card.propTypes = {
   price: PropTypes.number.isRequired,
-  name: PropTypes.oneOf(CARD_NAMES),
-  type: PropTypes.oneOf(CARD_TYPES),
+  name: PropTypes.oneOf(CARD_NAMES).isRequired,
+  type: PropTypes.oneOf(CARD_TYPES).isRequired,
 };
 
 export default Card;

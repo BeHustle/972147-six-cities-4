@@ -3,8 +3,7 @@ import Card from '../card/card.jsx';
 import PropTypes from 'prop-types';
 import {CARD_NAMES, CARD_TYPES} from '../../constants';
 
-const Main = (props) => {
-  const {countOffers, userEmail, cardPrice, cardName, cardType} = props;
+const Main = ({countOffers, userEmail, cardPrice, cardName, cardType}) => {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -90,9 +89,9 @@ const Main = (props) => {
               </form>
               <div className="cities__places-list places__list tabs__content">
                 <Card
-                  price = {cardPrice}
-                  description = {cardName}
-                  type = {cardType}
+                  price={cardPrice}
+                  description={cardName}
+                  type={cardType}
                 />
               </div>
             </section>
@@ -111,7 +110,7 @@ Main.propTypes = {
   userEmail: PropTypes.string.isRequired,
   cardPrice: PropTypes.number.isRequired,
   cardName: PropTypes.oneOf(CARD_NAMES),
-  cardType: PropTypes.oneOf(CARD_TYPES)
+  cardType: PropTypes.oneOf(CARD_TYPES),
 };
 
 export default Main;

@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {CARD_TYPES, CARD_NAMES} from '../../constants';
 
-const Card = (props) => {
-  const {price, name, type} = props;
+const Card = ({price, name, type}) => {
   return (
     <article className="cities__place-card place-card">
       <div className="place-card__mark">
@@ -11,7 +10,7 @@ const Card = (props) => {
       </div>
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place image"/>
         </a>
       </div>
       <div className="place-card__info">
@@ -45,7 +44,7 @@ const Card = (props) => {
 Card.propTypes = {
   price: PropTypes.number.isRequired,
   name: PropTypes.oneOf(CARD_NAMES),
-  type: PropTypes.oneOf(CARD_TYPES)
+  type: PropTypes.oneOf(CARD_TYPES),
 };
 
 export default Card;

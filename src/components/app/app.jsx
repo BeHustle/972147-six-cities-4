@@ -1,6 +1,8 @@
 import React from 'react';
 import Main from '../main/main.jsx';
 
+const titlePlaceClickHandler = () => {};
+
 const App = () =>
   <Main
     countOffers={128}
@@ -8,6 +10,7 @@ const App = () =>
     cardPrice={256}
     cardName={`Beautiful & luxurious apartment at great location`}
     cardType={`Appartment`}
+    handleTitlePlaceClick={titlePlaceClickHandler}
   />;
 
 export default App;

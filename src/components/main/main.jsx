@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Card from '../card/card.jsx';
 import {CARD_NAMES, CARD_TYPES} from '../../constants';
 
-const Main = ({countOffers, userEmail, cardPrice, cardName, cardType}) =>
+const Main = ({countOffers, userEmail, cardPrice, cardName, cardType, handleTitlePlaceClick}) =>
   <div className="page page--gray page--main">
     <header className="header">
       <div className="container">
@@ -91,6 +91,7 @@ const Main = ({countOffers, userEmail, cardPrice, cardName, cardType}) =>
                 price={cardPrice}
                 name={cardName}
                 type={cardType}
+                handleTitleClick={handleTitlePlaceClick}
               />
             </div>
           </section>
@@ -108,6 +109,7 @@ Main.propTypes = {
   cardPrice: PropTypes.number.isRequired,
   cardName: PropTypes.oneOf(CARD_NAMES).isRequired,
   cardType: PropTypes.oneOf(CARD_TYPES).isRequired,
+  handleTitlePlaceClick: PropTypes.func.isRequired,
 };
 
 export default Main;

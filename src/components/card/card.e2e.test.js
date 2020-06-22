@@ -9,15 +9,15 @@ Enzyme.configure({
 });
 
 test(`Title link should be clicked`, () => {
-  const handleTitlePlaceClick = jest.fn();
+  const onTitleClick = jest.fn();
   const card = shallow(<Card
-    handleTitleClick={handleTitlePlaceClick}
+    onTitleClick={onTitleClick}
     price={Mock.cardPrice}
     name={Mock.cardName}
     type={Mock.cardType}
   />);
   const titleLink = card.find(`.place-card__name a`);
-  titleLink.props().onClick();
+  titleLink.simulate(`click`);
 
-  expect(handleTitlePlaceClick.mock.calls.length).toBe(titleLink.length);
+  expect(onTitleClick.mock.calls.length).toBe(1);
 });

@@ -11,7 +11,7 @@ it(`Render App`, () => {
       cardPrice={Mock.cardPrice}
       cardName={Mock.cardName}
       cardType={Mock.cardType}
-      handleTitlePlaceClick={() => {}}
+      onCardTitleClick={() => {}}
     />)
     .toJSON();
 

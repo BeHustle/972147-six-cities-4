@@ -9,7 +9,7 @@ it(`Render Card`, () => {
       name={Mock.cardName}
       price={Mock.cardPrice}
       type={Mock.cardType}
-      handleTitleClick={() => {}}
+      onTitleClick={() => {}}
     />)
     .toJSON();
 

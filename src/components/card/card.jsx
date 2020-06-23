@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {CARD_TYPES, CARD_NAMES} from '../../constants';
 
-const Card = ({price, name, type}) =>
+const Card = ({price, name, type, onTitleClick}) =>
   <article className="cities__place-card place-card">
     <div className="place-card__mark">
       <span>Premium</span>
@@ -32,7 +32,7 @@ const Card = ({price, name, type}) =>
         </div>
       </div>
       <h2 className="place-card__name">
-        <a href="#">{name}</a>
+        <a onClick={onTitleClick} href="#">{name}</a>
       </h2>
       <p className="place-card__type">{type}</p>
     </div>
@@ -42,6 +42,7 @@ Card.propTypes = {
   price: PropTypes.number.isRequired,
   name: PropTypes.oneOf(CARD_NAMES).isRequired,
   type: PropTypes.oneOf(CARD_TYPES).isRequired,
+  onTitleClick: PropTypes.func.isRequired,
 };
 
 export default Card;

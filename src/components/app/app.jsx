@@ -8,6 +8,7 @@ const App = () =>
     cardPrice={256}
     cardName={`Beautiful & luxurious apartment at great location`}
     cardType={`Appartment`}
+    onCardTitleClick={() => {}}
   />;
 
 export default App;

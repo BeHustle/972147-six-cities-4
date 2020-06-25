@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {Mock} from '../../mock/test-mock.js';
+import {Mock} from '../../mocks/test-mock.js';
 import App from './app.jsx';
 
 it(`Render App`, () => {
@@ -8,10 +8,8 @@ it(`Render App`, () => {
     .create(<App
       countOffers={Mock.countOffers}
       userEmail={Mock.userEmail}
-      cardPrice={Mock.cardPrice}
-      cardName={Mock.cardName}
-      cardType={Mock.cardType}
       onCardTitleClick={() => {}}
+      offers={Mock.cards}
     />)
     .toJSON();
 

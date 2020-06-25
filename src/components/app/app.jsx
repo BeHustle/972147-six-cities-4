@@ -1,14 +1,14 @@
 import React from 'react';
 import Main from '../main/main.jsx';
+import {offers} from '../../mocks/offers.js';
+import {email} from '../../mocks/user.js';
 
 const App = () =>
   <Main
     countOffers={128}
-    userEmail={`Oliver.conner@gmail.com`}
-    cardPrice={256}
-    cardName={`Beautiful & luxurious apartment at great location`}
-    cardType={`Appartment`}
+    userEmail={email}
     onCardTitleClick={() => {}}
+    offers={offers}
   />;
 
 export default App;

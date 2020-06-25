@@ -226,14 +226,9 @@ exports[`Render Main 1`] = `
           >
             <article
               className="cities__place-card place-card"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
-              <div
-                className="place-card__mark"
-              >
-                <span>
-                  Premium
-                </span>
-              </div>
               <div
                 className="cities__image-wrapper place-card__image-wrapper"
               >
@@ -262,7 +257,7 @@ exports[`Render Main 1`] = `
                       className="place-card__price-value"
                     >
                       €
-                      256
+                      132
                     </b>
                     <span
                       className="place-card__price-text"
@@ -323,7 +318,7 @@ exports[`Render Main 1`] = `
                 <p
                   className="place-card__type"
                 >
-                  Appartment
+                  Apartment
                 </p>
               </div>
             </article>

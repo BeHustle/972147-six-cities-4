@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Card from '../card/card.jsx';
-import {CARD_NAMES, CARD_TYPES} from '../../constants';
+import CardList from '../card-list/card-list.jsx';
+import {CARD_TYPES} from '../../constants';
 
-const Main = ({countOffers, userEmail, cardPrice, cardName, cardType, onCardTitleClick}) =>
+const Main = ({countOffers, userEmail, onCardTitleClick, offers}) =>
   <div className="page page--gray page--main">
     <header className="header">
       <div className="container">
@@ -86,14 +86,10 @@ const Main = ({countOffers, userEmail, cardPrice, cardName, cardType, onCardTitl
                 <li className="places__option" tabIndex="0">Top rated first</li>
               </ul>
             </form>
-            <div className="cities__places-list places__list tabs__content">
-              <Card
-                price={cardPrice}
-                name={cardName}
-                type={cardType}
-                onTitleClick={onCardTitleClick}
-              />
-            </div>
+            <CardList
+              onCardTitleClick={onCardTitleClick}
+              offers={offers}
+            />
           </section>
           <div className="cities__right-section">
             <section className="cities__map map"/>
@@ -105,11 +101,18 @@ const Main = ({countOffers, userEmail, cardPrice, cardName, cardType, onCardTitl
 
 Main.propTypes = {
   countOffers: PropTypes.number.isRequired,
-  userEmail: PropTypes.string.isRequired,
-  cardPrice: PropTypes.number.isRequired,
-  cardName: PropTypes.oneOf(CARD_NAMES).isRequired,
-  cardType: PropTypes.oneOf(CARD_TYPES).isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
+  userEmail: PropTypes.string.isRequired,
+  offers: PropTypes.arrayOf(PropTypes.exact({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(CARD_TYPES).isRequired,
+    isPremium: PropTypes.bool.isRequired,
+    inBookmarks: PropTypes.bool.isRequired,
+    rating: PropTypes.number.isRequired,
+  })).isRequired,
 };
 
 export default Main;

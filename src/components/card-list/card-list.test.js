@@ -1,15 +1,13 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import CardList from './card-list.jsx';
 import {Mock} from '../../mocks/test-mock.js';
-import App from './app.jsx';
 
-it(`Render App`, () => {
+it(`Render Cards list`, () => {
   const tree = renderer
-    .create(<App
-      countOffers={Mock.countOffers}
-      userEmail={Mock.userEmail}
-      onCardTitleClick={() => {}}
+    .create(<CardList
       offers={Mock.cards}
+      onCardTitleClick={() => {}}
     />)
     .toJSON();
 

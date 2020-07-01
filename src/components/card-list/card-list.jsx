@@ -43,6 +43,7 @@ CardList.propTypes = {
     isPremium: PropTypes.bool.isRequired,
     inBookmarks: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
+    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
   })).isRequired,
 };
 

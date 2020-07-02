@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CardList from '../card-list/card-list.jsx';
 import {CARD_TYPES} from '../../constants';
+import Map from '../map/map.jsx';
 
-const Main = ({countOffers, userEmail, onCardTitleClick, offers}) =>
+const Main = ({countOffers, userEmail, onCardTitleClick, offers, city}) =>
   <div className="page page--gray page--main">
     <header className="header">
       <div className="container">
@@ -92,7 +93,10 @@ const Main = ({countOffers, userEmail, onCardTitleClick, offers}) =>
             />
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map"/>
+            <Map
+              offers={offers}
+              city={city}
+            />
           </div>
         </div>
       </div>
@@ -103,6 +107,7 @@ Main.propTypes = {
   countOffers: PropTypes.number.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
   userEmail: PropTypes.string.isRequired,
+  city: PropTypes.arrayOf(PropTypes.number),
   offers: PropTypes.arrayOf(PropTypes.exact({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
@@ -112,6 +117,7 @@ Main.propTypes = {
     isPremium: PropTypes.bool.isRequired,
     inBookmarks: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
+    coordinates: PropTypes.arrayOf(PropTypes.number)
   })).isRequired,
 };
 

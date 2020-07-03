@@ -53,7 +53,7 @@ exports[`Render Cards list 1`] = `
           </span>
         </div>
         <button
-          className="place-card__bookmark-button button"
+          className="place-card__bookmark-button button place-card__bookmark-button--active"
           type="button"
         >
           <svg
@@ -81,7 +81,7 @@ exports[`Render Cards list 1`] = `
           <span
             style={
               Object {
-                "width": "82%",
+                "width": "100%",
               }
             }
           />

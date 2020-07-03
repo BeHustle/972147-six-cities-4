@@ -273,7 +273,7 @@ exports[`Render App 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
+                    className="place-card__bookmark-button button place-card__bookmark-button--active"
                     type="button"
                   >
                     <svg
@@ -301,7 +301,7 @@ exports[`Render App 1`] = `
                     <span
                       style={
                         Object {
-                          "width": "82%",
+                          "width": "100%",
                         }
                       }
                     />
@@ -371,7 +371,7 @@ exports[`Render App 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button place-card__bookmark-button--active button"
+                    className="place-card__bookmark-button button false"
                     type="button"
                   >
                     <svg
@@ -476,7 +476,7 @@ exports[`Render App 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
+                    className="place-card__bookmark-button button place-card__bookmark-button--active"
                     type="button"
                   >
                     <svg
@@ -581,7 +581,7 @@ exports[`Render App 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button place-card__bookmark-button--active button"
+                    className="place-card__bookmark-button button false"
                     type="button"
                   >
                     <svg

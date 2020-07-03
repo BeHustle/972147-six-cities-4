@@ -1,6 +1,10 @@
 const CARD_TYPES = [
   `Apartment`,
-  `Private room`
+  `Room`,
+  `House`,
+  `Hotel`
 ];
 
-export {CARD_TYPES};
+const DEFAULT_AVATAR = `img/avatar.svg`;
+
+export {CARD_TYPES, DEFAULT_AVATAR};

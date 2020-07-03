@@ -1,18 +1,15 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {Mock} from '../../mocks/test-mock.js';
-import App from './app.jsx';
+import Map from './map.jsx';
 
 jest.mock(`../map/map.jsx`, () => `Map`);
 
-it(`Render App`, () => {
+it(`Render Map`, () => {
   const tree = renderer
-    .create(<App
-      countOffers={Mock.countOffers}
-      userEmail={Mock.userEmail}
-      onCardTitleClick={() => {}}
-      offers={Mock.cards}
+    .create(<Map
       city={Mock.city}
+      offers={Mock.cards}
     />)
     .toJSON();
 

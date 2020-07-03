@@ -39,7 +39,8 @@ export const offers = [
       The building is green and from 18th century.`,
       `An independent House, strategically located between Rembrand Square and National Opera, but where the
       bustle of the city comes to rest in this alley flowery and colorful.`
-    ]
+    ],
+    coordinates: [52.3909553943508, 4.85309666406198]
   },
   {
     id: 2,
@@ -57,6 +58,7 @@ export const offers = [
     type: `Apartment`,
     isPremium: false,
     inBookmarks: false,
+    coordinates: [52.369553943508, 4.85309666406198],
     rating: 5,
     rooms: `1 Bedrooms`,
     guests: `Max 2 adults`,
@@ -93,6 +95,7 @@ export const offers = [
     isPremium: true,
     inBookmarks: true,
     rating: 3,
+    coordinates: [52.3909553943508, 4.929309666406198],
     rooms: `2 Bedrooms`,
     guests: `Max 2 adults and 1 children`,
     facilities: [`Wi-Fi`,
@@ -129,6 +132,7 @@ export const offers = [
     type: `House`,
     isPremium: true,
     inBookmarks: false,
+    coordinates: [52.3809553943508, 4.939309666406198],
     rating: 1,
     rooms: `5 Bedrooms`,
     guests: `Max 3 adults and 2 children`,
@@ -149,37 +153,4 @@ export const offers = [
       `An independent House, strategically located between Rembrand Square and National Opera, but where the
       bustle of the city comes to rest in this alley flowery and colorful.`
     ]
-  },
-  {
-    id: 5,
-    name: `Beautiful & luxurious apartment at great location`,
-    price: 80,
-    image: `img/apartment-01.jpg`,
-    images: [
-      `img/room.jpg`,
-      `img/apartment-01.jpg`,
-      `img/apartment-02.jpg`,
-      `img/apartment-03.jpg`,
-      `img/studio-01.jpg`,
-      `img/apartment-01.jpg`
-    ],
-    type: `Room`,
-    isPremium: false,
-    inBookmarks: true,
-    rating: 2,
-    rooms: `5 Bedrooms`,
-    guests: `Max 7 adults`,
-    facilities: [`Wi-Fi`],
-    author: {
-      name: `Chloe`,
-      avatar: `img/avatar-angelina.jpg`,
-      isSuper: true
-    },
-    text: [
-      `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
-      The building is green and from 18th century.`,
-      `An independent House, strategically located between Rembrand Square and National Opera, but where the
-      bustle of the city comes to rest in this alley flowery and colorful.`
-    ]
-  }
-];
+  }];

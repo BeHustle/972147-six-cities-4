@@ -4,6 +4,7 @@ import Main from '../main/main.jsx';
 import CardDetail from '../card-detail/card-detail.jsx';
 import {offers} from '../../mocks/offers.js';
 import {email} from '../../mocks/user.js';
+import {Cities} from '../../constants.js';
 
 const App = () =>
   <BrowserRouter>
@@ -14,6 +15,7 @@ const App = () =>
           userEmail={email}
           onCardTitleClick={() => {}}
           offers={offers}
+          city={Cities.AMSTERDAM}
         />
       </Route>
       <Route exact path="/offer">

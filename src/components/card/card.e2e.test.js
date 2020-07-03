@@ -8,7 +8,7 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-test(`Title link should be clicked`, () => {
+it(`Title link should be clicked`, () => {
   const onTitleClick = jest.fn();
   const card = shallow(<Card
     onTitleClick={onTitleClick}
@@ -21,7 +21,7 @@ test(`Title link should be clicked`, () => {
   expect(onTitleClick).toBeCalled();
 });
 
-test(`On mouse enter onCardHover should be called with offer id`, () => {
+it(`On mouse enter onCardHover should be called with offer id`, () => {
   const onCardHover = jest.fn();
   const card = shallow(<Card
     onTitleClick={() => {}}
@@ -35,7 +35,7 @@ test(`On mouse enter onCardHover should be called with offer id`, () => {
   expect(onCardHover).toBeCalledWith(Mock.cards[0].id);
 });
 
-test(`On mouse leave onCardHover should be called with offer null`, () => {
+it(`On mouse leave onCardHover should be called with offer null`, () => {
   const onCardHover = jest.fn();
   const card = shallow(<Card
     onTitleClick={() => {}}

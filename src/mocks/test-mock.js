@@ -1,6 +1,7 @@
 export const Mock = {
   countOffers: 128,
   userEmail: `Oliver.conner@gmail.com`,
+  city: [52.38333, 4.9],
   cards: [{
     id: 1,
     name: `Beautiful & luxurious apartment at great locatccion`,
@@ -41,6 +42,7 @@ export const Mock = {
       The building is green and from 18th century.`,
       `An independent House, strategically located between Rembrand Square and National Opera, but where the
       bustle of the city comes to rest in this alley flowery and colorful.`
-    ]
+    ],
+    coordinates: [52.369553943508, 4.85309666406198],
   }],
 };

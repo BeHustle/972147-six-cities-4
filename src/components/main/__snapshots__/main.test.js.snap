@@ -334,8 +334,31 @@ exports[`Render Main 1`] = `
         <div
           className="cities__right-section"
         >
-          <section
-            className="cities__map map"
+          <Map
+            city={
+              Array [
+                52.38333,
+                4.9,
+              ]
+            }
+            offers={
+              Array [
+                Object {
+                  "coordinates": Array [
+                    52.369553943508,
+                    4.85309666406198,
+                  ],
+                  "id": 1,
+                  "image": "img/apartment-01.jpg",
+                  "inBookmarks": true,
+                  "isPremium": false,
+                  "name": "Beautiful & luxurious apartment at great location",
+                  "price": 132,
+                  "rating": 4,
+                  "type": "Apartment",
+                },
+              ]
+            }
           />
         </div>
       </div>

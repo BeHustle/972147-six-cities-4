@@ -285,6 +285,7 @@ CardDetail.propTypes = {
     isPremium: PropTypes.bool.isRequired,
     inBookmarks: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
+    coordinates: PropTypes.arrayOf(PropTypes.number),
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
     rooms: PropTypes.string.isRequired,
     guests: PropTypes.string.isRequired,

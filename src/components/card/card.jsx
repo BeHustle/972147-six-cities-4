@@ -55,10 +55,20 @@ Card.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(CARD_TYPES),
+    type: PropTypes.oneOf(CARD_TYPES).isRequired,
     isPremium: PropTypes.bool.isRequired,
     inBookmarks: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    rooms: PropTypes.string.isRequired,
+    guests: PropTypes.string.isRequired,
+    facilities: PropTypes.arrayOf(PropTypes.string),
+    author: PropTypes.exact({
+      name: PropTypes.string.isRequired,
+      avatar: PropTypes.string,
+      isSuper: PropTypes.bool.isRequired
+    }).isRequired,
+    text: PropTypes.arrayOf(PropTypes.string).isRequired,
   }),
 };
 

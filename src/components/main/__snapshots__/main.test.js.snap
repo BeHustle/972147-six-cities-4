@@ -230,6 +230,13 @@ exports[`Render Main 1`] = `
               onMouseLeave={[Function]}
             >
               <div
+                className="place-card__mark"
+              >
+                <span>
+                  Premium
+                </span>
+              </div>
+              <div
                 className="cities__image-wrapper place-card__image-wrapper"
               >
                 <a
@@ -294,7 +301,7 @@ exports[`Render Main 1`] = `
                     <span
                       style={
                         Object {
-                          "width": "80%",
+                          "width": "82%",
                         }
                       }
                     />
@@ -312,13 +319,13 @@ exports[`Render Main 1`] = `
                     href="#"
                     onClick={[Function]}
                   >
-                    Beautiful & luxurious apartment at great location
+                    Beautiful & luxurious apartment at great locatccion
                   </a>
                 </h2>
                 <p
                   className="place-card__type"
                 >
-                  Apartment
+                  Hotel
                 </p>
               </div>
             </article>

@@ -43,6 +43,16 @@ CardList.propTypes = {
     isPremium: PropTypes.bool.isRequired,
     inBookmarks: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    rooms: PropTypes.string.isRequired,
+    guests: PropTypes.string.isRequired,
+    facilities: PropTypes.arrayOf(PropTypes.string),
+    author: PropTypes.exact({
+      name: PropTypes.string.isRequired,
+      avatar: PropTypes.string,
+      isSuper: PropTypes.bool.isRequired
+    }).isRequired,
+    text: PropTypes.arrayOf(PropTypes.string).isRequired,
   })).isRequired,
 };
 

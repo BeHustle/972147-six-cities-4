@@ -4,9 +4,11 @@ import {CARD_TYPES} from '../../constants';
 
 const IN_BOOKMARKS_CLASS = `place-card__bookmark-button--active`;
 
-const Card = ({onTitleClick, onCardHover, offer: {
-  id, name, price, image, type, isPremium, inBookmarks, rating
-}}) => <article
+const Card = ({
+  onTitleClick,
+  onCardHover,
+  offer: {id, name, price, image, type, isPremium, inBookmarks, rating},
+}) => <article
   className="cities__place-card place-card"
   onMouseEnter={() => onCardHover(id)}
   onMouseLeave={() => onCardHover(null)}>

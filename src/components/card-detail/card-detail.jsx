@@ -6,10 +6,12 @@ import Header from '../header/header.jsx';
 const SUPER_USER_CLASS = `property__avatar-wrapper--pro`;
 const IN_BOOKMARKS_CLASS = `property__bookmark-button--active`;
 
-const CardDetail = ({userEmail, offer: {
-  id, images, name, price, isPremium, type, inBookmarks,
-  rooms, guests, facilities, author, text, rating
-}}) => <div className="page">
+const CardDetail = ({
+  userEmail,
+  offer: {
+    id, images, name, price, isPremium, type, inBookmarks,
+    rooms, guests, facilities, author, text, rating}
+}) => <div className="page">
 
   <Header userEmail={userEmail} />
 

@@ -9,7 +9,7 @@ import {Cities, Screen} from '../../constants.js';
 export default class App extends React.PureComponent {
   constructor(props) {
     super(props);
-    this._state = {
+    this.state = {
       screen: Screen.MAIN,
       offerId: null,
     };
@@ -24,7 +24,7 @@ export default class App extends React.PureComponent {
   }
 
   _renderScreen() {
-    switch (this._state.screen) {
+    switch (this.state.screen) {
       case Screen.MAIN:
         return (
           <Main
@@ -39,7 +39,7 @@ export default class App extends React.PureComponent {
         return (
           <CardDetail
             userEmail={email}
-            offer={offers.find((it) => it.id === this._state.offerId)}
+            offer={offers.find((it) => it.id === this.state.offerId)}
           />
         );
       default:

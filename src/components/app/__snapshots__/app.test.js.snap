@@ -230,6 +230,13 @@ exports[`Render App 1`] = `
               onMouseLeave={[Function]}
             >
               <div
+                className="place-card__mark"
+              >
+                <span>
+                  Premium
+                </span>
+              </div>
+              <div
                 className="cities__image-wrapper place-card__image-wrapper"
               >
                 <a
@@ -266,7 +273,7 @@ exports[`Render App 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
+                    className="place-card__bookmark-button button place-card__bookmark-button--active"
                     type="button"
                   >
                     <svg
@@ -294,7 +301,7 @@ exports[`Render App 1`] = `
                     <span
                       style={
                         Object {
-                          "width": "80%",
+                          "width": "100%",
                         }
                       }
                     />
@@ -312,13 +319,13 @@ exports[`Render App 1`] = `
                     href="#"
                     onClick={[Function]}
                   >
-                    Beautiful & luxurious apartment at great location
+                    Beautiful & luxurious apartment at great locatccion
                   </a>
                 </h2>
                 <p
                   className="place-card__type"
                 >
-                  Private room
+                  Hotel
                 </p>
               </div>
             </article>
@@ -364,7 +371,7 @@ exports[`Render App 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button place-card__bookmark-button--active button"
+                    className="place-card__bookmark-button button false"
                     type="button"
                   >
                     <svg
@@ -469,7 +476,7 @@ exports[`Render App 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
+                    className="place-card__bookmark-button button place-card__bookmark-button--active"
                     type="button"
                   >
                     <svg
@@ -521,7 +528,7 @@ exports[`Render App 1`] = `
                 <p
                   className="place-card__type"
                 >
-                  Private room
+                  Room
                 </p>
               </div>
             </article>
@@ -574,7 +581,7 @@ exports[`Render App 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button place-card__bookmark-button--active button"
+                    className="place-card__bookmark-button button false"
                     type="button"
                   >
                     <svg
@@ -626,7 +633,7 @@ exports[`Render App 1`] = `
                 <p
                   className="place-card__type"
                 >
-                  Apartment
+                  House
                 </p>
               </div>
             </article>
@@ -645,60 +652,175 @@ exports[`Render App 1`] = `
             offers={
               Array [
                 Object {
+                  "author": Object {
+                    "avatar": "img/avatar-angelina.jpg",
+                    "isSuper": true,
+                    "name": "Angelina",
+                  },
                   "coordinates": Array [
                     52.3909553943508,
                     4.85309666406198,
                   ],
+                  "facilities": Array [
+                    "Wi-Fi",
+                    "Washing machine",
+                    "Towels",
+                    "Heating",
+                    "Coffee machine",
+                    "Baby seat",
+                    "Kitchen",
+                    "Dishwasher",
+                    "Cabel TV",
+                    "Fridge",
+                  ],
+                  "guests": "Max 4 adults",
                   "id": 1,
                   "image": "img/apartment-01.jpg",
+                  "images": Array [
+                    "img/room.jpg",
+                    "img/apartment-01.jpg",
+                    "img/apartment-02.jpg",
+                    "img/apartment-03.jpg",
+                    "img/studio-01.jpg",
+                    "img/apartment-01.jpg",
+                  ],
                   "inBookmarks": true,
-                  "isPremium": false,
-                  "name": "Beautiful & luxurious apartment at great location",
+                  "isPremium": true,
+                  "name": "Beautiful & luxurious apartment at great locatccion",
                   "price": 132,
-                  "rating": 4,
-                  "type": "Private room",
+                  "rating": 4.1,
+                  "rooms": "3 Bedrooms",
+                  "text": Array [
+                    "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
+      The building is green and from 18th century.",
+                    "An independent House, strategically located between Rembrand Square and National Opera, but where the
+      bustle of the city comes to rest in this alley flowery and colorful.",
+                  ],
+                  "type": "Hotel",
                 },
                 Object {
+                  "author": Object {
+                    "avatar": "img/avatar-max.jpg",
+                    "isSuper": true,
+                    "name": "Max",
+                  },
                   "coordinates": Array [
                     52.369553943508,
                     4.85309666406198,
                   ],
+                  "facilities": Array [
+                    "Wi-Fi",
+                    "Washing machine",
+                    "Towels",
+                  ],
+                  "guests": "Max 2 adults",
                   "id": 2,
                   "image": "img/apartment-02.jpg",
+                  "images": Array [
+                    "img/room.jpg",
+                    "img/apartment-01.jpg",
+                    "img/apartment-02.jpg",
+                    "img/apartment-03.jpg",
+                    "img/studio-01.jpg",
+                    "img/apartment-01.jpg",
+                  ],
                   "inBookmarks": false,
                   "isPremium": false,
                   "name": "Wood and stone place",
                   "price": 254,
                   "rating": 5,
+                  "rooms": "1 Bedrooms",
+                  "text": Array [
+                    "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
+      The building is green and from 18th century.",
+                    "An independent House, strategically located between Rembrand Square and National Opera, but where the
+      bustle of the city comes to rest in this alley flowery and colorful.",
+                  ],
                   "type": "Apartment",
                 },
                 Object {
+                  "author": Object {
+                    "avatar": "",
+                    "isSuper": true,
+                    "name": "Alex",
+                  },
                   "coordinates": Array [
                     52.3909553943508,
                     4.929309666406198,
                   ],
+                  "facilities": Array [
+                    "Wi-Fi",
+                    "Heating",
+                    "Coffee machine",
+                    "Baby seat",
+                    "Kitchen",
+                  ],
+                  "guests": "Max 2 adults and 1 children",
                   "id": 3,
                   "image": "img/apartment-03.jpg",
+                  "images": Array [
+                    "img/room.jpg",
+                    "img/apartment-01.jpg",
+                    "img/apartment-02.jpg",
+                    "img/apartment-03.jpg",
+                    "img/studio-01.jpg",
+                    "img/apartment-01.jpg",
+                  ],
                   "inBookmarks": true,
                   "isPremium": true,
                   "name": "Canal View Prinsengracht",
                   "price": 178,
                   "rating": 3,
-                  "type": "Private room",
+                  "rooms": "2 Bedrooms",
+                  "text": Array [
+                    "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
+      The building is green and from 18th century.",
+                    "An independent House, strategically located between Rembrand Square and National Opera, but where the
+      bustle of the city comes to rest in this alley flowery and colorful.",
+                  ],
+                  "type": "Room",
                 },
                 Object {
+                  "author": Object {
+                    "avatar": "",
+                    "isSuper": true,
+                    "name": "Steven",
+                  },
                   "coordinates": Array [
                     52.3809553943508,
                     4.939309666406198,
                   ],
+                  "facilities": Array [
+                    "Wi-Fi",
+                    "Kitchen",
+                    "Dishwasher",
+                    "Cabel TV",
+                    "Fridge",
+                  ],
+                  "guests": "Max 3 adults and 2 children",
                   "id": 4,
                   "image": "img/room.jpg",
+                  "images": Array [
+                    "img/room.jpg",
+                    "img/apartment-01.jpg",
+                    "img/apartment-02.jpg",
+                    "img/apartment-03.jpg",
+                    "img/studio-01.jpg",
+                    "img/apartment-01.jpg",
+                  ],
                   "inBookmarks": false,
                   "isPremium": true,
                   "name": "Nice, cozy, warm big bed apartment",
                   "price": 995,
                   "rating": 1,
-                  "type": "Apartment",
+                  "rooms": "5 Bedrooms",
+                  "text": Array [
+                    "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
+      The building is green and from 18th century.",
+                    "An independent House, strategically located between Rembrand Square and National Opera, but where the
+      bustle of the city comes to rest in this alley flowery and colorful.",
+                  ],
+                  "type": "House",
                 },
               ]
             }

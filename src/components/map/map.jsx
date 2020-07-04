@@ -8,7 +8,7 @@ export default class Map extends React.PureComponent {
     super(props);
   }
 
-  componentDidMount() {
+  _initMap() {
     const {offers, city} = this.props;
     const icon = L.icon({
       iconUrl: ICON_PATH,
@@ -37,6 +37,10 @@ export default class Map extends React.PureComponent {
     }
   }
 
+  componentDidMount() {
+    this._initMap();
+  }
+
   render() {
     return <section id="map" className="cities__map map" />;
   }
@@ -53,6 +57,16 @@ Map.propTypes = {
     isPremium: PropTypes.bool.isRequired,
     inBookmarks: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
-    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
+    coordinates: PropTypes.arrayOf(PropTypes.number),
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    rooms: PropTypes.string.isRequired,
+    guests: PropTypes.string.isRequired,
+    facilities: PropTypes.arrayOf(PropTypes.string),
+    author: PropTypes.exact({
+      name: PropTypes.string.isRequired,
+      avatar: PropTypes.string,
+      isSuper: PropTypes.bool.isRequired
+    }).isRequired,
+    text: PropTypes.arrayOf(PropTypes.string).isRequired,
   })).isRequired,
 };

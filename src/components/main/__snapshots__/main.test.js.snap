@@ -77,43 +77,9 @@ exports[`Render Main 1`] = `
             className="locations__item"
           >
             <a
-              className="locations__item-link tabs__item"
-              href="#"
-            >
-              <span>
-                Paris
-              </span>
-            </a>
-          </li>
-          <li
-            className="locations__item"
-          >
-            <a
-              className="locations__item-link tabs__item"
-              href="#"
-            >
-              <span>
-                Cologne
-              </span>
-            </a>
-          </li>
-          <li
-            className="locations__item"
-          >
-            <a
-              className="locations__item-link tabs__item"
-              href="#"
-            >
-              <span>
-                Brussels
-              </span>
-            </a>
-          </li>
-          <li
-            className="locations__item"
-          >
-            <a
               className="locations__item-link tabs__item tabs__item--active"
+              href="#"
+              onClick={[Function]}
             >
               <span>
                 Amsterdam
@@ -124,23 +90,12 @@ exports[`Render Main 1`] = `
             className="locations__item"
           >
             <a
-              className="locations__item-link tabs__item"
+              className="locations__item-link tabs__item false"
               href="#"
+              onClick={[Function]}
             >
               <span>
-                Hamburg
-              </span>
-            </a>
-          </li>
-          <li
-            className="locations__item"
-          >
-            <a
-              className="locations__item-link tabs__item"
-              href="#"
-            >
-              <span>
-                Dusseldorf
+                Paris
               </span>
             </a>
           </li>
@@ -164,8 +119,9 @@ exports[`Render Main 1`] = `
           <b
             className="places__found"
           >
-            128
-             places to stay in Amsterdam
+            1
+             places to stay in 
+            Amsterdam
           </b>
           <form
             action="#"
@@ -334,65 +290,7 @@ exports[`Render Main 1`] = `
         <div
           className="cities__right-section"
         >
-          <Map
-            city={
-              Array [
-                52.38333,
-                4.9,
-              ]
-            }
-            offers={
-              Array [
-                Object {
-                  "author": Object {
-                    "avatar": "img/avatar-angelina.jpg",
-                    "isSuper": true,
-                    "name": "Angelina",
-                  },
-                  "coordinates": Array [
-                    52.369553943508,
-                    4.85309666406198,
-                  ],
-                  "facilities": Array [
-                    "Wi-Fi",
-                    "Washing machine",
-                    "Towels",
-                    "Heating",
-                    "Coffee machine",
-                    "Baby seat",
-                    "Kitchen",
-                    "Dishwasher",
-                    "Cabel TV",
-                    "Fridge",
-                  ],
-                  "guests": "Max 4 adults",
-                  "id": 1,
-                  "image": "img/apartment-01.jpg",
-                  "images": Array [
-                    "img/room.jpg",
-                    "img/apartment-01.jpg",
-                    "img/apartment-02.jpg",
-                    "img/apartment-03.jpg",
-                    "img/studio-01.jpg",
-                    "img/apartment-01.jpg",
-                  ],
-                  "inBookmarks": true,
-                  "isPremium": true,
-                  "name": "Beautiful & luxurious apartment at great locatccion",
-                  "price": 132,
-                  "rating": 4.1,
-                  "rooms": "3 Bedrooms",
-                  "text": Array [
-                    "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
-      The building is green and from 18th century.",
-                    "An independent House, strategically located between Rembrand Square and National Opera, but where the
-      bustle of the city comes to rest in this alley flowery and colorful.",
-                  ],
-                  "type": "Hotel",
-                },
-              ]
-            }
-          />
+          <Map />
         </div>
       </div>
     </div>

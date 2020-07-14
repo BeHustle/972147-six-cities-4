@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import {connect} from 'react-redux';
 import {CARD_TYPES} from '../../constants.js';
 import Card from '../card/card.jsx';
 
-export default class CardList extends React.PureComponent {
+class CardList extends React.PureComponent {
   constructor(props) {
     super(props);
     this._handleCardHover = this._handleCardHover.bind(this);
@@ -54,6 +55,14 @@ CardList.propTypes = {
       isSuper: PropTypes.bool.isRequired
     }).isRequired,
     text: PropTypes.arrayOf(PropTypes.string).isRequired,
+    cityId: PropTypes.number.isRequired
   })).isRequired,
 };
 
+const mapStateToProps = (state) => {
+  return {
+    offers: state.offers.filter((offer) => offer.cityId === state.city.id),
+  };
+};
+
+export default connect(mapStateToProps, null)(CardList);

@@ -7,13 +7,12 @@ const SUPER_USER_CLASS = `property__avatar-wrapper--pro`;
 const IN_BOOKMARKS_CLASS = `property__bookmark-button--active`;
 
 const CardDetail = ({
-  userEmail,
   offer: {
     id, images, name, price, isPremium, type, inBookmarks,
     rooms, guests, facilities, author, text, rating}
 }) => <div className="page">
 
-  <Header userEmail={userEmail} />
+  <Header />
 
   <main className="page__main page__main--property">
     <section className="property">
@@ -274,7 +273,6 @@ const CardDetail = ({
 </div>;
 
 CardDetail.propTypes = {
-  userEmail: PropTypes.string.isRequired,
   offer: PropTypes.exact({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
@@ -295,7 +293,8 @@ CardDetail.propTypes = {
       isSuper: PropTypes.bool.isRequired
     }).isRequired,
     text: PropTypes.arrayOf(PropTypes.string).isRequired,
-  }).isRequired,
+    cityId: PropTypes.number.isRequired
+  }).isRequired
 };
 
 export default CardDetail;

@@ -1,28 +1,29 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import L from 'leaflet';
+import {connect} from 'react-redux';
 import {MAP_ZOOM, ICON_SIZE, ICON_PATH, CARD_TYPES} from '../../constants.js';
 
-export default class Map extends React.PureComponent {
+class Map extends React.PureComponent {
   constructor(props) {
     super(props);
   }
 
   _initMap() {
-    const {offers, city} = this.props;
+    const {offers, activeCityCoordinates} = this.props;
     const icon = L.icon({
       iconUrl: ICON_PATH,
       iconSize: ICON_SIZE,
     });
 
     const map = L.map(`map`, {
-      center: city,
+      center: activeCityCoordinates,
       zoom: MAP_ZOOM,
       zoomControl: false,
       marker: true,
     });
 
-    map.setView(city, MAP_ZOOM);
+    map.setView(activeCityCoordinates, MAP_ZOOM);
 
     L
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
@@ -47,7 +48,6 @@ export default class Map extends React.PureComponent {
 }
 
 Map.propTypes = {
-  city: PropTypes.arrayOf(PropTypes.number),
   offers: PropTypes.arrayOf(PropTypes.exact({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
@@ -68,5 +68,16 @@ Map.propTypes = {
       isSuper: PropTypes.bool.isRequired
     }).isRequired,
     text: PropTypes.arrayOf(PropTypes.string).isRequired,
+    cityId: PropTypes.number.isRequired
   })).isRequired,
+  activeCityCoordinates: PropTypes.arrayOf(PropTypes.number).isRequired
 };
+
+const mapStateToProps = (state) => {
+  return {
+    offers: state.offers.filter((offer) => offer.cityId === state.city.id),
+    activeCityCoordinates: state.city.coordinates
+  };
+};
+
+export default connect(mapStateToProps, null)(Map);

@@ -1,6 +1,9 @@
 import React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
+import {Mock} from '../../mocks/test-mock.js';
 import App from './app.jsx';
 
 Enzyme.configure({
@@ -10,10 +13,23 @@ Enzyme.configure({
 jest.mock(`../map/map.jsx`, () => `Map`);
 
 describe(`Title card click:`, () => {
+  let appWithProvider;
   let app;
+  let mockStore;
+  let store;
 
   beforeEach(() => {
-    app = mount(<App />);
+    mockStore = configureStore([]);
+    store = mockStore({
+      offers: Mock.offers,
+      city: Mock.cities[0],
+      cities: Mock.cities,
+      userEmail: Mock.userEmail
+    });
+    appWithProvider = mount(<Provider store={store}>
+      <App />
+    </Provider>);
+    app = appWithProvider.find(`App`);
   });
 
   it(`should change app state screen to offer`, () => {
@@ -30,6 +46,7 @@ describe(`Title card click:`, () => {
     const titleCardLink = card.find(`.place-card__name a`);
 
     titleCardLink.simulate(`click`);
+
     expect(app.state().offerId).toBe(cardId);
   });
 
@@ -54,5 +71,3 @@ describe(`Title card click:`, () => {
     expect(cardDetail.props().offer.id).toBe(cardId);
   });
 });
-
-

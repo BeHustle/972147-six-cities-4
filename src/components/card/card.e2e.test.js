@@ -13,7 +13,7 @@ it(`Title link should be clicked`, () => {
   const card = shallow(<Card
     onTitleClick={onTitleClick}
     onCardHover={() => {}}
-    offer={Mock.cards[0]}
+    offer={Mock.offers[0]}
   />);
   const titleLink = card.find(`.place-card__name a`);
   titleLink.simulate(`click`);
@@ -26,13 +26,13 @@ it(`On mouse enter onCardHover should be called with offer id`, () => {
   const card = shallow(<Card
     onTitleClick={() => {}}
     onCardHover={onCardHover}
-    offer={Mock.cards[0]}
+    offer={Mock.offers[0]}
   />);
   const cardElement = card.find(`.place-card`);
   cardElement.simulate(`mouseEnter`);
 
   expect(onCardHover).toBeCalled();
-  expect(onCardHover).toBeCalledWith(Mock.cards[0].id);
+  expect(onCardHover).toBeCalledWith(Mock.offers[0].id);
 });
 
 it(`On mouse leave onCardHover should be called with offer null`, () => {
@@ -40,7 +40,7 @@ it(`On mouse leave onCardHover should be called with offer null`, () => {
   const card = shallow(<Card
     onTitleClick={() => {}}
     onCardHover={onCardHover}
-    offer={Mock.cards[0]}
+    offer={Mock.offers[0]}
   />);
   const cardElement = card.find(`.place-card`);
   cardElement.simulate(`mouseLeave`);

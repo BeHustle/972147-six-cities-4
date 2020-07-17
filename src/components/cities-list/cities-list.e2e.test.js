@@ -20,9 +20,9 @@ it(`Should active city to be changed`, () => {
     <CitiesList/>
   </Provider>);
   const citiesList = cardDetailWithProvider.find(`CitiesList`);
-  const city = citiesList.find(`li`).first();
-  const cityLink = city.find(`a`);
-  const cityId = city.props().key;
+  const city = cardDetailWithProvider.find(`.locations__item`).first();
+  const cityLink = cardDetailWithProvider.find(`.locations__item-link`).first();
+  const cityId = parseInt(city.key(), 10);
 
   cityLink.simulate(`click`);
 

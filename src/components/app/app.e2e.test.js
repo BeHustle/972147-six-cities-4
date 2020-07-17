@@ -33,7 +33,7 @@ describe(`Title card click:`, () => {
   });
 
   it(`should change app state screen to offer`, () => {
-    const card = app.find(`Card`).first();
+    const card = appWithProvider.find(`Card`).first();
     const titleCardLink = card.find(`.place-card__name a`);
 
     titleCardLink.simulate(`click`);
@@ -41,7 +41,7 @@ describe(`Title card click:`, () => {
   });
 
   it(`should change app state offerId to Card id`, () => {
-    const card = app.find(`Card`).last();
+    const card = appWithProvider.find(`Card`).last();
     const cardId = card.props().offer.id;
     const titleCardLink = card.find(`.place-card__name a`);
 
@@ -51,23 +51,23 @@ describe(`Title card click:`, () => {
   });
 
   it(`should render CardDetail`, () => {
-    const card = app.find(`Card`).first();
+    const card = appWithProvider.find(`Card`).first();
     const titleCardLink = card.find(`.place-card__name a`);
 
     titleCardLink.simulate(`click`);
 
-    const cardDetail = app.find(`CardDetail`);
+    const cardDetail = appWithProvider.find(`CardDetail`);
     expect(cardDetail.length).not.toBe(0);
   });
 
   it(`should render CardDetail with some id as Card id`, () => {
-    const card = app.find(`Card`).last();
+    const card = appWithProvider.find(`Card`).last();
     const cardId = card.props().offer.id;
     const titleCardLink = card.find(`.place-card__name a`);
 
     titleCardLink.simulate(`click`);
 
-    const cardDetail = app.find(`CardDetail`);
+    const cardDetail = appWithProvider.find(`CardDetail`);
     expect(cardDetail.props().offer.id).toBe(cardId);
   });
 });

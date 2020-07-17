@@ -73,11 +73,9 @@ Map.propTypes = {
   activeCityCoordinates: PropTypes.arrayOf(PropTypes.number).isRequired
 };
 
-const mapStateToProps = (state) => {
-  return {
-    offers: state.offers.filter((offer) => offer.cityId === state.city.id),
-    activeCityCoordinates: state.city.coordinates
-  };
-};
+const mapStateToProps = (state) => ({
+  offers: state.offers.filter((offer) => offer.cityId === state.city.id),
+  activeCityCoordinates: state.city.coordinates
+});
 
-export default connect(mapStateToProps, null)(Map);
+export default connect(mapStateToProps)(Map);

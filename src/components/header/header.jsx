@@ -30,10 +30,8 @@ Header.propTypes = {
   userEmail: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (state) => {
-  return {
-    userEmail: state.userEmail
-  };
-};
+const mapStateToProps = (state) => ({
+  userEmail: state.userEmail
+});
 
-export default connect(mapStateToProps, null)(Header);
+export default connect(mapStateToProps)(Header);

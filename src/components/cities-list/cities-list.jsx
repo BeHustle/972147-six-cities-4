@@ -9,7 +9,7 @@ const CitiesList = ({cities, activeCityId, onCityLinkClick}) =>
   <section className="locations container">
     <ul className="locations__list tabs__list">
       {cities.map((item) =>
-        <li key={`city-${item.id}`} className="locations__item">
+        <li key={item.id} className="locations__item">
           <a className={`locations__item-link tabs__item ${activeCityId === item.id && ACTIVE_CITY_CLASS}`}
             onClick={(evt) => onCityLinkClick(evt, item)}
             href="#">
@@ -37,12 +37,10 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-const mapStateToProps = (state) => {
-  return {
-    cities: state.cities,
-    activeCityId: state.city.id
-  };
-};
+const mapStateToProps = (state) => ({
+  cities: state.cities,
+  activeCityId: state.city.id
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CitiesList);
 

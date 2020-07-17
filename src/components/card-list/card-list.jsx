@@ -59,10 +59,8 @@ CardList.propTypes = {
   })).isRequired,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    offers: state.offers.filter((offer) => offer.cityId === state.city.id),
-  };
-};
+const mapStateToProps = (state) => ({
+  offers: state.offers.filter((offer) => offer.cityId === state.city.id),
+});
 
-export default connect(mapStateToProps, null)(CardList);
+export default connect(mapStateToProps)(CardList);

@@ -12,14 +12,14 @@ const initialState = {
 
 const ActionTypes = {
   CHANGE_CITY: `CHANGE_CITY`,
-  GET_OFFERS: `GET_OFFERS`
+  CHANGE_OFFERS: `CHANGE_OFFERS`
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.CHANGE_CITY:
       return Object.assign({}, state, {city: action.payload});
-    case ActionTypes.GET_OFFERS:
+    case ActionTypes.CHANGE_OFFERS:
       return Object.assign({}, state, {offers: action.payload});
     default:
       return state;

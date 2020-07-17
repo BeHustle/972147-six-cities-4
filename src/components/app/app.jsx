@@ -80,10 +80,8 @@ App.propTypes = {
   })).isRequired,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    offers: state.offers,
-  };
-};
+const mapStateToProps = (state) => ({
+  offers: state.offers,
+});
 
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps)(App);

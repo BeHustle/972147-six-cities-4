@@ -50,11 +50,9 @@ Main.propTypes = {
   cityName: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (state) => {
-  return {
-    countOffers: state.offers.filter((offer) => offer.cityId === state.city.id).length,
-    cityName: state.city.name
-  };
-};
+const mapStateToProps = (state) => ({
+  countOffers: state.offers.filter((offer) => offer.cityId === state.city.id).length,
+  cityName: state.city.name
+});
 
-export default connect(mapStateToProps, null)(Main);
+export default connect(mapStateToProps)(Main);

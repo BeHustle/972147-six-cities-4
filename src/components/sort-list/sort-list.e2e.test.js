@@ -34,5 +34,5 @@ it(`Active sort should be changed to clicked sort`, () => {
 
   sortLink.simulate(`click`);
 
-  expect(sortList.props().activeSort).toEqual(Sorts[sortLink.key()]);
+  expect(sortList.props().activeSort).toEqual(Sorts[sortLink.key()]); // TODO исправить тест
 });

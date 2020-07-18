@@ -58,8 +58,6 @@ CardList.propTypes = {
 
 const sortCards = (cards, sortType) => {
   switch (sortType) {
-    case Sorts.POPULAR: // TODO fix popular sort. How to sort?
-      return cards.sort((a, b) => a.rating - b.rating);
     case Sorts.PRICE_ASC:
       return cards.sort((a, b) => a.price - b.price);
     case Sorts.PRICE_DESC:

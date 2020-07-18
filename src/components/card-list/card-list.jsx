@@ -1,22 +1,18 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
-import {CARD_TYPES} from '../../constants.js';
+import {CARD_TYPES, Sorts} from '../../constants.js';
+import {ActionTypes} from '../../reducer/reducer.js';
 import Card from '../card/card.jsx';
 
 class CardList extends React.PureComponent {
   constructor(props) {
     super(props);
     this._handleCardHover = this._handleCardHover.bind(this);
-    this.state = {
-      active: null
-    };
   }
 
   _handleCardHover(id) {
-    this.setState({
-      active: id
-    });
+    this.props.onCardHover(id);
   }
 
   render() {
@@ -57,10 +53,32 @@ CardList.propTypes = {
     text: PropTypes.arrayOf(PropTypes.string).isRequired,
     cityId: PropTypes.number.isRequired
   })).isRequired,
+  onCardHover: PropTypes.func.isRequired
+};
+
+const sortCards = (cards, sortType) => {
+  switch (sortType) {
+    case Sorts.POPULAR: // TODO fix popular sort. How to sort?
+      return cards.sort((a, b) => a.rating - b.rating);
+    case Sorts.PRICE_ASC:
+      return cards.sort((a, b) => a.price - b.price);
+    case Sorts.PRICE_DESC:
+      return cards.sort((a, b) => b.price - a.price);
+    case Sorts.TOP_RATED:
+      return cards.sort((a, b) => b.rating - a.rating);
+    default:
+      return cards;
+  }
 };
 
 const mapStateToProps = (state) => ({
-  offers: state.offers.filter((offer) => offer.cityId === state.city.id),
+  offers: sortCards(state.offers.filter((offer) => offer.cityId === state.city.id), state.activeSort)
 });
 
-export default connect(mapStateToProps)(CardList);
+const mapDispatchToProps = (dispatch) => ({
+  onCardHover(id) {
+    dispatch({type: ActionTypes.CHANGE_ACTIVE_OFFER_ID, payload: id});
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardList);

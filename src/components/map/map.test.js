@@ -6,7 +6,7 @@ import {Sorts} from '../../constants.js';
 import {Mock} from '../../mocks/test-mock.js';
 import Map from './map.jsx';
 
-jest.mock(`../map/map.jsx`, () => `Map`);
+jest.mock(`../map/map.jsx`, () => `map`);
 
 const mockStore = configureStore([]);
 

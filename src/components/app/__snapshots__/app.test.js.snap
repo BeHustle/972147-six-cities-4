@@ -290,7 +290,7 @@ exports[`App component test 1`] = `
         <div
           className="cities__right-section"
         >
-          <Map />
+          <map />
         </div>
       </div>
     </div>

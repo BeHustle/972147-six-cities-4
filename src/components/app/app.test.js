@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 import App from './app.jsx';
 import {Mock} from '../../mocks/test-mock.js';
 
-jest.mock(`../map/map.jsx`, () => `Map`);
+jest.mock(`../map/map.jsx`, () => `map`);
 
 const mockStore = configureStore([]);
 

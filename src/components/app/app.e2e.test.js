@@ -10,7 +10,7 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-jest.mock(`../map/map.jsx`, () => `Map`);
+jest.mock(`../map/map.jsx`, () => `map`);
 
 describe(`Title card click:`, () => {
   let appWithProvider;

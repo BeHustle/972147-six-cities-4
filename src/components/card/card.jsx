@@ -70,6 +70,7 @@ Card.propTypes = {
       isSuper: PropTypes.bool.isRequired
     }).isRequired,
     text: PropTypes.arrayOf(PropTypes.string).isRequired,
+    cityId: PropTypes.number.isRequired
   }),
 };
 

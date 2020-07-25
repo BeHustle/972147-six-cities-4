@@ -3,6 +3,7 @@ import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
+import {Sorts} from '../../constants.js';
 import {Mock} from '../../mocks/test-mock.js';
 import App from './app.jsx';
 
@@ -24,7 +25,10 @@ describe(`Title card click:`, () => {
       offers: Mock.offers,
       city: Mock.cities[0],
       cities: Mock.cities,
-      userEmail: Mock.userEmail
+      userEmail: Mock.userEmail,
+      sorts: Sorts,
+      activeSort: Sorts.POPULAR,
+      activeOfferId: null
     });
     appWithProvider = mount(<Provider store={store}>
       <App />

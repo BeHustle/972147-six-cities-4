@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
+import {Sorts} from '../../constants.js';
 import App from './app.jsx';
 import {Mock} from '../../mocks/test-mock.js';
 
@@ -14,7 +15,10 @@ it(`App component test`, () => {
     offers: Mock.offers,
     city: Mock.cities[0],
     cities: Mock.cities,
-    userEmail: Mock.userEmail
+    userEmail: Mock.userEmail,
+    sorts: Sorts,
+    activeSort: Sorts.POPULAR,
+    activeOfferId: null
   });
 
   const tree = renderer.create(

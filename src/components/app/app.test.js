@@ -4,18 +4,20 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {Sorts} from '../../constants.js';
 import App from './app.jsx';
-import {Mock} from '../../mocks/test-mock.js';
+import {cities} from '../../mocks/cities.js';
+import {offers} from '../../mocks/offers.js';
+import {email} from '../../mocks/user.js';
 
 jest.mock(`../map/map.jsx`, () => `map`);
 
 const mockStore = configureStore([]);
 
-it(`App component test`, () => {
+it(`App snapshot`, () => {
   const store = mockStore({
-    offers: Mock.offers,
-    city: Mock.cities[0],
-    cities: Mock.cities,
-    userEmail: Mock.userEmail,
+    offers,
+    city: cities[0],
+    cities,
+    userEmail: email,
     sorts: Sorts,
     activeSort: Sorts.POPULAR,
     activeOfferId: null
@@ -25,11 +27,6 @@ it(`App component test`, () => {
       <Provider store={store}>
         <App />
       </Provider>,
-      {
-        createNodeMock: () => {
-          return document.createElement(`div`);
-        }
-      }
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

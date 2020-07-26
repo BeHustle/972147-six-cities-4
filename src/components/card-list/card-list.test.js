@@ -2,18 +2,20 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import {Sorts} from '../../constants.js';
+import {CARD_TYPE, Sorts} from '../../constants.js';
 import CardList from './card-list.jsx';
-import {Mock} from '../../mocks/test-mock.js';
+import {cities} from '../../mocks/cities.js';
+import {offers} from '../../mocks/offers.js';
+import {email} from '../../mocks/user.js';
 
 const mockStore = configureStore([]);
 
 it(`Render Cards list`, () => {
   const store = mockStore({
-    offers: Mock.offers,
-    city: Mock.cities[0],
-    cities: Mock.cities,
-    userEmail: Mock.userEmail,
+    offers,
+    city: cities[0],
+    cities,
+    userEmail: email,
     sorts: Sorts,
     activeSort: Sorts.POPULAR,
     activeOfferId: null
@@ -22,7 +24,11 @@ it(`Render Cards list`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
-          <CardList onCardTitleClick={() => {}}/>
+          <CardList
+            offers={offers}
+            type={CARD_TYPE.MAIN}
+            onCardTitleClick={() => {}}
+          />
         </Provider>
     )
     .toJSON();

@@ -1,50 +1,67 @@
 import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
+import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
+import {CARD_TYPE} from '../../constants.js';
+import {reducer} from '../../reducer/reducer.js';
 import Card from './card.jsx';
-import {Mock} from '../../mocks/test-mock.js';
+import {offers} from '../../mocks/offers.js';
 
 Enzyme.configure({
   adapter: new Adapter(),
 });
 
-it(`Title link should be clicked`, () => {
-  const onTitleClick = jest.fn();
-  const card = shallow(<Card
-    onTitleClick={onTitleClick}
-    onCardHover={() => {}}
-    offer={Mock.offers[0]}
-  />);
-  const titleLink = card.find(`.place-card__name a`);
-  titleLink.simulate(`click`);
+describe(`Card`, () => {
+  let store;
+  beforeEach(() => {
+    store = createStore(reducer);
+  });
 
-  expect(onTitleClick).toBeCalled();
+  it(`Title link should be clicked`, () => {
+    const onTitleClick = jest.fn();
+    const card = mount(<Provider store={store}>
+      <Card
+        offer={offers[0]}
+        onCardHover={() => {}}
+        onTitleClick={onTitleClick}
+        cardType={CARD_TYPE.MAIN}
+      />
+    </Provider>);
+    const titleLink = card.find(`.place-card__name a`);
+    titleLink.simulate(`click`);
+
+    expect(onTitleClick).toBeCalled();
+  });
+
+  it(`On mouse enter onCardHover should be called with offer id`, () => {
+    const offer = offers[0];
+    const card = mount(<Provider store={store}>
+      <Card
+        offer={offer}
+        onTitleClick={() => {}}
+        cardType={CARD_TYPE.MAIN}
+      />
+    </Provider>);
+    const cardElement = card.find(`.place-card`);
+    cardElement.simulate(`mouseEnter`);
+    expect(store.getState().activeOfferId).toEqual(offer.id);
+  });
+
+  it(`On mouse leave onCardHover should be called with offer null`, () => {
+    const offer = offers[0];
+    const card = mount(<Provider store={store}>
+      <Card
+        offer={offer}
+        onTitleClick={() => {}}
+        cardType={CARD_TYPE.MAIN}
+      />
+    </Provider>);
+    const cardElement = card.find(`.place-card`);
+    cardElement.simulate(`mouseEnter`);
+    cardElement.simulate(`mouseLeave`);
+
+    expect(store.getState().activeOfferId).toEqual(null);
+  });
 });
 
-it(`On mouse enter onCardHover should be called with offer id`, () => {
-  const onCardHover = jest.fn();
-  const card = shallow(<Card
-    onTitleClick={() => {}}
-    onCardHover={onCardHover}
-    offer={Mock.offers[0]}
-  />);
-  const cardElement = card.find(`.place-card`);
-  cardElement.simulate(`mouseEnter`);
-
-  expect(onCardHover).toBeCalled();
-  expect(onCardHover).toBeCalledWith(Mock.offers[0].id);
-});
-
-it(`On mouse leave onCardHover should be called with offer null`, () => {
-  const onCardHover = jest.fn();
-  const card = shallow(<Card
-    onTitleClick={() => {}}
-    onCardHover={onCardHover}
-    offer={Mock.offers[0]}
-  />);
-  const cardElement = card.find(`.place-card`);
-  cardElement.simulate(`mouseLeave`);
-
-  expect(onCardHover).toBeCalled();
-  expect(onCardHover).toBeCalledWith(null);
-});

@@ -3,17 +3,19 @@ import {Provider} from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import {Sorts} from '../../constants.js';
-import {Mock} from '../../mocks/test-mock.js';
 import SortList from './sort-list.jsx';
+import {cities} from '../../mocks/cities.js';
+import {offers} from '../../mocks/offers.js';
+import {email} from '../../mocks/user.js';
 
 const mockStore = configureStore([]);
 
 it(`Render Sort list`, () => {
   const store = mockStore({
-    offers: Mock.offers,
-    city: Mock.cities[0],
-    cities: Mock.cities,
-    userEmail: Mock.userEmail,
+    offers,
+    city: cities[0],
+    cities,
+    userEmail: email,
     sorts: Sorts,
     activeSort: Sorts.POPULAR,
     activeOfferId: null

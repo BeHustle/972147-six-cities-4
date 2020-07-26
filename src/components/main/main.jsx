@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {CARD_TYPE, HOUSE_TYPES} from '../../constants.js';
 import CardList from '../card-list/card-list.jsx';
 import CitiesList from '../cities-list/cities-list.jsx';
 import Header from '../header/header.jsx';
 import Map from '../map/map.jsx';
 import SortList from '../sort-list/sort-list.jsx';
 
-const Main = ({onCardTitleClick, countOffers, cityName}) =>
+const Main = ({onCardTitleClick, city, offers}) =>
   <div className="page page--gray page--main">
     <Header />
     <main className="page__main page__main--index">
@@ -20,14 +21,14 @@ const Main = ({onCardTitleClick, countOffers, cityName}) =>
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
 
-            <b className="places__found">{countOffers} places to stay in {cityName}</b>
+            <b className="places__found">{offers.length} places to stay in {city.name}</b>
 
             <SortList />
 
-            <CardList onCardTitleClick={onCardTitleClick}/>
+            <CardList offers={offers} onCardTitleClick={onCardTitleClick} type={CARD_TYPE.MAIN}/>
           </section>
           <div className="cities__right-section">
-            <Map />
+            <Map offers={offers} type={CARD_TYPE.MAIN} coordinates={city.coordinates} />
           </div>
         </div>
       </div>
@@ -36,13 +37,38 @@ const Main = ({onCardTitleClick, countOffers, cityName}) =>
 
 Main.propTypes = {
   onCardTitleClick: PropTypes.func.isRequired,
-  countOffers: PropTypes.number.isRequired,
-  cityName: PropTypes.string.isRequired
+  offers: PropTypes.arrayOf(PropTypes.exact({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(HOUSE_TYPES).isRequired,
+    isPremium: PropTypes.bool.isRequired,
+    inBookmarks: PropTypes.bool.isRequired,
+    rating: PropTypes.number.isRequired,
+    coordinates: PropTypes.arrayOf(PropTypes.number),
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    rooms: PropTypes.string.isRequired,
+    guests: PropTypes.string.isRequired,
+    facilities: PropTypes.arrayOf(PropTypes.string),
+    author: PropTypes.exact({
+      name: PropTypes.string.isRequired,
+      avatar: PropTypes.string,
+      isSuper: PropTypes.bool.isRequired
+    }).isRequired,
+    text: PropTypes.arrayOf(PropTypes.string).isRequired,
+    cityId: PropTypes.number.isRequired
+  })).isRequired,
+  city: PropTypes.exact({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
+  })
 };
 
 const mapStateToProps = (state) => ({
-  countOffers: state.offers.filter((offer) => offer.cityId === state.city.id).length,
-  cityName: state.city.name
+  offers: state.offers.filter((offer) => offer.cityId === state.city.id),
+  city: state.city
 });
 
 export default connect(mapStateToProps)(Main);

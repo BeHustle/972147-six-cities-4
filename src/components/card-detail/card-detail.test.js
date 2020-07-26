@@ -2,24 +2,34 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import {Mock} from '../../mocks/test-mock.js';
+import {Sorts} from '../../constants.js';
 import CardDetail from './card-detail.jsx';
+import {cities} from '../../mocks/cities.js';
+import {offers} from '../../mocks/offers.js';
+import {email} from '../../mocks/user.js';
+import {reviews} from '../../mocks/reviews.js';
 
 const mockStore = configureStore([]);
+jest.mock(`../map/map.jsx`, () => `map`);
 
-it(`Render Card Detail`, () => {
+it(`Card detail render`, () => {
   const store = mockStore({
-    offers: Mock.offers,
-    city: Mock.cities[0],
-    cities: Mock.cities,
-    userEmail: Mock.userEmail
+    offers,
+    city: cities[0],
+    cities,
+    userEmail: email,
+    sorts: Sorts,
+    activeSort: Sorts.POPULAR,
+    activeOfferId: null,
+    reviews
   });
 
   const tree = renderer
     .create(
         <Provider store={store}>
           <CardDetail
-            offer={Mock.offers[0]}
+            offerId={1}
+            onCardTitleClick={() => {}}
           />
         </Provider>
     )

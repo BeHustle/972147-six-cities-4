@@ -1,22 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {CARD_TYPES} from '../../constants';
+import {connect} from 'react-redux';
+import {HOUSE_TYPES, CARD_TYPE} from '../../constants';
+import {ActionTypes} from '../../reducer/reducer.js';
 
 const IN_BOOKMARKS_CLASS = `place-card__bookmark-button--active`;
+
+const getCardTypeClass = (type) => {
+  switch (type) {
+    case CARD_TYPE.MAIN:
+      return `cities__place-card`;
+    case CARD_TYPE.CARD_DETAIL:
+      return `near-places__card`;
+    default:
+      return ``;
+  }
+};
+
+const getCardTypeImageClass = (type) => {
+  switch (type) {
+    case CARD_TYPE.MAIN:
+      return `cities__image-wrapper`;
+    case CARD_TYPE.CARD_DETAIL:
+      return `near-places__image-wrapper`;
+    default:
+      return ``;
+  }
+};
 
 const Card = ({
   onTitleClick,
   onCardHover,
+  cardType,
   offer: {id, name, price, image, type, isPremium, inBookmarks, rating},
 }) => <article
-  className="cities__place-card place-card"
+  className={`place-card ${getCardTypeClass(cardType)}`}
   onMouseEnter={() => onCardHover(id)}
   onMouseLeave={() => onCardHover(null)}>
 
   {isPremium && <div className="place-card__mark">
     <span>Premium</span>
   </div>}
-  <div className="cities__image-wrapper place-card__image-wrapper">
+  <div className={`place-card__image-wrapper ${getCardTypeImageClass(cardType)}`}>
     <a href="#">
       <img className="place-card__image" src={image} width="260" height="200" alt="Place image"/>
     </a>
@@ -50,12 +75,13 @@ const Card = ({
 Card.propTypes = {
   onTitleClick: PropTypes.func.isRequired,
   onCardHover: PropTypes.func.isRequired,
+  cardType: PropTypes.string.isRequired,
   offer: PropTypes.exact({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(CARD_TYPES).isRequired,
+    type: PropTypes.oneOf(HOUSE_TYPES).isRequired,
     isPremium: PropTypes.bool.isRequired,
     inBookmarks: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
@@ -74,4 +100,10 @@ Card.propTypes = {
   }),
 };
 
-export default Card;
+const mapDispatchToProps = (dispatch) => ({
+  onCardHover(id) {
+    dispatch({type: ActionTypes.CHANGE_ACTIVE_OFFER_ID, payload: id});
+  },
+});
+
+export default connect(null, mapDispatchToProps)(Card);

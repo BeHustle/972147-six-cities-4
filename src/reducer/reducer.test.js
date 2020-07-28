@@ -1,3 +1,4 @@
+import {reviews} from '../mocks/reviews.js';
 import {reducer, ActionTypes} from './reducer.js';
 import {offers} from '../mocks/offers.js';
 import {cities} from '../mocks/cities.js';
@@ -12,6 +13,7 @@ describe(`Reducer`, () => {
       city: cities[0],
       offers,
       cities,
+      reviews,
       userEmail: email,
       sorts: Sorts,
       activeSort: Sorts.POPULAR,

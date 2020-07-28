@@ -1,9 +1,11 @@
-const CARD_TYPES = [
+const HOUSE_TYPES = [
   `Apartment`,
   `Room`,
   `House`,
   `Hotel`
 ];
+
+const NEAR_PLACES_COUNT = 3;
 
 const DEFAULT_AVATAR = `img/avatar.svg`;
 
@@ -26,4 +28,19 @@ const Sorts = {
   TOP_RATED: `Top rated first`,
 };
 
-export {CARD_TYPES, MAP_ZOOM, ICON_SIZE, ICON_PATH, ACTIVE_ICON_PATH, DEFAULT_AVATAR, Screen, Sorts};
+const CARD_TYPE = {
+  MAIN: `main`,
+  CARD_DETAIL: `card_detail`
+};
+
+export {
+  HOUSE_TYPES,
+  NEAR_PLACES_COUNT,
+  MAP_ZOOM, ICON_SIZE,
+  ICON_PATH,
+  ACTIVE_ICON_PATH,
+  DEFAULT_AVATAR,
+  Screen,
+  Sorts,
+  CARD_TYPE,
+};

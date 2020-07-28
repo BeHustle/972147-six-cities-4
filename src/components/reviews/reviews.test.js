@@ -3,16 +3,15 @@ import {Provider} from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import {Sorts} from '../../constants.js';
-import CardDetail from './card-detail.jsx';
+import Reviews from './reviews.jsx';
 import {cities} from '../../mocks/cities.js';
 import {offers} from '../../mocks/offers.js';
 import {email} from '../../mocks/user.js';
 import {reviews} from '../../mocks/reviews.js';
 
 const mockStore = configureStore([]);
-jest.mock(`../map/map.jsx`, () => `map`);
 
-it(`Card detail render`, () => {
+it(`Render Sort list`, () => {
   const store = mockStore({
     offers,
     city: cities[0],
@@ -27,10 +26,7 @@ it(`Card detail render`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
-          <CardDetail
-            offerId={1}
-            onCardTitleClick={() => {}}
-          />
+          <Reviews offerId={1} />
         </Provider>
     )
     .toJSON();

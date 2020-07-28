@@ -1,15 +1,36 @@
 import React from 'react';
+import {Provider} from 'react-redux';
 import renderer from 'react-test-renderer';
+import configureStore from 'redux-mock-store';
+import {CARD_TYPE, Sorts} from '../../constants.js';
+import {cities} from '../../mocks/cities.js';
+import {email} from '../../mocks/user.js';
 import Card from './card.jsx';
-import {Mock} from '../../mocks/test-mock.js';
+import {offers} from '../../mocks/offers.js';
 
-it(`Render Card`, () => {
+const mockStore = configureStore([]);
+
+it(`Card snapshot`, () => {
+  const store = mockStore({
+    offers,
+    city: cities[0],
+    cities,
+    userEmail: email,
+    sorts: Sorts,
+    activeSort: Sorts.POPULAR,
+    activeOfferId: null
+  });
+
   const tree = renderer
-    .create(<Card
-      offer={Mock.offers[0]}
-      onCardHover={() => {}}
-      onTitleClick={() => {}}
-    />)
+    .create(
+        <Provider store={store}>
+          <Card
+            offer={offers[0]}
+            onCardHover={() => {}}
+            onTitleClick={() => {}}
+            cardType={CARD_TYPE.MAIN}
+          />
+        </Provider>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

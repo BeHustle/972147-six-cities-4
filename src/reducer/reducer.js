@@ -1,12 +1,14 @@
 import {offers} from '../mocks/offers.js';
 import {cities} from '../mocks/cities.js';
 import {email} from '../mocks/user.js';
+import {reviews} from '../mocks/reviews.js';
 import {Sorts} from '../constants.js';
 
 const initialState = {
   city: cities[0],
   offers,
   cities,
+  reviews,
   userEmail: email,
   sorts: Sorts,
   activeSort: Sorts.POPULAR,

@@ -4,8 +4,10 @@ import Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {Sorts} from '../../constants.js';
-import {Mock} from '../../mocks/test-mock.js';
 import CitiesList from './cities-list.jsx';
+import {cities} from '../../mocks/cities.js';
+import {offers} from '../../mocks/offers.js';
+import {email} from '../../mocks/user.js';
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -14,10 +16,10 @@ Enzyme.configure({
 it(`Should active city to be changed`, () => {
   const mockStore = configureStore([]);
   const store = mockStore({
-    offers: Mock.offers,
-    city: Mock.cities[0],
-    cities: Mock.cities,
-    userEmail: Mock.userEmail,
+    offers,
+    city: cities[0],
+    cities,
+    userEmail: email,
     sorts: Sorts,
     activeSort: Sorts.POPULAR,
     activeOfferId: null

@@ -2,7 +2,27 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import L from 'leaflet';
 import {connect} from 'react-redux';
-import {MAP_ZOOM, ICON_SIZE, ICON_PATH, ACTIVE_ICON_PATH, CARD_TYPES} from '../../constants.js';
+import {
+  MAP_ZOOM,
+  ICON_SIZE,
+  ICON_PATH,
+  ACTIVE_ICON_PATH,
+  HOUSE_TYPES,
+  CARD_TYPE
+} from '../../constants.js';
+
+const getMapClassByType = (type) => {
+  switch (type) {
+    case CARD_TYPE.MAIN:
+      return `cities__map`;
+    case CARD_TYPE.CARD_DETAIL:
+      return `property__map`;
+    default:
+      return ``;
+  }
+};
+
+const getMapIdByType = (type) => `map-${type}`;
 
 class Map extends React.PureComponent {
   constructor(props) {
@@ -12,15 +32,15 @@ class Map extends React.PureComponent {
   }
 
   _initMap() {
-    const {activeCityCoordinates} = this.props;
-    this._map = L.map(`map`, {
-      center: activeCityCoordinates,
+    const {coordinates, type} = this.props;
+    this._map = L.map(getMapIdByType(type), {
+      center: coordinates,
       zoom: MAP_ZOOM,
       zoomControl: false,
       marker: true,
     });
 
-    this._map.setView(activeCityCoordinates, MAP_ZOOM);
+    this._map.setView(coordinates, MAP_ZOOM);
 
     L
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
@@ -30,7 +50,7 @@ class Map extends React.PureComponent {
   }
 
   _renderOffers() {
-    const {offers, activeCityCoordinates, activeOfferId} = this.props;
+    const {offers, coordinates, activeOfferId} = this.props;
     for (const offer of offers) {
       L
         .marker(offer.coordinates, {
@@ -42,7 +62,7 @@ class Map extends React.PureComponent {
         .addTo(this._activeLayer);
     }
     this._activeLayer.addTo(this._map);
-    this._map.flyTo(activeCityCoordinates, MAP_ZOOM, {
+    this._map.flyTo(coordinates, MAP_ZOOM, {
       duration: 1
     });
   }
@@ -62,17 +82,19 @@ class Map extends React.PureComponent {
   }
 
   render() {
-    return <section id="map" className="cities__map map" />;
+    const type = this.props.type;
+    return <section id={getMapIdByType(type)} className={`map ${getMapClassByType(type)}`} />;
   }
 }
 
 Map.propTypes = {
+  type: PropTypes.string.isRequired,
   offers: PropTypes.arrayOf(PropTypes.exact({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(CARD_TYPES).isRequired,
+    type: PropTypes.oneOf(HOUSE_TYPES).isRequired,
     isPremium: PropTypes.bool.isRequired,
     inBookmarks: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
@@ -89,13 +111,11 @@ Map.propTypes = {
     text: PropTypes.arrayOf(PropTypes.string).isRequired,
     cityId: PropTypes.number.isRequired
   })).isRequired,
-  activeCityCoordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
-  activeOfferId: PropTypes.number
+  coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
+  activeOfferId: PropTypes.number,
 };
 
 const mapStateToProps = (state) => ({
-  offers: state.offers.filter((offer) => offer.cityId === state.city.id),
-  activeCityCoordinates: state.city.coordinates,
   activeOfferId: state.activeOfferId
 });
 

@@ -57,7 +57,7 @@ exports[`App snapshot 1`] = `
     </div>
   </header>
   <main
-    className="page__main page__main--index"
+    className="page__main page__main--index 2"
   >
     <h1
       className="visually-hidden"

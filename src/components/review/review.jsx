@@ -28,7 +28,6 @@ const Review = ({
 Review.propTypes = {
   review: PropTypes.exact({
     id: PropTypes.number.isRequired,
-    offerId: PropTypes.number.isRequired,
     author: PropTypes.exact({
       name: PropTypes.string.isRequired,
       avatar: PropTypes.string

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {ActionTypes} from '../../reducer/reducer.js';
+import {ActionCreator} from '../../reducer/reducer.js';
 import {Sorts} from '../../constants.js';
 
 const activeSortClass = `places__option--active`;
@@ -60,7 +60,7 @@ SortList.propTypes = {
 const mapDispatchToProps = (dispatch) => ({
   onSortClick(evt, sort) {
     evt.preventDefault();
-    dispatch({type: ActionTypes.CHANGE_SORT, payload: sort});
+    dispatch(ActionCreator.changeSort(sort));
   },
 });
 

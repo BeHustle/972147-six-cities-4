@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
-import {HOUSE_TYPES, DEFAULT_AVATAR, CARD_TYPE, NEAR_PLACES_COUNT} from '../../constants.js';
+import {DEFAULT_AVATAR, CARD_TYPE, NEAR_PLACES_COUNT} from '../../constants.js';
 import CardList from '../card-list/card-list.jsx';
+import {Operation} from '../../reducer/reducer.js';
 import Header from '../header/header.jsx';
 import Reviews from '../reviews/reviews.jsx';
 import Map from '../map/map.jsx';
@@ -10,21 +11,12 @@ import Map from '../map/map.jsx';
 const SUPER_USER_CLASS = `property__avatar-wrapper--pro`;
 const IN_BOOKMARKS_CLASS = `property__bookmark-button--active`;
 
-const removeOfferById = (id, offers) => {
-  const index = offers.findIndex((item) => item.id === id);
-  if (index >= 0) {
-    const newOffers = offers.slice();
-    newOffers.splice(index, 1);
-    return newOffers;
-  }
-  return offers;
-};
-
-const CardDetail = ({offers, offerId, onCardTitleClick}) => {
+const CardDetail = ({offers, nearbyOffers, offerId, onCardTitleClick, onCardDetailLoad}) => {
   const {
     id, images, name, price, isPremium, type, inBookmarks,
     rooms, guests, facilities, author, text, rating, coordinates
   } = offers.find((it) => it.id === offerId);
+  onCardDetailLoad(id);
   return <div className="page">
 
     <Header />
@@ -107,13 +99,13 @@ const CardDetail = ({offers, offerId, onCardTitleClick}) => {
         </div>
         <Map
           type={CARD_TYPE.CARD_DETAIL}
-          offers={removeOfferById(id, offers).slice(0, NEAR_PLACES_COUNT)}
+          offers={nearbyOffers.slice(0, NEAR_PLACES_COUNT)}
           coordinates={coordinates} />
       </section>
       <div className="container">
         <section className="near-places places">
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
-          <CardList offers={removeOfferById(id, offers)} type={CARD_TYPE.CARD_DETAIL} onCardTitleClick={onCardTitleClick} />
+          <CardList offers={nearbyOffers.slice(0, NEAR_PLACES_COUNT)} type={CARD_TYPE.CARD_DETAIL} onCardTitleClick={onCardTitleClick} />
         </section>
       </div>
     </main>
@@ -127,7 +119,7 @@ CardDetail.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(HOUSE_TYPES).isRequired,
+    type: PropTypes.string.isRequired,
     isPremium: PropTypes.bool.isRequired,
     inBookmarks: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
@@ -145,10 +137,18 @@ CardDetail.propTypes = {
     cityId: PropTypes.number.isRequired
   })).isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
+  onCardDetailLoad: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  offers: state.offers
+const mapDispatchToProps = (dispatch) => ({
+  onCardDetailLoad(offerId) {
+    dispatch(Operation.loadNearbyOffers(offerId));
+  }
 });
 
-export default connect(mapStateToProps)(CardDetail);
+const mapStateToProps = (state) => ({
+  offers: state.offers,
+  nearbyOffers: state.nearbyOffers
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardDetail);

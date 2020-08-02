@@ -7,7 +7,6 @@ import {
   ICON_SIZE,
   ICON_PATH,
   ACTIVE_ICON_PATH,
-  HOUSE_TYPES,
   CARD_TYPE
 } from '../../constants.js';
 
@@ -94,7 +93,7 @@ Map.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(HOUSE_TYPES).isRequired,
+    type: PropTypes.string.isRequired,
     isPremium: PropTypes.bool.isRequired,
     inBookmarks: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,

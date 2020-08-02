@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {HOUSE_TYPES, CARD_TYPE} from '../../constants';
-import {ActionTypes} from '../../reducer/reducer.js';
+import {CARD_TYPE} from '../../constants';
+import {ActionCreator} from '../../reducer/reducer.js';
 
 const IN_BOOKMARKS_CLASS = `place-card__bookmark-button--active`;
 
@@ -81,7 +81,7 @@ Card.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(HOUSE_TYPES).isRequired,
+    type: PropTypes.string.isRequired,
     isPremium: PropTypes.bool.isRequired,
     inBookmarks: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
@@ -102,7 +102,7 @@ Card.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   onCardHover(id) {
-    dispatch({type: ActionTypes.CHANGE_ACTIVE_OFFER_ID, payload: id});
+    dispatch(ActionCreator.changeActiveOfferId(id));
   },
 });
 

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
-import {HOUSE_TYPES, CARD_TYPE, Sorts} from '../../constants.js';
+import {CARD_TYPE, Sorts} from '../../constants.js';
 import Card from '../card/card.jsx';
 
 const getCardListTypeClass = (type) => {
@@ -48,7 +48,7 @@ CardList.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(HOUSE_TYPES).isRequired,
+    type: PropTypes.string.isRequired,
     isPremium: PropTypes.bool.isRequired,
     inBookmarks: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {CARD_TYPE, HOUSE_TYPES} from '../../constants.js';
+import {CARD_TYPE} from '../../constants.js';
 import CardList from '../card-list/card-list.jsx';
 import CitiesList from '../cities-list/cities-list.jsx';
 import Header from '../header/header.jsx';
@@ -20,11 +20,8 @@ const Main = ({onCardTitleClick, city, offers}) =>
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-
             <b className="places__found">{offers.length} places to stay in {city.name}</b>
-
             <SortList />
-
             <CardList offers={offers} onCardTitleClick={onCardTitleClick} type={CARD_TYPE.MAIN}/>
           </section>
           <div className="cities__right-section">
@@ -42,7 +39,7 @@ Main.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(HOUSE_TYPES).isRequired,
+    type: PropTypes.string.isRequired,
     isPremium: PropTypes.bool.isRequired,
     inBookmarks: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,

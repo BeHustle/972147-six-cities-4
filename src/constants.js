@@ -32,6 +32,12 @@ const CARD_TYPE = {
   CARD_DETAIL: `card_detail`
 };
 
+const HouseType = [
+  `apartment`,
+  `room`,
+  `house`,
+  `hotel`
+];
 export {
   NEAR_PLACES_COUNT,
   MAP_ZOOM, ICON_SIZE,
@@ -41,5 +47,6 @@ export {
   Screen,
   Sorts,
   CARD_TYPE,
-  AppStatus
+  AppStatus,
+  HouseType
 };

@@ -4,7 +4,7 @@ export const offerAdapter = (offer, cities) => ({
   price: offer.price,
   image: offer.preview_image,
   images: offer.images,
-  type: offer.type,
+  type: offer.type.toLowerCase(),
   isPremium: offer.is_premium,
   inBookmarks: offer.is_favorite,
   rating: offer.rating,

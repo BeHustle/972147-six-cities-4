@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
-import {CARD_TYPE, Sorts} from '../../constants.js';
+import {CARD_TYPE, HouseType, Sorts} from '../../constants.js';
+import {getActiveSort} from '../../reducer/app/app.selectors.js';
 import Card from '../card/card.jsx';
 
 const getCardListTypeClass = (type) => {
@@ -48,7 +49,7 @@ CardList.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(HouseType).isRequired,
     isPremium: PropTypes.bool.isRequired,
     inBookmarks: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
@@ -68,7 +69,7 @@ CardList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  sortType: state.activeSort
+  sortType: getActiveSort(state)
 });
 
 export default connect(mapStateToProps)(CardList);

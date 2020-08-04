@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {ActionCreator} from '../../reducer/reducer.js';
+import {setActiveSort} from '../../reducer/app/app.reducer.js';
+import {getActiveSort} from '../../reducer/app/app.selectors.js';
 import {Sorts} from '../../constants.js';
 
 const activeSortClass = `places__option--active`;
@@ -23,7 +24,8 @@ class SortList extends React.PureComponent {
   }
 
   render() {
-    const {activeSort, sorts, onSortClick} = this.props;
+    const {activeSort, onSortClick} = this.props;
+    const sortsKeys = Object.keys(Sorts);
     return <form
       onMouseEnter={() => this._handleCardListHover(true)}
       onMouseLeave={() => this._handleCardListHover(false)}
@@ -37,7 +39,7 @@ class SortList extends React.PureComponent {
       </span>
       <ul
         className={`places__options places__options--custom ${this.state.hovered && hoveredSortListClass}`}>
-        {sorts.map((key) =>
+        {sortsKeys.map((key) =>
           <li
             onClick={(evt) => onSortClick(evt, Sorts[key])}
             key={key}
@@ -52,7 +54,6 @@ class SortList extends React.PureComponent {
 }
 
 SortList.propTypes = {
-  sorts: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   activeSort: PropTypes.string.isRequired,
   onSortClick: PropTypes.func.isRequired,
 };
@@ -60,13 +61,12 @@ SortList.propTypes = {
 const mapDispatchToProps = (dispatch) => ({
   onSortClick(evt, sort) {
     evt.preventDefault();
-    dispatch(ActionCreator.changeSort(sort));
+    dispatch(setActiveSort(sort));
   },
 });
 
 const mapStateToProps = (state) => ({
-  sorts: Object.keys(state.sorts),
-  activeSort: state.activeSort,
+  activeSort: getActiveSort(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SortList);

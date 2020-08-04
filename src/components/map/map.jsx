@@ -7,8 +7,9 @@ import {
   ICON_SIZE,
   ICON_PATH,
   ACTIVE_ICON_PATH,
-  CARD_TYPE
+  CARD_TYPE, HouseType,
 } from '../../constants.js';
+import {getActiveOfferId} from '../../reducer/app/app.selectors.js';
 
 const getMapClassByType = (type) => {
   switch (type) {
@@ -93,7 +94,7 @@ Map.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(HouseType).isRequired,
     isPremium: PropTypes.bool.isRequired,
     inBookmarks: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
@@ -115,7 +116,7 @@ Map.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  activeOfferId: state.activeOfferId
+  activeOfferId: getActiveOfferId(state)
 });
 
 export default connect(mapStateToProps)(Map);

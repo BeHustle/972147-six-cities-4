@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {CARD_TYPE} from '../../constants.js';
+import {CARD_TYPE, HouseType} from '../../constants.js';
+import {getActiveCity} from '../../reducer/app/app.selectors.js';
+import {getOffers} from '../../reducer/data/data.selectors.js';
 import CardList from '../card-list/card-list.jsx';
 import CitiesList from '../cities-list/cities-list.jsx';
 import Header from '../header/header.jsx';
@@ -39,7 +41,7 @@ Main.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(HouseType),
     isPremium: PropTypes.bool.isRequired,
     inBookmarks: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
@@ -64,8 +66,8 @@ Main.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  offers: state.offers.filter((offer) => offer.cityId === state.city.id),
-  city: state.city
+  offers: getOffers(state).filter((offer) => offer.cityId === getActiveCity(state).id),
+  city: getActiveCity(state)
 });
 
 export default connect(mapStateToProps)(Main);

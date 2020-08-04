@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {getAppStatus} from '../../reducer/app/app.selectors.js';
 import CardDetail from '../card-detail/card-detail.jsx';
 import Main from '../main/main.jsx';
 import {Screen, AppStatus} from '../../constants.js';
@@ -72,7 +73,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  status: state.appStatus
+  status: getAppStatus(state)
 });
 
 export default connect(mapStateToProps)(App);

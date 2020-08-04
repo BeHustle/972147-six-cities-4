@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {email} from './mocks/user.js';
+import {email} from './test-mocks/user.js';
 import App from './components/app/app.jsx';
 import {createAPI} from './api/api.js';
 import {createStore, applyMiddleware} from 'redux';

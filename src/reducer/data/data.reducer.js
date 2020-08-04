@@ -18,22 +18,22 @@ const ActionTypes = {
 };
 
 
-const setOffers = (offers) => ({
+export const setOffers = (offers) => ({
   type: ActionTypes.SET_OFFERS,
   payload: offers,
 });
 
-const setReviews = (reviews) => ({
+export const setReviews = (reviews) => ({
   type: ActionTypes.SET_REVIEWS,
   payload: reviews,
 });
 
-const setNearbyOffers = (reviews) => ({
+export const setNearbyOffers = (reviews) => ({
   type: ActionTypes.SET_NEARBY_OFFERS,
   payload: reviews,
 });
 
-const setCities = (cities) => ({
+export const setCities = (cities) => ({
   type: ActionTypes.SET_CITIES,
   payload: cities,
 });

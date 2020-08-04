@@ -4,11 +4,11 @@ import Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {Sorts} from '../../constants.js';
-import {reviews} from '../../mocks/reviews.js';
+import {reviews} from '../../test-mocks/reviews.js';
 import App from './app.jsx';
-import {cities} from '../../mocks/cities.js';
-import {offers} from '../../mocks/offers.js';
-import {email} from '../../mocks/user.js';
+import {cities} from '../../test-mocks/cities.js';
+import {offers} from '../../test-mocks/offers.js';
+import {email} from '../../test-mocks/user.js';
 
 Enzyme.configure({
   adapter: new Adapter(),

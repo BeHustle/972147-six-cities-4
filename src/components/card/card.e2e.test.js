@@ -6,7 +6,7 @@ import {createStore} from 'redux';
 import {CARD_TYPE} from '../../constants.js';
 import {reducer} from '../../reducer/reducer.js';
 import Card from './card.jsx';
-import {offers} from '../../mocks/offers.js';
+import {offers} from '../../test-mocks/offers.js';
 
 Enzyme.configure({
   adapter: new Adapter(),

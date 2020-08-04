@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {CARD_TYPE, HouseType} from '../../constants.js';
 import {getActiveCity} from '../../reducer/app/app.selectors.js';
-import {getOffers} from '../../reducer/data/data.selectors.js';
+import {getOffersByCity} from '../../reducer/data/data.selectors.js';
 import CardList from '../card-list/card-list.jsx';
 import CitiesList from '../cities-list/cities-list.jsx';
 import Header from '../header/header.jsx';
@@ -66,7 +66,7 @@ Main.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  offers: getOffers(state).filter((offer) => offer.cityId === getActiveCity(state).id),
+  offers: getOffersByCity(state),
   city: getActiveCity(state)
 });
 

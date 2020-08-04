@@ -4,10 +4,10 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import {Sorts} from '../../constants.js';
 import Reviews from './reviews.jsx';
-import {cities} from '../../mocks/cities.js';
-import {offers} from '../../mocks/offers.js';
-import {email} from '../../mocks/user.js';
-import {reviews} from '../../mocks/reviews.js';
+import {cities} from '../../test-mocks/cities.js';
+import {offers} from '../../test-mocks/offers.js';
+import {email} from '../../test-mocks/user.js';
+import {reviews} from '../../test-mocks/reviews.js';
 
 const mockStore = configureStore([]);
 

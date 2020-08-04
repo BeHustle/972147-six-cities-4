@@ -4,9 +4,9 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import {Sorts} from '../../constants.js';
 import CitiesList from './cities-list.jsx';
-import {cities} from '../../mocks/cities.js';
-import {offers} from '../../mocks/offers.js';
-import {email} from '../../mocks/user.js';
+import {cities} from '../../test-mocks/cities.js';
+import {offers} from '../../test-mocks/offers.js';
+import {email} from '../../test-mocks/user.js';
 
 const mockStore = configureStore([]);
 

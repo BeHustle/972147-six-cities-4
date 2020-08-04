@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render empty offers 1`] = `
+exports[`Render empty offers screen 1`] = `
 <div
   className="cities__places-container cities__places-container--empty container"
 >

@@ -12,6 +12,7 @@ export const createAPI = (dispatch = null) => {
 
   const onSuccess = (response) => response;
   const onFail = ({response}) => {
+    dispatch();
     throw response;
   };
 

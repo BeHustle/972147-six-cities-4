@@ -6,7 +6,7 @@ import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import {createAPI} from '../../api/api.js';
-import {AppStatus, CARD_TYPE, Sorts} from '../../constants.js';
+import {AppStatus, CARD_TYPE} from '../../constants.js';
 import {setActiveCity, setAppStatus} from '../../reducer/app/app.reducer.js';
 import {setCities, setNearbyOffers, setOffers, setReviews} from '../../reducer/data/data.reducer.js';
 import reducer from '../../reducer/reducer.js';

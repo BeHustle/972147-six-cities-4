@@ -57,6 +57,7 @@ exports[`Render Map 1`] = `
       bustle of the city comes to rest in this alley flowery and colorful.",
         ],
         "type": "hotel",
+        "zoom": 10,
       },
       Object {
         "author": Object {
@@ -98,6 +99,7 @@ exports[`Render Map 1`] = `
       bustle of the city comes to rest in this alley flowery and colorful.",
         ],
         "type": "apartment",
+        "zoom": 10,
       },
       Object {
         "author": Object {
@@ -141,6 +143,7 @@ exports[`Render Map 1`] = `
       bustle of the city comes to rest in this alley flowery and colorful.",
         ],
         "type": "room",
+        "zoom": 10,
       },
       Object {
         "author": Object {
@@ -184,6 +187,7 @@ exports[`Render Map 1`] = `
       bustle of the city comes to rest in this alley flowery and colorful.",
         ],
         "type": "house",
+        "zoom": 10,
       },
     ]
   }

@@ -21,5 +21,6 @@ export const offerAdapter = (offer, cities) => ({
     offer.location.latitude,
     offer.location.longitude
   ],
+  zoom: offer.location.zoom,
   cityId: cities.find((city) => city.name === offer.city.name).id
 });

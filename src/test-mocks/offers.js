@@ -42,6 +42,7 @@ export const offers = [
     ],
     coordinates: [52.3909553943508, 4.85309666406198],
     cityId: 1,
+    zoom: 10
   },
   {
     id: 2,
@@ -79,6 +80,7 @@ export const offers = [
       bustle of the city comes to rest in this alley flowery and colorful.`,
     ],
     cityId: 1,
+    zoom: 10
   },
   {
     id: 3,
@@ -118,6 +120,7 @@ export const offers = [
       bustle of the city comes to rest in this alley flowery and colorful.`,
     ],
     cityId: 2,
+    zoom: 10
   },
   {
     id: 4,
@@ -157,6 +160,7 @@ export const offers = [
       bustle of the city comes to rest in this alley flowery and colorful.`,
     ],
     cityId: 3,
+    zoom: 10
   }];
 
 export const serverOffers = [

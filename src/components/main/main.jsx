@@ -11,9 +11,9 @@ import Header from '../header/header.jsx';
 import Map from '../map/map.jsx';
 import SortList from '../sort-list/sort-list.jsx';
 
-const Main = ({onCardTitleClick, city, offers}) =>
+const Main = ({onCardTitleClick, city, offers, onSignInClick}) =>
   <div className="page page--gray page--main">
-    <Header />
+    <Header onSignInClick={onSignInClick} />
     <main className={`page__main page__main--index ${offers.length || `page__main--index-empty`}`}>
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
@@ -32,7 +32,7 @@ const Main = ({onCardTitleClick, city, offers}) =>
               <CardList offers={offers} onCardTitleClick={onCardTitleClick} type={CARD_TYPE.MAIN}/>
             </section>
             <div className="cities__right-section">
-              <Map offers={offers} type={CARD_TYPE.MAIN} coordinates={city.coordinates} />
+              <Map offers={offers} type={CARD_TYPE.MAIN} coordinates={city.coordinates} zoom={city.zoom} />
             </div>
           </div>
           : <EmptyOffersScreen />}
@@ -52,6 +52,7 @@ Main.propTypes = {
     inBookmarks: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
     coordinates: PropTypes.arrayOf(PropTypes.number),
+    zoom: PropTypes.number.isRequired,
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
     rooms: PropTypes.string.isRequired,
     guests: PropTypes.string.isRequired,
@@ -67,8 +68,10 @@ Main.propTypes = {
   city: PropTypes.exact({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
-  })
+    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
+    zoom: PropTypes.number.isRequired
+  }),
+  onSignInClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({

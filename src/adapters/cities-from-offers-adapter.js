@@ -5,7 +5,8 @@ export const citiesFromOffersAdapter = (offers) => {
       cities.set(city.name, {
         id: cities.size + 1,
         name: city.name,
-        coordinates: [city.location.latitude, city.location.longitude]
+        coordinates: [city.location.latitude, city.location.longitude],
+        zoom: city.location.zoom
       });
     }
   }

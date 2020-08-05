@@ -26,7 +26,8 @@ CitiesList.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.exact({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
+    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
+    zoom: PropTypes.number.isRequired
   })).isRequired,
   activeCityId: PropTypes.number.isRequired,
   onCityLinkClick: PropTypes.func.isRequired

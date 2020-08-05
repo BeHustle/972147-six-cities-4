@@ -86,6 +86,7 @@ Card.propTypes = {
     inBookmarks: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
     coordinates: PropTypes.arrayOf(PropTypes.number),
+    zoom: PropTypes.number.isRequired,
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
     rooms: PropTypes.string.isRequired,
     guests: PropTypes.string.isRequired,

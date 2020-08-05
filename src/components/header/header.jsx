@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {getUserEmail} from '../../reducer/user/user.selectors.js';
+import {AuthStatus} from '../../constants.js';
+import {getAuthStatus, getUserInfo} from '../../reducer/user/user.selectors.js';
 
-const Header = ({userEmail}) =>
+const Header = ({userInfo, authStatus, onSignInClick}) =>
   <header className="header">
     <div className="container">
       <div className="header__wrapper">
@@ -15,10 +16,10 @@ const Header = ({userEmail}) =>
         <nav className="header__nav">
           <ul className="header__nav-list">
             <li className="header__nav-item user">
-              <a className="header__nav-link header__nav-link--profile" href="#">
+              <a onClick={onSignInClick} className="header__nav-link header__nav-link--profile" href="#">
                 <div className="header__avatar-wrapper user__avatar-wrapper">
                 </div>
-                <span className="header__user-name user__name">{userEmail}</span>
+                <span className="header__user-name user__name">{authStatus === AuthStatus.AUTH ? userInfo.email : `Sign in`}</span>
               </a>
             </li>
           </ul>
@@ -28,11 +29,20 @@ const Header = ({userEmail}) =>
   </header>;
 
 Header.propTypes = {
-  userEmail: PropTypes.string.isRequired
+  userInfo: PropTypes.exact({
+    img: PropTypes.string,
+    email: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    isPro: PropTypes.bool.isRequired
+  }),
+  authStatus: PropTypes.oneOf(Object.values(AuthStatus)),
+  onSignInClick: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
-  userEmail: getUserEmail(state)
+  userInfo: getUserInfo(state),
+  authStatus: getAuthStatus(state)
 });
+
 
 export default connect(mapStateToProps)(Header);

@@ -7,15 +7,15 @@ import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import {createAPI} from '../../api/api.js';
-import {AppStatus} from '../../constants.js';
+import {AppStatus, AuthStatus} from '../../constants.js';
 import {setActiveCity, setAppStatus} from '../../reducer/app/app.reducer.js';
 import {setCities, setNearbyOffers, setOffers, setReviews} from '../../reducer/data/data.reducer.js';
 import reducer from '../../reducer/reducer.js';
-import {setUserEmail} from '../../reducer/user/user.reducer.js';
+import {setUserInfo, setAuthStatus} from '../../reducer/user/user.reducer.js';
 import {cities} from '../../test-mocks/cities.js';
 import {serverOffers} from '../../test-mocks/offers.js';
 import {reviews, serverReviews} from '../../test-mocks/reviews.js';
-import {email} from '../../test-mocks/user.js';
+import {serverUserInfo, userInfo} from '../../test-mocks/user.js';
 import App from './app.jsx';
 import {offers} from '../../test-mocks/offers.js';
 
@@ -26,7 +26,7 @@ Enzyme.configure({
 
 jest.mock(`../map/map.jsx`, () => `map`);
 
-const api = createAPI(() => {});
+const api = createAPI();
 const apiMock = new MockAdapter(api);
 
 apiMock
@@ -41,6 +41,10 @@ apiMock
   .onGet(`/hotels/1/nearby`)
   .reply(200, serverOffers);
 
+apiMock
+  .onGet(`/login`)
+  .reply(200, serverUserInfo);
+
 const store = createStore(
     reducer,
     composeWithDevTools(
@@ -54,7 +58,8 @@ store.dispatch(setNearbyOffers(offers));
 store.dispatch(setCities(cities));
 store.dispatch(setActiveCity(cities[0]));
 store.dispatch(setAppStatus(AppStatus.SUCCESS_LOAD));
-store.dispatch(setUserEmail(email));
+store.dispatch(setUserInfo(userInfo));
+store.dispatch(setAuthStatus(AuthStatus.AUTH));
 
 describe(`Title card click:`, () => {
   let appWithProvider;
@@ -104,5 +109,20 @@ describe(`Title card click:`, () => {
 
     const cardDetail = appWithProvider.find(`CardDetail`);
     expect(cardDetail.props().offerId).toBe(cardId);
+  });
+
+  it(`should change app state screen to login`, () => {
+    const signInLink = appWithProvider.find(`.header__nav-link--profile`).first();
+
+    signInLink.simulate(`click`);
+    expect(app.state().screen).toBe(`login`);
+  });
+
+  it(`should render login screen on click to sign in`, () => {
+    const signInLink = appWithProvider.find(`.header__nav-link--profile`).first();
+
+    signInLink.simulate(`click`);
+    const loginScreen = appWithProvider.find(`.page__main--login`);
+    expect(loginScreen.length).not.toBe(0);
   });
 });

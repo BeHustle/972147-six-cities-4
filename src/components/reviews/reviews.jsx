@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {AuthStatus} from '../../constants.js';
 import {Operation as DataOperation} from '../../reducer/data/data.reducer.js';
 import {getReviews} from '../../reducer/data/data.selectors.js';
+import {getAuthStatus} from '../../reducer/user/user.selectors.js';
 import AddReview from '../add-review/add-review.jsx';
 import Review from '../review/review.jsx';
 
@@ -17,7 +19,7 @@ class Reviews extends React.PureComponent {
   }
 
   render() {
-    const {reviews} = this.props;
+    const {reviews, authStatus} = this.props;
     return <section className="property__reviews reviews">
       <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
       <ul className="reviews__list">
@@ -25,7 +27,7 @@ class Reviews extends React.PureComponent {
           <Review key={review.id} review={review}/>,
         )}
       </ul>
-      <AddReview/>
+      {authStatus === AuthStatus.AUTH && <AddReview />}
     </section>;
   }
 }
@@ -43,6 +45,7 @@ Reviews.propTypes = {
     date: PropTypes.instanceOf(Date),
   })),
   onReviewsMount: PropTypes.func.isRequired,
+  authStatus: PropTypes.oneOf(Object.values(AuthStatus)),
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -53,6 +56,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
   reviews: getReviews(state),
+  authStatus: getAuthStatus(state)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Reviews);

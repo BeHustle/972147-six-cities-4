@@ -44,7 +44,7 @@ exports[`Render Header 1`] = `
               <span
                 className="header__user-name user__name"
               >
-                Oliver.conner@gmail.com
+                user@gmail.com
               </span>
             </a>
           </li>

@@ -339,7 +339,7 @@ exports[`App snapshot 1`] = `
                 <p
                   className="place-card__type"
                 >
-                  Hotel
+                  hotel
                 </p>
               </div>
             </article>
@@ -437,7 +437,7 @@ exports[`App snapshot 1`] = `
                 <p
                   className="place-card__type"
                 >
-                  Apartment
+                  apartment
                 </p>
               </div>
             </article>
@@ -501,7 +501,7 @@ exports[`App snapshot 1`] = `
                     "An independent House, strategically located between Rembrand Square and National Opera, but where the
       bustle of the city comes to rest in this alley flowery and colorful.",
                   ],
-                  "type": "Hotel",
+                  "type": "hotel",
                 },
                 Object {
                   "author": Object {
@@ -542,7 +542,7 @@ exports[`App snapshot 1`] = `
                     "An independent House, strategically located between Rembrand Square and National Opera, but where the
       bustle of the city comes to rest in this alley flowery and colorful.",
                   ],
-                  "type": "Apartment",
+                  "type": "apartment",
                 },
               ]
             }

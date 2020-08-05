@@ -102,7 +102,7 @@ exports[`Card snapshot 1`] = `
     <p
       className="place-card__type"
     >
-      Hotel
+      hotel
     </p>
   </div>
 </article>

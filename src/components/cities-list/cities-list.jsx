@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {setActiveCity} from '../../reducer/app/app.reducer.js';
 import {getActiveCity} from '../../reducer/app/app.selectors.js';
 import {getCities} from '../../reducer/data/data.selectors.js';
-import {ActionTypes} from '../../reducer/reducer.js';
 
 const ACTIVE_CITY_CLASS = `tabs__item--active`;
 

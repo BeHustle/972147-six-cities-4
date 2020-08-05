@@ -196,7 +196,7 @@ exports[`Card detail render 1`] = `
             <li
               className="property__feature property__feature--entire"
             >
-              Hotel
+              hotel
             </li>
             <li
               className="property__feature property__feature--bedrooms"
@@ -342,7 +342,7 @@ exports[`Card detail render 1`] = `
               <span
                 className="reviews__amount"
               >
-                2
+                4
               </span>
             </h2>
             <ul
@@ -463,6 +463,124 @@ exports[`Card detail render 1`] = `
                     dateTime="July 17th 2020-07-17"
                   >
                     July 2020
+                  </time>
+                </div>
+              </li>
+              <li
+                className="reviews__item"
+              >
+                <div
+                  className="reviews__user user"
+                >
+                  <div
+                    className="reviews__avatar-wrapper user__avatar-wrapper"
+                  >
+                    <img
+                      alt="William"
+                      className="reviews__avatar user__avatar"
+                      height="54"
+                      src="img/avatar.svg"
+                      width="54"
+                    />
+                  </div>
+                  <span
+                    className="reviews__user-name"
+                  >
+                    William
+                  </span>
+                </div>
+                <div
+                  className="reviews__info"
+                >
+                  <div
+                    className="reviews__rating rating"
+                  >
+                    <div
+                      className="reviews__stars rating__stars"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "width": "20%",
+                          }
+                        }
+                      />
+                      <span
+                        className="visually-hidden"
+                      >
+                        Rating
+                      </span>
+                    </div>
+                  </div>
+                  <p
+                    className="reviews__text"
+                  >
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. At ipsa labore libero nam sunt temporibus?
+                  </p>
+                  <time
+                    className="reviews__time"
+                    dateTime="March 25th 2018-03-25"
+                  >
+                    March 2018
+                  </time>
+                </div>
+              </li>
+              <li
+                className="reviews__item"
+              >
+                <div
+                  className="reviews__user user"
+                >
+                  <div
+                    className="reviews__avatar-wrapper user__avatar-wrapper"
+                  >
+                    <img
+                      alt="Lucy"
+                      className="reviews__avatar user__avatar"
+                      height="54"
+                      src="img/avatar-angelina.jpg"
+                      width="54"
+                    />
+                  </div>
+                  <span
+                    className="reviews__user-name"
+                  >
+                    Lucy
+                  </span>
+                </div>
+                <div
+                  className="reviews__info"
+                >
+                  <div
+                    className="reviews__rating rating"
+                  >
+                    <div
+                      className="reviews__stars rating__stars"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "width": "80%",
+                          }
+                        }
+                      />
+                      <span
+                        className="visually-hidden"
+                      >
+                        Rating
+                      </span>
+                    </div>
+                  </div>
+                  <p
+                    className="reviews__text"
+                  >
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  </p>
+                  <time
+                    className="reviews__time"
+                    dateTime="January 13th 2020-01-13"
+                  >
+                    January 2020
                   </time>
                 </div>
               </li>
@@ -641,6 +759,54 @@ exports[`Card detail render 1`] = `
           Array [
             Object {
               "author": Object {
+                "avatar": "img/avatar-angelina.jpg",
+                "isSuper": true,
+                "name": "Angelina",
+              },
+              "cityId": 1,
+              "coordinates": Array [
+                52.3909553943508,
+                4.85309666406198,
+              ],
+              "facilities": Array [
+                "Wi-Fi",
+                "Washing machine",
+                "Towels",
+                "Heating",
+                "Coffee machine",
+                "Baby seat",
+                "Kitchen",
+                "Dishwasher",
+                "Cabel TV",
+                "Fridge",
+              ],
+              "guests": "Max 4 adults",
+              "id": 1,
+              "image": "img/apartment-01.jpg",
+              "images": Array [
+                "img/room.jpg",
+                "img/apartment-01.jpg",
+                "img/apartment-02.jpg",
+                "img/apartment-03.jpg",
+                "img/studio-01.jpg",
+                "img/apartment-01.jpg",
+              ],
+              "inBookmarks": true,
+              "isPremium": true,
+              "name": "Beautiful & luxurious apartment at great locatccion",
+              "price": 132,
+              "rating": 4.1,
+              "rooms": "3 Bedrooms",
+              "text": Array [
+                "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
+      The building is green and from 18th century.",
+                "An independent House, strategically located between Rembrand Square and National Opera, but where the
+      bustle of the city comes to rest in this alley flowery and colorful.",
+              ],
+              "type": "hotel",
+            },
+            Object {
+              "author": Object {
                 "avatar": "img/avatar-max.jpg",
                 "isSuper": true,
                 "name": "Max",
@@ -678,7 +844,7 @@ exports[`Card detail render 1`] = `
                 "An independent House, strategically located between Rembrand Square and National Opera, but where the
       bustle of the city comes to rest in this alley flowery and colorful.",
               ],
-              "type": "Apartment",
+              "type": "apartment",
             },
             Object {
               "author": Object {
@@ -721,50 +887,7 @@ exports[`Card detail render 1`] = `
                 "An independent House, strategically located between Rembrand Square and National Opera, but where the
       bustle of the city comes to rest in this alley flowery and colorful.",
               ],
-              "type": "Room",
-            },
-            Object {
-              "author": Object {
-                "avatar": "",
-                "isSuper": true,
-                "name": "Steven",
-              },
-              "cityId": 3,
-              "coordinates": Array [
-                50.938361,
-                6.959974,
-              ],
-              "facilities": Array [
-                "Wi-Fi",
-                "Kitchen",
-                "Dishwasher",
-                "Cabel TV",
-                "Fridge",
-              ],
-              "guests": "Max 3 adults and 2 children",
-              "id": 4,
-              "image": "img/room.jpg",
-              "images": Array [
-                "img/room.jpg",
-                "img/apartment-01.jpg",
-                "img/apartment-02.jpg",
-                "img/apartment-03.jpg",
-                "img/studio-01.jpg",
-                "img/apartment-01.jpg",
-              ],
-              "inBookmarks": false,
-              "isPremium": true,
-              "name": "Nice, cozy, warm big bed apartment",
-              "price": 995,
-              "rating": 1,
-              "rooms": "5 Bedrooms",
-              "text": Array [
-                "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
-      The building is green and from 18th century.",
-                "An independent House, strategically located between Rembrand Square and National Opera, but where the
-      bustle of the city comes to rest in this alley flowery and colorful.",
-              ],
-              "type": "House",
+              "type": "room",
             },
           ]
         }
@@ -785,6 +908,111 @@ exports[`Card detail render 1`] = `
         <div
           className="places__list near-places__list"
         >
+          <article
+            className="place-card near-places__card"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <div
+              className="place-card__mark"
+            >
+              <span>
+                Premium
+              </span>
+            </div>
+            <div
+              className="place-card__image-wrapper near-places__image-wrapper"
+            >
+              <a
+                href="#"
+              >
+                <img
+                  alt="Place image"
+                  className="place-card__image"
+                  height="200"
+                  src="img/apartment-01.jpg"
+                  width="260"
+                />
+              </a>
+            </div>
+            <div
+              className="place-card__info"
+            >
+              <div
+                className="place-card__price-wrapper"
+              >
+                <div
+                  className="place-card__price"
+                >
+                  <b
+                    className="place-card__price-value"
+                  >
+                    €
+                    132
+                  </b>
+                  <span
+                    className="place-card__price-text"
+                  >
+                    / night
+                  </span>
+                </div>
+                <button
+                  className="place-card__bookmark-button button place-card__bookmark-button--active"
+                  type="button"
+                >
+                  <svg
+                    className="place-card__bookmark-icon"
+                    height="19"
+                    width="18"
+                  >
+                    <use
+                      xlinkHref="#icon-bookmark"
+                    />
+                  </svg>
+                  <span
+                    className="visually-hidden"
+                  >
+                    To bookmarks
+                  </span>
+                </button>
+              </div>
+              <div
+                className="place-card__rating rating"
+              >
+                <div
+                  className="place-card__stars rating__stars"
+                >
+                  <span
+                    style={
+                      Object {
+                        "width": "100%",
+                      }
+                    }
+                  />
+                  <span
+                    className="visually-hidden"
+                  >
+                    Rating
+                  </span>
+                </div>
+              </div>
+              <h2
+                className="place-card__name"
+              >
+                <a
+                  href="#"
+                  onClick={[Function]}
+                >
+                  Beautiful & luxurious apartment at great locatccion
+                </a>
+              </h2>
+              <p
+                className="place-card__type"
+              >
+                hotel
+              </p>
+            </div>
+          </article>
           <article
             className="place-card near-places__card"
             onMouseEnter={[Function]}
@@ -879,7 +1107,7 @@ exports[`Card detail render 1`] = `
               <p
                 className="place-card__type"
               >
-                Apartment
+                apartment
               </p>
             </div>
           </article>
@@ -984,112 +1212,7 @@ exports[`Card detail render 1`] = `
               <p
                 className="place-card__type"
               >
-                Room
-              </p>
-            </div>
-          </article>
-          <article
-            className="place-card near-places__card"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-          >
-            <div
-              className="place-card__mark"
-            >
-              <span>
-                Premium
-              </span>
-            </div>
-            <div
-              className="place-card__image-wrapper near-places__image-wrapper"
-            >
-              <a
-                href="#"
-              >
-                <img
-                  alt="Place image"
-                  className="place-card__image"
-                  height="200"
-                  src="img/room.jpg"
-                  width="260"
-                />
-              </a>
-            </div>
-            <div
-              className="place-card__info"
-            >
-              <div
-                className="place-card__price-wrapper"
-              >
-                <div
-                  className="place-card__price"
-                >
-                  <b
-                    className="place-card__price-value"
-                  >
-                    €
-                    995
-                  </b>
-                  <span
-                    className="place-card__price-text"
-                  >
-                    / night
-                  </span>
-                </div>
-                <button
-                  className="place-card__bookmark-button button false"
-                  type="button"
-                >
-                  <svg
-                    className="place-card__bookmark-icon"
-                    height="19"
-                    width="18"
-                  >
-                    <use
-                      xlinkHref="#icon-bookmark"
-                    />
-                  </svg>
-                  <span
-                    className="visually-hidden"
-                  >
-                    To bookmarks
-                  </span>
-                </button>
-              </div>
-              <div
-                className="place-card__rating rating"
-              >
-                <div
-                  className="place-card__stars rating__stars"
-                >
-                  <span
-                    style={
-                      Object {
-                        "width": "20%",
-                      }
-                    }
-                  />
-                  <span
-                    className="visually-hidden"
-                  >
-                    Rating
-                  </span>
-                </div>
-              </div>
-              <h2
-                className="place-card__name"
-              >
-                <a
-                  href="#"
-                  onClick={[Function]}
-                >
-                  Nice, cozy, warm big bed apartment
-                </a>
-              </h2>
-              <p
-                className="place-card__type"
-              >
-                House
+                room
               </p>
             </div>
           </article>

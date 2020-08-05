@@ -1,7 +1,6 @@
 export const reviews = [
   {
     id: 1,
-    offerId: 1,
     author: {
       name: `Max`,
       avatar: `img/avatar-angelina.jpg`
@@ -12,7 +11,6 @@ export const reviews = [
   },
   {
     id: 2,
-    offerId: 1,
     author: {
       name: `Alex`,
       avatar: `img/avatar-max.jpg`
@@ -23,7 +21,6 @@ export const reviews = [
   },
   {
     id: 3,
-    offerId: 3,
     author: {
       name: `William`,
       avatar: ``
@@ -34,7 +31,6 @@ export const reviews = [
   },
   {
     id: 4,
-    offerId: 2,
     author: {
       name: `Lucy`,
       avatar: `img/avatar-angelina.jpg`

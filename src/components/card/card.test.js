@@ -16,7 +16,6 @@ it(`Card snapshot`, () => {
     city: cities[0],
     cities,
     userEmail: email,
-    sorts: Sorts,
     activeSort: Sorts.POPULAR,
     activeOfferId: null
   });

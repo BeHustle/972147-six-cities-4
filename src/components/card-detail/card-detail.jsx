@@ -23,13 +23,13 @@ class CardDetail extends React.PureComponent {
   }
 
   render() {
-    const {offers, nearbyOffers, offerId, onCardTitleClick} = this.props;
+    const {offers, nearbyOffers, offerId, onCardTitleClick, onSignInClick} = this.props;
     const {
       id, images, name, price, isPremium, type, inBookmarks,
-      rooms, guests, facilities, author, text, rating, coordinates
+      rooms, guests, facilities, author, text, rating, coordinates, zoom
     } = offers.find((it) => it.id === offerId);
     return <div className="page">
-      <Header/>
+      <Header onSignInClick={onSignInClick} />
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">
@@ -110,7 +110,9 @@ class CardDetail extends React.PureComponent {
           <Map
             type={CARD_TYPE.CARD_DETAIL}
             offers={nearbyOffers.slice(0, NEAR_PLACES_COUNT)}
-            coordinates={coordinates}/>
+            coordinates={coordinates}
+            zoom={zoom}
+          />
         </section>
         <div className="container">
           <section className="near-places places">
@@ -140,6 +142,7 @@ CardDetail.propTypes = {
     rooms: PropTypes.string.isRequired,
     guests: PropTypes.string.isRequired,
     facilities: PropTypes.arrayOf(PropTypes.string),
+    zoom: PropTypes.number.isRequired,
     author: PropTypes.exact({
       name: PropTypes.string.isRequired,
       avatar: PropTypes.string,
@@ -150,7 +153,8 @@ CardDetail.propTypes = {
   })).isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
   onCardDetailMount: PropTypes.func.isRequired,
-  nearbyOffers: PropTypes.array
+  nearbyOffers: PropTypes.array,
+  onSignInClick: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = (dispatch) => ({

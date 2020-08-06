@@ -1,5 +1,8 @@
+import {citiesFromOffersAdapter} from '../../adapters/cities-from-offers-adapter.js';
 import {commentAdapter} from '../../adapters/comment-adapter.js';
 import {offerAdapter} from '../../adapters/offer-adapter.js';
+import {AppStatus} from '../../constants.js';
+import {setActiveCity, setAppStatus} from '../app/app.reducer.js';
 import {Namespace} from '../namespace.js';
 import {reducer, Operation, setCities, setOffers, setNearbyOffers, setReviews} from './data.reducer.js';
 import MockAdapter from 'axios-mock-adapter';
@@ -49,20 +52,28 @@ describe(`Data reducer API methods`, () => {
   let dispatch;
 
   beforeEach(() => {
-    api = createAPI(() => {});
+    api = createAPI();
     apiMock = new MockAdapter(api);
     dispatch = jest.fn();
   });
 
   it(`Should make a correct API call to /hotels`, () => {
     const offersLoader = Operation.loadData();
+    const adaptedCities = citiesFromOffersAdapter(serverOffers);
+    const adaptedOffers = serverOffers.map((it) => offerAdapter(it, adaptedCities));
 
     apiMock
       .onGet(`/hotels`)
       .reply(200, serverOffers);
 
     return offersLoader(dispatch, () => {}, api)
-      .then(() => expect(dispatch).toBeCalledTimes(4));
+      .then(() => {
+        expect(dispatch).toBeCalledTimes(4);
+        expect(dispatch).toHaveBeenNthCalledWith(1, setOffers(adaptedOffers));
+        expect(dispatch).toHaveBeenNthCalledWith(2, setCities(adaptedCities));
+        expect(dispatch).toHaveBeenNthCalledWith(3, setActiveCity(adaptedCities[0]));
+        expect(dispatch).toHaveBeenNthCalledWith(4, setAppStatus(AppStatus.SUCCESS_LOAD));
+      });
   });
 
   it(`Should make a correct API call to /comments/`, () => {

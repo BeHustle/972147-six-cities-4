@@ -6,6 +6,7 @@ import Main from '../main/main.jsx';
 import {Screen, AppStatus} from '../../constants.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import SingIn from '../sign-in/sign-in.jsx';
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -15,12 +16,19 @@ class App extends React.PureComponent {
       offerId: null,
     };
     this._handleCardClick = this._handleCardClick.bind(this);
+    this._handleLoginClick = this._handleLoginClick.bind(this);
   }
 
   _handleCardClick(id) {
     this.setState({
       screen: Screen.OFFER,
       offerId: id
+    });
+  }
+
+  _handleLoginClick() {
+    this.setState({
+      screen: Screen.LOGIN,
     });
   }
 
@@ -40,13 +48,11 @@ class App extends React.PureComponent {
   _renderScreen() {
     switch (this.state.screen) {
       case Screen.MAIN:
-        return (
-          <Main onCardTitleClick={this._handleCardClick}/>
-        );
+        return <Main onCardTitleClick={this._handleCardClick} onSignInClick={this._handleLoginClick} />;
       case Screen.OFFER:
-        return (
-          <CardDetail onCardTitleClick={this._handleCardClick} offerId={this.state.offerId}/>
-        );
+        return <CardDetail onCardTitleClick={this._handleCardClick} offerId={this.state.offerId} onSignInClick={this._handleLoginClick}/>;
+      case Screen.LOGIN:
+        return <SingIn />;
       default:
         return null;
     }

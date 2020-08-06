@@ -1,9 +1,10 @@
 import MockAdapter from 'axios-mock-adapter';
+import Enzyme, {mount} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
-import {Provider} from 'react-redux';
-import renderer from 'react-test-renderer';
 import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
+import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {createAPI} from '../../api/api.js';
 import {AppStatus, AuthStatus} from '../../constants.js';
@@ -11,11 +12,17 @@ import {setActiveCity, setAppStatus} from '../../reducer/app/app.reducer.js';
 import {setCities, setNearbyOffers, setOffers, setReviews} from '../../reducer/data/data.reducer.js';
 import reducer from '../../reducer/reducer.js';
 import {setAuthStatus, setUserInfo} from '../../reducer/user/user.reducer.js';
-import CardDetail from './card-detail.jsx';
+import {reviews, serverReviews} from '../../test-mocks/reviews.js';
 import {cities} from '../../test-mocks/cities.js';
 import {offers, serverOffers} from '../../test-mocks/offers.js';
 import {serverUserInfo, userInfo} from '../../test-mocks/user.js';
-import {reviews, serverReviews} from '../../test-mocks/reviews.js';
+import SingIn from './sign-in.jsx';
+
+jest.mock(`../map/map.jsx`, () => `map`);
+
+Enzyme.configure({
+  adapter: new Adapter(),
+});
 
 const api = createAPI();
 const apiMock = new MockAdapter(api);
@@ -33,7 +40,7 @@ apiMock
   .reply(200, serverOffers);
 
 apiMock
-  .onGet(`/login`)
+  .onPost(`/login`)
   .reply(200, serverUserInfo);
 
 const store = createStore(
@@ -50,22 +57,19 @@ store.dispatch(setCities(cities));
 store.dispatch(setActiveCity(cities[0]));
 store.dispatch(setAppStatus(AppStatus.SUCCESS_LOAD));
 store.dispatch(setUserInfo(userInfo));
-store.dispatch(setAuthStatus(AuthStatus.AUTH));
+store.dispatch(setAuthStatus(AuthStatus.NO_AUTH));
 
-jest.mock(`../map/map.jsx`, () => `map`);
+it(`Should form be submitted`, () => {
+  const preventDefault = jest.fn();
 
-it(`Card detail render`, () => {
-  const tree = renderer
-    .create(
-        <Provider store={store}>
-          <CardDetail
-            offerId={1}
-            onCardTitleClick={() => {}}
-            onSignInClick={() => {}}
-          />
-        </Provider>,
-    )
-    .toJSON();
+  const signInWithProvider = mount(<Provider store={store}>
+    <SingIn />
+  </Provider>);
 
-  expect(tree).toMatchSnapshot();
+  const mockEvent = {
+    preventDefault,
+  };
+  const authForm = signInWithProvider.find(`.login__form`).first();
+  authForm.simulate(`submit`, mockEvent);
+  expect(preventDefault).toHaveBeenCalled();
 });

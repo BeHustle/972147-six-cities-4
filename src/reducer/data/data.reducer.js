@@ -50,6 +50,7 @@ export const Operation = {
       dispatch(setAppStatus(AppStatus.SUCCESS_LOAD));
     } catch (e) {
       dispatch(setAppStatus(AppStatus.FAIL_LOAD));
+      throw e;
     }
   },
   loadReviews: (offerId) => async (dispatch, getState, api) => {
@@ -58,6 +59,7 @@ export const Operation = {
       dispatch(setReviews(response.data.map((it) => commentAdapter(it))));
     } catch (e) {
       dispatch(setReviews([]));
+      throw e;
     }
   },
   loadNearbyOffers: (offerId) => async (dispatch, getState, api) => {
@@ -66,6 +68,7 @@ export const Operation = {
       dispatch(setNearbyOffers(response.data.map((it) => offerAdapter(it, getCities(getState())))));
     } catch (e) {
       dispatch(setNearbyOffers([]));
+      throw e;
     }
   },
 };

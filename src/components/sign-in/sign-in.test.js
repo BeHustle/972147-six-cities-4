@@ -1,9 +1,9 @@
 import MockAdapter from 'axios-mock-adapter';
 import React from 'react';
-import {Provider} from 'react-redux';
 import renderer from 'react-test-renderer';
 import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
+import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {createAPI} from '../../api/api.js';
 import {AppStatus, AuthStatus} from '../../constants.js';
@@ -11,11 +11,13 @@ import {setActiveCity, setAppStatus} from '../../reducer/app/app.reducer.js';
 import {setCities, setNearbyOffers, setOffers, setReviews} from '../../reducer/data/data.reducer.js';
 import reducer from '../../reducer/reducer.js';
 import {setAuthStatus, setUserInfo} from '../../reducer/user/user.reducer.js';
-import CardDetail from './card-detail.jsx';
+import {reviews, serverReviews} from '../../test-mocks/reviews.js';
 import {cities} from '../../test-mocks/cities.js';
 import {offers, serverOffers} from '../../test-mocks/offers.js';
 import {serverUserInfo, userInfo} from '../../test-mocks/user.js';
-import {reviews, serverReviews} from '../../test-mocks/reviews.js';
+import SingIn from './sign-in.jsx';
+
+jest.mock(`../map/map.jsx`, () => `map`);
 
 const api = createAPI();
 const apiMock = new MockAdapter(api);
@@ -52,18 +54,12 @@ store.dispatch(setAppStatus(AppStatus.SUCCESS_LOAD));
 store.dispatch(setUserInfo(userInfo));
 store.dispatch(setAuthStatus(AuthStatus.AUTH));
 
-jest.mock(`../map/map.jsx`, () => `map`);
-
-it(`Card detail render`, () => {
+it(`Render Sign in`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
-          <CardDetail
-            offerId={1}
-            onCardTitleClick={() => {}}
-            onSignInClick={() => {}}
-          />
-        </Provider>,
+          <SingIn />
+        </Provider>
     )
     .toJSON();
 

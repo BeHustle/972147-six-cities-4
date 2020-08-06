@@ -3,7 +3,6 @@ import React from 'react';
 import L from 'leaflet';
 import {connect} from 'react-redux';
 import {
-  MAP_ZOOM,
   ICON_SIZE,
   ICON_PATH,
   ACTIVE_ICON_PATH,
@@ -32,15 +31,15 @@ class Map extends React.PureComponent {
   }
 
   _initMap() {
-    const {coordinates, type} = this.props;
+    const {coordinates, type, zoom} = this.props;
     this._map = L.map(getMapIdByType(type), {
       center: coordinates,
-      zoom: MAP_ZOOM,
+      zoom,
       zoomControl: false,
       marker: true,
     });
 
-    this._map.setView(coordinates, MAP_ZOOM);
+    this._map.setView(coordinates, zoom);
 
     L
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
@@ -50,7 +49,7 @@ class Map extends React.PureComponent {
   }
 
   _renderOffers() {
-    const {offers, coordinates, activeOfferId} = this.props;
+    const {offers, coordinates, zoom, activeOfferId} = this.props;
     for (const offer of offers) {
       L
         .marker(offer.coordinates, {
@@ -62,7 +61,7 @@ class Map extends React.PureComponent {
         .addTo(this._activeLayer);
     }
     this._activeLayer.addTo(this._map);
-    this._map.flyTo(coordinates, MAP_ZOOM, {
+    this._map.flyTo(coordinates, zoom, {
       duration: 1
     });
   }
@@ -99,6 +98,7 @@ Map.propTypes = {
     inBookmarks: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
     coordinates: PropTypes.arrayOf(PropTypes.number),
+    zoom: PropTypes.number.isRequired,
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
     rooms: PropTypes.string.isRequired,
     guests: PropTypes.string.isRequired,
@@ -112,6 +112,7 @@ Map.propTypes = {
     cityId: PropTypes.number.isRequired
   })).isRequired,
   coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
+  zoom: PropTypes.number.isRequired,
   activeOfferId: PropTypes.number,
 };
 

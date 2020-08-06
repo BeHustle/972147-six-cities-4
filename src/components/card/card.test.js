@@ -4,7 +4,6 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import {CARD_TYPE, Sorts} from '../../constants.js';
 import {cities} from '../../test-mocks/cities.js';
-import {email} from '../../test-mocks/user.js';
 import Card from './card.jsx';
 import {offers} from '../../test-mocks/offers.js';
 
@@ -15,7 +14,6 @@ it(`Card snapshot`, () => {
     offers,
     city: cities[0],
     cities,
-    userEmail: email,
     activeSort: Sorts.POPULAR,
     activeOfferId: null
   });

@@ -40,6 +40,7 @@ exports[`App snapshot 1`] = `
               <a
                 className="header__nav-link header__nav-link--profile"
                 href="#"
+                onClick={[Function]}
               >
                 <div
                   className="header__avatar-wrapper user__avatar-wrapper"
@@ -47,7 +48,7 @@ exports[`App snapshot 1`] = `
                 <span
                   className="header__user-name user__name"
                 >
-                  Oliver.conner@gmail.com
+                  user@gmail.com
                 </span>
               </a>
             </li>
@@ -502,6 +503,7 @@ exports[`App snapshot 1`] = `
       bustle of the city comes to rest in this alley flowery and colorful.",
                   ],
                   "type": "hotel",
+                  "zoom": 10,
                 },
                 Object {
                   "author": Object {
@@ -543,10 +545,12 @@ exports[`App snapshot 1`] = `
       bustle of the city comes to rest in this alley flowery and colorful.",
                   ],
                   "type": "apartment",
+                  "zoom": 10,
                 },
               ]
             }
             type="main"
+            zoom={10}
           />
         </div>
       </div>

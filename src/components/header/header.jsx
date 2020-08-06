@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {getUserEmail} from '../../reducer/user/user.selectors.js';
 
 const Header = ({userEmail}) =>
   <header className="header">
@@ -31,7 +32,7 @@ Header.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  userEmail: state.userEmail
+  userEmail: getUserEmail(state)
 });
 
 export default connect(mapStateToProps)(Header);

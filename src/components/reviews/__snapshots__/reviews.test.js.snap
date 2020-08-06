@@ -11,7 +11,7 @@ exports[`Render Sort list 1`] = `
     <span
       className="reviews__amount"
     >
-      2
+      4
     </span>
   </h2>
   <ul
@@ -132,6 +132,124 @@ exports[`Render Sort list 1`] = `
           dateTime="July 17th 2020-07-17"
         >
           July 2020
+        </time>
+      </div>
+    </li>
+    <li
+      className="reviews__item"
+    >
+      <div
+        className="reviews__user user"
+      >
+        <div
+          className="reviews__avatar-wrapper user__avatar-wrapper"
+        >
+          <img
+            alt="William"
+            className="reviews__avatar user__avatar"
+            height="54"
+            src="img/avatar.svg"
+            width="54"
+          />
+        </div>
+        <span
+          className="reviews__user-name"
+        >
+          William
+        </span>
+      </div>
+      <div
+        className="reviews__info"
+      >
+        <div
+          className="reviews__rating rating"
+        >
+          <div
+            className="reviews__stars rating__stars"
+          >
+            <span
+              style={
+                Object {
+                  "width": "20%",
+                }
+              }
+            />
+            <span
+              className="visually-hidden"
+            >
+              Rating
+            </span>
+          </div>
+        </div>
+        <p
+          className="reviews__text"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. At ipsa labore libero nam sunt temporibus?
+        </p>
+        <time
+          className="reviews__time"
+          dateTime="March 25th 2018-03-25"
+        >
+          March 2018
+        </time>
+      </div>
+    </li>
+    <li
+      className="reviews__item"
+    >
+      <div
+        className="reviews__user user"
+      >
+        <div
+          className="reviews__avatar-wrapper user__avatar-wrapper"
+        >
+          <img
+            alt="Lucy"
+            className="reviews__avatar user__avatar"
+            height="54"
+            src="img/avatar-angelina.jpg"
+            width="54"
+          />
+        </div>
+        <span
+          className="reviews__user-name"
+        >
+          Lucy
+        </span>
+      </div>
+      <div
+        className="reviews__info"
+      >
+        <div
+          className="reviews__rating rating"
+        >
+          <div
+            className="reviews__stars rating__stars"
+          >
+            <span
+              style={
+                Object {
+                  "width": "80%",
+                }
+              }
+            />
+            <span
+              className="visually-hidden"
+            >
+              Rating
+            </span>
+          </div>
+        </div>
+        <p
+          className="reviews__text"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </p>
+        <time
+          className="reviews__time"
+          dateTime="January 13th 2020-01-13"
+        >
+          January 2020
         </time>
       </div>
     </li>

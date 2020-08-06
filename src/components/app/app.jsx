@@ -1,8 +1,11 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {getAppStatus} from '../../reducer/app/app.selectors.js';
 import CardDetail from '../card-detail/card-detail.jsx';
 import Main from '../main/main.jsx';
-import {Screen} from '../../constants.js';
+import {Screen, AppStatus} from '../../constants.js';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -19,6 +22,19 @@ class App extends React.PureComponent {
       screen: Screen.OFFER,
       offerId: id
     });
+  }
+
+  _renderApp() {
+    switch (this.props.status) {
+      case AppStatus.LOADING:
+        return <h1>Загрузка...</h1>;
+      case AppStatus.FAIL_LOAD:
+        return <h1>Произошла ошибка при загрузке приложения. Попробуйте <a href="/">обновить страницу</a></h1>;
+      case AppStatus.SUCCESS_LOAD:
+        return this._renderScreen();
+      default:
+        return ``;
+    }
   }
 
   _renderScreen() {
@@ -41,7 +57,7 @@ class App extends React.PureComponent {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            {this._renderScreen()}
+            {this._renderApp()}
           </Route>
           <Route exact path="/offer">
             <CardDetail onCardTitleClick={this._handleCardClick} offerId={1} />
@@ -52,4 +68,12 @@ class App extends React.PureComponent {
   }
 }
 
-export default App;
+App.propTypes = {
+  status: PropTypes.oneOf(Object.values(AppStatus))
+};
+
+const mapStateToProps = (state) => ({
+  status: getAppStatus(state)
+});
+
+export default connect(mapStateToProps)(App);

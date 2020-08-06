@@ -1,10 +1,3 @@
-const HOUSE_TYPES = [
-  `Apartment`,
-  `Room`,
-  `House`,
-  `Hotel`
-];
-
 const NEAR_PLACES_COUNT = 3;
 
 const DEFAULT_AVATAR = `img/avatar.svg`;
@@ -21,6 +14,12 @@ const Screen = {
   OFFER: `offer`
 };
 
+const AppStatus = {
+  LOADING: `LOADING`,
+  SUCCESS_LOAD: `SUCCESS_LOAD`,
+  FAIL_LOAD: `FAIL_LOAD`
+};
+
 const Sorts = {
   POPULAR: `Popular`,
   PRICE_ASC: `Price: low to high`,
@@ -33,8 +32,13 @@ const CARD_TYPE = {
   CARD_DETAIL: `card_detail`
 };
 
+const HouseType = [
+  `apartment`,
+  `room`,
+  `house`,
+  `hotel`
+];
 export {
-  HOUSE_TYPES,
   NEAR_PLACES_COUNT,
   MAP_ZOOM, ICON_SIZE,
   ICON_PATH,
@@ -43,4 +47,6 @@ export {
   Screen,
   Sorts,
   CARD_TYPE,
+  AppStatus,
+  HouseType
 };

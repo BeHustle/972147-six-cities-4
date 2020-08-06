@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Review from './review.jsx';
-import {reviews} from '../../mocks/reviews.js';
+import {reviews} from '../../test-mocks/reviews.js';
 
 it(`Render review form`, () => {
   const tree = renderer

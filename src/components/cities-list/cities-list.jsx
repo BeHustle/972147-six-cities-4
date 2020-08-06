@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionTypes} from '../../reducer/reducer.js';
+import {setActiveCity} from '../../reducer/app/app.reducer.js';
+import {getActiveCity} from '../../reducer/app/app.selectors.js';
+import {getCities} from '../../reducer/data/data.selectors.js';
 
 const ACTIVE_CITY_CLASS = `tabs__item--active`;
 
@@ -33,13 +35,13 @@ CitiesList.propTypes = {
 const mapDispatchToProps = (dispatch) => ({
   onCityLinkClick(evt, city) {
     evt.preventDefault();
-    dispatch({type: ActionTypes.CHANGE_CITY, payload: city});
+    dispatch(setActiveCity(city));
   }
 });
 
 const mapStateToProps = (state) => ({
-  cities: state.cities,
-  activeCityId: state.city.id
+  cities: getCities(state),
+  activeCityId: getActiveCity(state).id
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CitiesList);

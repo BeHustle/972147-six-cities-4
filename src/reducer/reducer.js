@@ -1,37 +1,11 @@
-import {offers} from '../mocks/offers.js';
-import {cities} from '../mocks/cities.js';
-import {email} from '../mocks/user.js';
-import {reviews} from '../mocks/reviews.js';
-import {Sorts} from '../constants.js';
+import {combineReducers} from 'redux';
+import {Namespace} from './namespace.js';
+import {reducer as app} from './app/app.reducer.js';
+import {reducer as data} from './data/data.reducer.js';
+import {reducer as user} from './user/user.reducer.js';
 
-const initialState = {
-  city: cities[0],
-  offers,
-  cities,
-  reviews,
-  userEmail: email,
-  sorts: Sorts,
-  activeSort: Sorts.POPULAR,
-  activeOfferId: null
-};
-
-const ActionTypes = {
-  CHANGE_CITY: `CHANGE_CITY`,
-  CHANGE_SORT: `CHANGE_SORT`,
-  CHANGE_ACTIVE_OFFER_ID: `CHANGE_ACTIVE_OFFER_ID`
-};
-
-const reducer = (state = initialState, action = {}) => {
-  switch (action.type) {
-    case ActionTypes.CHANGE_CITY:
-      return Object.assign({}, state, {city: action.payload});
-    case ActionTypes.CHANGE_SORT:
-      return Object.assign({}, state, {activeSort: action.payload});
-    case ActionTypes.CHANGE_ACTIVE_OFFER_ID:
-      return Object.assign({}, state, {activeOfferId: action.payload});
-    default:
-      return state;
-  }
-};
-
-export {ActionTypes, reducer};
+export default combineReducers({
+  [Namespace.APP]: app,
+  [Namespace.DATA]: data,
+  [Namespace.USER]: user
+});

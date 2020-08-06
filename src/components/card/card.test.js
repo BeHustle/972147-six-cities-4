@@ -3,10 +3,10 @@ import {Provider} from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import {CARD_TYPE, Sorts} from '../../constants.js';
-import {cities} from '../../mocks/cities.js';
-import {email} from '../../mocks/user.js';
+import {cities} from '../../test-mocks/cities.js';
+import {email} from '../../test-mocks/user.js';
 import Card from './card.jsx';
-import {offers} from '../../mocks/offers.js';
+import {offers} from '../../test-mocks/offers.js';
 
 const mockStore = configureStore([]);
 
@@ -16,7 +16,6 @@ it(`Card snapshot`, () => {
     city: cities[0],
     cities,
     userEmail: email,
-    sorts: Sorts,
     activeSort: Sorts.POPULAR,
     activeOfferId: null
   });

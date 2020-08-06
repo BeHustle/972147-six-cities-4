@@ -42,12 +42,29 @@ const CARD_TYPE = {
   CARD_DETAIL: `card_detail`
 };
 
+const ReviewLength = {
+  MIN: 50,
+  MAX: 300
+};
+
 const HouseType = [
   `apartment`,
   `room`,
   `house`,
   `hotel`
 ];
+
+const CommentStatus = {
+  SUCCESS: `SUCCESS`,
+  FAIL: `FAIL`,
+  NOT_SEND: `NOT_SEND`
+};
+
+const CommentMessage = {
+  SUCCESS: `Your comment has been successfully added. Wait moderation`,
+  ERROR: `Error while adding a comment. Check your comment and try again`
+};
+
 export {
   NEAR_PLACES_COUNT,
   MAX_REVIEWS_COUNT,
@@ -61,5 +78,8 @@ export {
   AppStatus,
   HouseType,
   AuthStatus,
-  ErrorCode
+  ErrorCode,
+  ReviewLength,
+  CommentStatus,
+  CommentMessage
 };

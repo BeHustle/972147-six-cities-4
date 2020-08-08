@@ -36,7 +36,9 @@ it(`Render favorites`, () => {
               cities={cities}
               offers={offers}
               onFavoriteClick={() => {}}
-              onFavoritesDidMount={() => {}} />
+              onFavoritesDidMount={() => {}}
+              onCardTitleClick={() => {}}
+            />
           </Provider>
         </Router>)
     .toJSON();

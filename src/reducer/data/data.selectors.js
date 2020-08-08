@@ -10,7 +10,7 @@ export const getReviews = (state) => {
   if (reviews.length < 2) {
     return reviews;
   }
-  return reviews.sort((a, b) => a.date.getTime() - b.date.getTime()).slice(0, MAX_REVIEWS_COUNT);
+  return reviews.sort((a, b) => b.date.getTime() - a.date.getTime()).slice(0, MAX_REVIEWS_COUNT);
 };
 
 export const getNearbyOffers = (state) => state[Namespace.DATA].nearbyOffers;

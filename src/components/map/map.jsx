@@ -6,15 +6,16 @@ import {
   ICON_SIZE,
   ICON_PATH,
   ACTIVE_ICON_PATH,
-  CARD_TYPE, HouseType,
+  CardType,
+  HouseType,
 } from '../../constants.js';
 import {getActiveOfferId} from '../../reducer/app/app.selectors.js';
 
 const getMapClassByType = (type) => {
   switch (type) {
-    case CARD_TYPE.MAIN:
+    case CardType.MAIN:
       return `cities__map`;
-    case CARD_TYPE.CARD_DETAIL:
+    case CardType.CARD_DETAIL:
       return `property__map`;
     default:
       return ``;

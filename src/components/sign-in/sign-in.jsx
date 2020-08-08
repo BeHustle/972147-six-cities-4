@@ -1,4 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import {getActiveCity} from '../../reducer/app/app.selectors.js';
+import AppRoute from '../../routes.js';
 import Header from '../header/header.jsx';
 import {connect} from 'react-redux';
 import {Operation as UserOperation} from '../../reducer/user/user.reducer.js';
@@ -41,9 +44,9 @@ class SingIn extends React.PureComponent {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <a className="locations__item-link" href="#">
-                <span>Amsterdam</span>
-              </a>
+              <Link to={AppRoute.MAIN} className="locations__item-link">
+                <span>{this.props.activeCity.name}</span>
+              </Link>
             </div>
           </section>
         </div>
@@ -53,8 +56,18 @@ class SingIn extends React.PureComponent {
 }
 
 SingIn.propTypes = {
-  onFormSubmit: PropTypes.func.isRequired
+  onFormSubmit: PropTypes.func.isRequired,
+  activeCity: PropTypes.exact({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
+    zoom: PropTypes.number.isRequired
+  })
 };
+
+const mapStateToProps = (state) => ({
+  activeCity: getActiveCity(state)
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onFormSubmit(authInfo) {
@@ -62,4 +75,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default connect(null, mapDispatchToProps)(SingIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SingIn);

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {CARD_TYPE, HouseType} from '../../constants.js';
+import {CardType, HouseType} from '../../constants.js';
 import {getActiveCity} from '../../reducer/app/app.selectors.js';
 import {getOffersByCity} from '../../reducer/data/data.selectors.js';
 import CardList from '../card-list/card-list.jsx';
@@ -29,10 +29,10 @@ const Main = ({onCardTitleClick, city, offers, onFavoriteClick}) =>
 
               <SortList />
 
-              <CardList offers={offers} onFavoriteClick={onFavoriteClick} onCardTitleClick={onCardTitleClick} type={CARD_TYPE.MAIN}/>
+              <CardList offers={offers} onFavoriteClick={onFavoriteClick} onCardTitleClick={onCardTitleClick} type={CardType.MAIN}/>
             </section>
             <div className="cities__right-section">
-              <Map offers={offers} type={CARD_TYPE.MAIN} coordinates={city.coordinates} zoom={city.zoom} />
+              <Map offers={offers} type={CardType.MAIN} coordinates={city.coordinates} zoom={city.zoom} />
             </div>
           </div>
           : <EmptyOffersScreen />}

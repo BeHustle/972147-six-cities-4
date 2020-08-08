@@ -39,9 +39,10 @@ const Sorts = {
   TOP_RATED: `Top rated first`,
 };
 
-const CARD_TYPE = {
+const CardType = {
   MAIN: `main`,
-  CARD_DETAIL: `card_detail`
+  CARD_DETAIL: `detail`,
+  FAVORITE: `favorite`
 };
 
 const ReviewLength = {
@@ -77,7 +78,7 @@ export {
   DEFAULT_AVATAR,
   Screen,
   Sorts,
-  CARD_TYPE,
+  CardType,
   AppStatus,
   HouseType,
   AuthStatus,

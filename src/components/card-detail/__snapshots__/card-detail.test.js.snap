@@ -362,17 +362,17 @@ exports[`Card detail render 1`] = `
                     className="reviews__avatar-wrapper user__avatar-wrapper"
                   >
                     <img
-                      alt="William"
+                      alt="Alex"
                       className="reviews__avatar user__avatar"
                       height="54"
-                      src="img/avatar.svg"
+                      src="img/avatar-max.jpg"
                       width="54"
                     />
                   </div>
                   <span
                     className="reviews__user-name"
                   >
-                    William
+                    Alex
                   </span>
                 </div>
                 <div
@@ -387,7 +387,7 @@ exports[`Card detail render 1`] = `
                       <span
                         style={
                           Object {
-                            "width": "20%",
+                            "width": "60%",
                           }
                         }
                       />
@@ -401,72 +401,13 @@ exports[`Card detail render 1`] = `
                   <p
                     className="reviews__text"
                   >
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. At ipsa labore libero nam sunt temporibus?
+                    Lorem ipsum dolor sit amet!
                   </p>
                   <time
                     className="reviews__time"
-                    dateTime="2018-03-25"
+                    dateTime="2020-07-17"
                   >
-                    March 2018
-                  </time>
-                </div>
-              </li>
-              <li
-                className="reviews__item"
-              >
-                <div
-                  className="reviews__user user"
-                >
-                  <div
-                    className="reviews__avatar-wrapper user__avatar-wrapper"
-                  >
-                    <img
-                      alt="Max"
-                      className="reviews__avatar user__avatar"
-                      height="54"
-                      src="img/avatar-angelina.jpg"
-                      width="54"
-                    />
-                  </div>
-                  <span
-                    className="reviews__user-name"
-                  >
-                    Max
-                  </span>
-                </div>
-                <div
-                  className="reviews__info"
-                >
-                  <div
-                    className="reviews__rating rating"
-                  >
-                    <div
-                      className="reviews__stars rating__stars"
-                    >
-                      <span
-                        style={
-                          Object {
-                            "width": "100%",
-                          }
-                        }
-                      />
-                      <span
-                        className="visually-hidden"
-                      >
-                        Rating
-                      </span>
-                    </div>
-                  </div>
-                  <p
-                    className="reviews__text"
-                  >
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, quis!
-                  </p>
-                  <time
-                    className="reviews__time"
-                    dateTime="2019-12-17"
-                  >
-                    December 2019
+                    July 2020
                   </time>
                 </div>
               </li>
@@ -539,17 +480,17 @@ exports[`Card detail render 1`] = `
                     className="reviews__avatar-wrapper user__avatar-wrapper"
                   >
                     <img
-                      alt="Alex"
+                      alt="Max"
                       className="reviews__avatar user__avatar"
                       height="54"
-                      src="img/avatar-max.jpg"
+                      src="img/avatar-angelina.jpg"
                       width="54"
                     />
                   </div>
                   <span
                     className="reviews__user-name"
                   >
-                    Alex
+                    Max
                   </span>
                 </div>
                 <div
@@ -564,7 +505,7 @@ exports[`Card detail render 1`] = `
                       <span
                         style={
                           Object {
-                            "width": "60%",
+                            "width": "100%",
                           }
                         }
                       />
@@ -578,13 +519,72 @@ exports[`Card detail render 1`] = `
                   <p
                     className="reviews__text"
                   >
-                    Lorem ipsum dolor sit amet!
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, quis!
                   </p>
                   <time
                     className="reviews__time"
-                    dateTime="2020-07-17"
+                    dateTime="2019-12-17"
                   >
-                    July 2020
+                    December 2019
+                  </time>
+                </div>
+              </li>
+              <li
+                className="reviews__item"
+              >
+                <div
+                  className="reviews__user user"
+                >
+                  <div
+                    className="reviews__avatar-wrapper user__avatar-wrapper"
+                  >
+                    <img
+                      alt="William"
+                      className="reviews__avatar user__avatar"
+                      height="54"
+                      src="img/avatar.svg"
+                      width="54"
+                    />
+                  </div>
+                  <span
+                    className="reviews__user-name"
+                  >
+                    William
+                  </span>
+                </div>
+                <div
+                  className="reviews__info"
+                >
+                  <div
+                    className="reviews__rating rating"
+                  >
+                    <div
+                      className="reviews__stars rating__stars"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "width": "20%",
+                          }
+                        }
+                      />
+                      <span
+                        className="visually-hidden"
+                      >
+                        Rating
+                      </span>
+                    </div>
+                  </div>
+                  <p
+                    className="reviews__text"
+                  >
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. At ipsa labore libero nam sunt temporibus?
+                  </p>
+                  <time
+                    className="reviews__time"
+                    dateTime="2018-03-25"
+                  >
+                    March 2018
                   </time>
                 </div>
               </li>
@@ -916,7 +916,7 @@ exports[`Card detail render 1`] = `
             },
           ]
         }
-        type="card_detail"
+        type="detail"
         zoom={10}
       />
     </section>

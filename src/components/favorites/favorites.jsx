@@ -20,7 +20,7 @@ class Favorites extends React.PureComponent {
   }
 
   render() {
-    const {offers, cities, onFavoriteClick} = this.props;
+    const {offers, cities, onFavoriteClick, onCardTitleClick} = this.props;
     return <div className={`page ${offers.length || `page--favorites-empty`}`}>
 
       <Header />
@@ -30,7 +30,12 @@ class Favorites extends React.PureComponent {
           <div className="page__favorites-container container">
             <section className="favorites">
               <h1 className="favorites__title">Saved listing</h1>
-              <FavoritesList onFavoriteClick={onFavoriteClick} offers={offers} cities={cities} />
+              <FavoritesList
+                onFavoriteClick={onFavoriteClick}
+                onCardTitleClick={onCardTitleClick}
+                offers={offers}
+                cities={cities}
+              />
             </section>
           </div>
         </main>
@@ -77,7 +82,8 @@ Favorites.propTypes = {
     zoom: PropTypes.number.isRequired
   })),
   onFavoritesDidMount: PropTypes.func.isRequired,
-  onFavoriteClick: PropTypes.func.isRequired
+  onFavoriteClick: PropTypes.func.isRequired,
+  onCardTitleClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

@@ -6,7 +6,7 @@ import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import {createAPI} from '../../api/api.js';
-import {AppStatus, AuthStatus, CARD_TYPE} from '../../constants.js';
+import {AppStatus, AuthStatus, CardType} from '../../constants.js';
 import {setActiveCity, setAppStatus} from '../../reducer/app/app.reducer.js';
 import {setCities, setNearbyOffers, setOffers, setReviews} from '../../reducer/data/data.reducer.js';
 import reducer from '../../reducer/reducer.js';
@@ -58,7 +58,7 @@ it(`Render Cards list`, () => {
         <Provider store={store}>
           <CardList
             offers={offers}
-            type={CARD_TYPE.MAIN}
+            type={CardType.MAIN}
             onFavoriteClick={() => {}}
             onCardTitleClick={() => {}}
           />

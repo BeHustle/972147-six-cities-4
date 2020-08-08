@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
-import {CARD_TYPE, HouseType, Sorts} from '../../constants.js';
+import {CardType, HouseType, Sorts} from '../../constants.js';
 import {getActiveSort} from '../../reducer/app/app.selectors.js';
 import Card from '../card/card.jsx';
 
 const getCardListTypeClass = (type) => {
   switch (type) {
-    case CARD_TYPE.MAIN:
+    case CardType.MAIN:
       return `cities__places-list tabs__content`;
-    case CARD_TYPE.CARD_DETAIL:
+    case CardType.CARD_DETAIL:
       return `near-places__list`;
     default:
       return ``;

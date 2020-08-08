@@ -99,25 +99,34 @@ exports[`Render favorites 1`] = `
               className="favorites__places"
             >
               <article
-                className="favorites__card place-card"
+                className="place-card favorites__card"
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
                 <div
-                  className="favorites__image-wrapper place-card__image-wrapper"
+                  className="place-card__mark"
+                >
+                  <span>
+                    Premium
+                  </span>
+                </div>
+                <div
+                  className="place-card__image-wrapper favorites__image-wrapper"
                 >
                   <a
                     href="#"
                   >
                     <img
-                      alt="Beautiful & luxurious apartment at great locatccion"
+                      alt="Place image"
                       className="place-card__image"
-                      height="110"
+                      height="200"
                       src="img/apartment-01.jpg"
-                      width="150"
+                      width="260"
                     />
                   </a>
                 </div>
                 <div
-                  className="favorites__card-info place-card__info"
+                  className="place-card__info"
                 >
                   <div
                     className="place-card__price-wrapper"
@@ -154,7 +163,7 @@ exports[`Render favorites 1`] = `
                       <span
                         className="visually-hidden"
                       >
-                        In bookmarks
+                        To bookmarks
                       </span>
                     </button>
                   </div>
@@ -183,6 +192,7 @@ exports[`Render favorites 1`] = `
                   >
                     <a
                       href="#"
+                      onClick={[Function]}
                     >
                       Beautiful & luxurious apartment at great locatccion
                     </a>
@@ -195,25 +205,27 @@ exports[`Render favorites 1`] = `
                 </div>
               </article>
               <article
-                className="favorites__card place-card"
+                className="place-card favorites__card"
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
                 <div
-                  className="favorites__image-wrapper place-card__image-wrapper"
+                  className="place-card__image-wrapper favorites__image-wrapper"
                 >
                   <a
                     href="#"
                   >
                     <img
-                      alt="Wood and stone place"
+                      alt="Place image"
                       className="place-card__image"
-                      height="110"
+                      height="200"
                       src="img/apartment-02.jpg"
-                      width="150"
+                      width="260"
                     />
                   </a>
                 </div>
                 <div
-                  className="favorites__card-info place-card__info"
+                  className="place-card__info"
                 >
                   <div
                     className="place-card__price-wrapper"
@@ -250,7 +262,7 @@ exports[`Render favorites 1`] = `
                       <span
                         className="visually-hidden"
                       >
-                        In bookmarks
+                        To bookmarks
                       </span>
                     </button>
                   </div>
@@ -279,6 +291,7 @@ exports[`Render favorites 1`] = `
                   >
                     <a
                       href="#"
+                      onClick={[Function]}
                     >
                       Wood and stone place
                     </a>
@@ -315,25 +328,34 @@ exports[`Render favorites 1`] = `
               className="favorites__places"
             >
               <article
-                className="favorites__card place-card"
+                className="place-card favorites__card"
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
                 <div
-                  className="favorites__image-wrapper place-card__image-wrapper"
+                  className="place-card__mark"
+                >
+                  <span>
+                    Premium
+                  </span>
+                </div>
+                <div
+                  className="place-card__image-wrapper favorites__image-wrapper"
                 >
                   <a
                     href="#"
                   >
                     <img
-                      alt="Canal View Prinsengracht"
+                      alt="Place image"
                       className="place-card__image"
-                      height="110"
+                      height="200"
                       src="img/apartment-03.jpg"
-                      width="150"
+                      width="260"
                     />
                   </a>
                 </div>
                 <div
-                  className="favorites__card-info place-card__info"
+                  className="place-card__info"
                 >
                   <div
                     className="place-card__price-wrapper"
@@ -370,7 +392,7 @@ exports[`Render favorites 1`] = `
                       <span
                         className="visually-hidden"
                       >
-                        In bookmarks
+                        To bookmarks
                       </span>
                     </button>
                   </div>
@@ -399,6 +421,7 @@ exports[`Render favorites 1`] = `
                   >
                     <a
                       href="#"
+                      onClick={[Function]}
                     >
                       Canal View Prinsengracht
                     </a>
@@ -435,25 +458,34 @@ exports[`Render favorites 1`] = `
               className="favorites__places"
             >
               <article
-                className="favorites__card place-card"
+                className="place-card favorites__card"
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
                 <div
-                  className="favorites__image-wrapper place-card__image-wrapper"
+                  className="place-card__mark"
+                >
+                  <span>
+                    Premium
+                  </span>
+                </div>
+                <div
+                  className="place-card__image-wrapper favorites__image-wrapper"
                 >
                   <a
                     href="#"
                   >
                     <img
-                      alt="Nice, cozy, warm big bed apartment"
+                      alt="Place image"
                       className="place-card__image"
-                      height="110"
+                      height="200"
                       src="img/room.jpg"
-                      width="150"
+                      width="260"
                     />
                   </a>
                 </div>
                 <div
-                  className="favorites__card-info place-card__info"
+                  className="place-card__info"
                 >
                   <div
                     className="place-card__price-wrapper"
@@ -490,7 +522,7 @@ exports[`Render favorites 1`] = `
                       <span
                         className="visually-hidden"
                       >
-                        In bookmarks
+                        To bookmarks
                       </span>
                     </button>
                   </div>
@@ -519,6 +551,7 @@ exports[`Render favorites 1`] = `
                   >
                     <a
                       href="#"
+                      onClick={[Function]}
                     >
                       Nice, cozy, warm big bed apartment
                     </a>

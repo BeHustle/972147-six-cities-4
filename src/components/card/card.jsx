@@ -1,17 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {CARD_TYPE, HouseType} from '../../constants';
+import {CardType, HouseType} from '../../constants';
 import {setActiveOfferId} from '../../reducer/app/app.reducer.js';
 
 const IN_BOOKMARKS_CLASS = `place-card__bookmark-button--active`;
 
 const getCardTypeClass = (type) => {
   switch (type) {
-    case CARD_TYPE.MAIN:
+    case CardType.MAIN:
       return `cities__place-card`;
-    case CARD_TYPE.CARD_DETAIL:
+    case CardType.CARD_DETAIL:
       return `near-places__card`;
+    case CardType.FAVORITE:
+      return `favorites__card`;
     default:
       return ``;
   }
@@ -19,10 +21,12 @@ const getCardTypeClass = (type) => {
 
 const getCardTypeImageClass = (type) => {
   switch (type) {
-    case CARD_TYPE.MAIN:
+    case CardType.MAIN:
       return `cities__image-wrapper`;
-    case CARD_TYPE.CARD_DETAIL:
+    case CardType.CARD_DETAIL:
       return `near-places__image-wrapper`;
+    case CardType.FAVORITE:
+      return `favorites__image-wrapper`;
     default:
       return ``;
   }

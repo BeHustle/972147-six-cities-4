@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {CARD_TYPE} from '../../constants.js';
+import {CardType} from '../../constants.js';
 import {Card} from './card.jsx';
 import {offers} from '../../test-mocks/offers.js';
 
@@ -13,7 +13,7 @@ it(`Card snapshot`, () => {
           onCardHover={() => {}}
           onFavoriteClick={() => {}}
           onTitleClick={() => {}}
-          cardType={CARD_TYPE.MAIN}
+          cardType={CardType.MAIN}
         />)
     .toJSON();
 

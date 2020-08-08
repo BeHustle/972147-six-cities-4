@@ -63,7 +63,10 @@ class App extends React.PureComponent {
                 <SingIn />
               </PublicRoute>
               <PrivateRoute exact path={AppRoute.FAVORITES}>
-                <Favorites onFavoriteClick={this._handleFavoriteClick} />
+                <Favorites
+                  onFavoriteClick={this._handleFavoriteClick}
+                  onCardTitleClick={this._handleCardClick}
+                />
               </PrivateRoute>
               <Route>
                 <NotFound />

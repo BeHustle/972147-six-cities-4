@@ -7,7 +7,7 @@ import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import {createAPI} from '../../api/api.js';
-import {AppStatus, AuthStatus, CARD_TYPE} from '../../constants.js';
+import {AppStatus, AuthStatus, CardType} from '../../constants.js';
 import {setActiveCity, setAppStatus} from '../../reducer/app/app.reducer.js';
 import {getActiveOfferId} from '../../reducer/app/app.selectors.js';
 import {setCities, setNearbyOffers, setOffers, setReviews} from '../../reducer/data/data.reducer.js';
@@ -68,7 +68,7 @@ describe(`Card`, () => {
         onCardHover={() => {}}
         onTitleClick={onTitleClick}
         onFavoriteClick={() => {}}
-        cardType={CARD_TYPE.MAIN}
+        cardType={CardType.MAIN}
       />
     </Provider>);
     const titleLink = card.find(`.place-card__name a`);
@@ -84,7 +84,7 @@ describe(`Card`, () => {
         offer={offer}
         onTitleClick={() => {}}
         onFavoriteClick={() => {}}
-        cardType={CARD_TYPE.MAIN}
+        cardType={CardType.MAIN}
       />
     </Provider>);
     const cardElement = card.find(`.place-card`);
@@ -99,7 +99,7 @@ describe(`Card`, () => {
         offer={offer}
         onTitleClick={() => {}}
         onFavoriteClick={() => {}}
-        cardType={CARD_TYPE.MAIN}
+        cardType={CardType.MAIN}
       />
     </Provider>);
     const cardElement = card.find(`.place-card`);
@@ -118,7 +118,7 @@ describe(`Card`, () => {
         offer={offer}
         onTitleClick={() => {}}
         onFavoriteClick={onFavoriteClick}
-        cardType={CARD_TYPE.MAIN}
+        cardType={CardType.MAIN}
       />
     </Provider>);
     const favoriteBtn = card.find(`.place-card__bookmark-button`).first();

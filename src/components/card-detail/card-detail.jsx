@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
-import {DEFAULT_AVATAR, CARD_TYPE, NEAR_PLACES_COUNT, HouseType, MAX_IMAGES_COUNT} from '../../constants.js';
+import {DEFAULT_AVATAR, CardType, NEAR_PLACES_COUNT, HouseType, MAX_IMAGES_COUNT} from '../../constants.js';
 import {getNearbyOffers, getOffers} from '../../reducer/data/data.selectors.js';
 import CardList from '../card-list/card-list.jsx';
 import {Operation as DataOperation} from '../../reducer/data/data.reducer.js';
@@ -119,7 +119,7 @@ class CardDetail extends React.PureComponent {
             </div>
           </div>
           <Map
-            type={CARD_TYPE.CARD_DETAIL}
+            type={CardType.CARD_DETAIL}
             offers={nearbyOffers.slice(0, NEAR_PLACES_COUNT)}
             coordinates={coordinates}
             zoom={zoom}
@@ -128,7 +128,7 @@ class CardDetail extends React.PureComponent {
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <CardList offers={nearbyOffers.slice(0, NEAR_PLACES_COUNT)} type={CARD_TYPE.CARD_DETAIL} onCardTitleClick={onCardTitleClick} onFavoriteClick={onFavoriteClick}/>
+            <CardList offers={nearbyOffers.slice(0, NEAR_PLACES_COUNT)} type={CardType.CARD_DETAIL} onCardTitleClick={onCardTitleClick} onFavoriteClick={onFavoriteClick}/>
           </section>
         </div>
       </main>

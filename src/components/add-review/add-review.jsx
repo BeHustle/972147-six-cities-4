@@ -176,4 +176,6 @@ const mapStateToProps = (state) => ({
   commentStatus: getCommentStatus(state)
 });
 
+export {AddReview};
+
 export default connect(mapStateToProps, mapDispatchToProps)(AddReview);

@@ -5,6 +5,7 @@ exports[`Render review form 1`] = `
   action="#"
   className="reviews__form form"
   method="post"
+  onSubmit={[Function]}
 >
   <label
     className="reviews__label form__label"
@@ -19,6 +20,7 @@ exports[`Render review form 1`] = `
       className="form__rating-input visually-hidden"
       id="5-stars"
       name="rating"
+      onChange={[Function]}
       type="radio"
       value="5"
     />
@@ -41,6 +43,7 @@ exports[`Render review form 1`] = `
       className="form__rating-input visually-hidden"
       id="4-stars"
       name="rating"
+      onChange={[Function]}
       type="radio"
       value="4"
     />
@@ -63,6 +66,7 @@ exports[`Render review form 1`] = `
       className="form__rating-input visually-hidden"
       id="3-stars"
       name="rating"
+      onChange={[Function]}
       type="radio"
       value="3"
     />
@@ -85,6 +89,7 @@ exports[`Render review form 1`] = `
       className="form__rating-input visually-hidden"
       id="2-stars"
       name="rating"
+      onChange={[Function]}
       type="radio"
       value="2"
     />
@@ -107,6 +112,7 @@ exports[`Render review form 1`] = `
       className="form__rating-input visually-hidden"
       id="1-star"
       name="rating"
+      onChange={[Function]}
       type="radio"
       value="1"
     />
@@ -130,7 +136,19 @@ exports[`Render review form 1`] = `
     className="reviews__textarea form__textarea"
     id="review"
     name="review"
+    onChange={[Function]}
     placeholder="Tell how was your stay, what you like and what can be improved"
+  />
+  <div
+    style={
+      Object {
+        "display": "none",
+        "fontWeight": 500,
+        "marginBottom": "10px",
+        "marginTop": "10px",
+        "textAlign": "right",
+      }
+    }
   />
   <div
     className="reviews__button-wrapper"
@@ -154,7 +172,7 @@ exports[`Render review form 1`] = `
     </p>
     <button
       className="reviews__submit form__submit button"
-      disabled=""
+      disabled={true}
       type="submit"
     >
       Submit

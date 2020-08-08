@@ -1,10 +1,16 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import AddReview from './add-review.jsx';
+import {CommentStatus} from '../../constants.js';
+import {AddReview} from './add-review.jsx';
 
 it(`Render review form`, () => {
   const tree = renderer
-    .create(<AddReview />)
+    .create(<AddReview
+      offerId={1}
+      onFormSubmit={() => {}}
+      resetCommentStatus={() => {}}
+      commentStatus={CommentStatus.NOT_SEND}
+    />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

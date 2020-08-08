@@ -22,3 +22,5 @@ export const getOffersByCity = createSelector(
     getActiveCity,
     (offers, activeCity) => offers.filter((offer) => offer.cityId === activeCity.id),
 );
+
+export const getCommentStatus = (state) => state[Namespace.DATA].commentStatus;

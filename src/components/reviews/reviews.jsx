@@ -19,7 +19,7 @@ class Reviews extends React.PureComponent {
   }
 
   render() {
-    const {reviews, authStatus} = this.props;
+    const {reviews, authStatus, offerId} = this.props;
     return <section className="property__reviews reviews">
       <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
       <ul className="reviews__list">
@@ -27,7 +27,7 @@ class Reviews extends React.PureComponent {
           <Review key={review.id} review={review}/>,
         )}
       </ul>
-      {authStatus === AuthStatus.AUTH && <AddReview />}
+      {authStatus === AuthStatus.AUTH && <AddReview offerId={offerId} />}
     </section>;
   }
 }

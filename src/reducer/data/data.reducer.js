@@ -2,12 +2,13 @@ import {citiesFromOffersAdapter} from '../../adapters/cities-from-offers-adapter
 import {commentAdapter} from '../../adapters/comment-adapter.js';
 import {offerAdapter} from '../../adapters/offer-adapter.js';
 import {setActiveCity, setAppStatus} from '../app/app.reducer.js';
-import {AppStatus} from '../../constants.js';
+import {AppStatus, CommentStatus} from '../../constants.js';
 import {getCities} from './data.selectors.js';
 
 const initialState = {
   reviews: [],
   nearbyOffers: [],
+  commentStatus: CommentStatus.NOT_SEND
 };
 
 const ActionTypes = {
@@ -15,8 +16,8 @@ const ActionTypes = {
   SET_REVIEWS: `SET_REVIEWS`,
   SET_NEARBY_OFFERS: `SET_NEARBY_OFFERS`,
   SET_CITIES: `SET_CITIES`,
+  SET_COMMENT_STATUS: `SET_COMMENT_STATUS`
 };
-
 
 export const setOffers = (offers) => ({
   type: ActionTypes.SET_OFFERS,
@@ -36,6 +37,11 @@ export const setNearbyOffers = (reviews) => ({
 export const setCities = (cities) => ({
   type: ActionTypes.SET_CITIES,
   payload: cities,
+});
+
+export const setCommentStatus = (status) => ({
+  type: ActionTypes.SET_COMMENT_STATUS,
+  payload: status,
 });
 
 
@@ -71,6 +77,15 @@ export const Operation = {
       throw e;
     }
   },
+  addComment: ({comment, rating} = comment, offerId) => async (dispatch, getState, api) => {
+    try {
+      await api.post(`/comments/${offerId}`, {rating, comment});
+      dispatch(setCommentStatus(CommentStatus.SUCCESS));
+    } catch (e) {
+      dispatch(setCommentStatus(CommentStatus.FAIL));
+      throw e;
+    }
+  },
 };
 
 export const reducer = (state = initialState, action = {}) => {
@@ -83,6 +98,8 @@ export const reducer = (state = initialState, action = {}) => {
       return Object.assign({}, state, {reviews: action.payload});
     case ActionTypes.SET_NEARBY_OFFERS:
       return Object.assign({}, state, {nearbyOffers: action.payload});
+    case ActionTypes.SET_COMMENT_STATUS:
+      return Object.assign({}, state, {commentStatus: action.payload});
     default:
       return state;
   }

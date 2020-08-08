@@ -1,10 +1,18 @@
 import {citiesFromOffersAdapter} from '../../adapters/cities-from-offers-adapter.js';
 import {commentAdapter} from '../../adapters/comment-adapter.js';
 import {offerAdapter} from '../../adapters/offer-adapter.js';
-import {AppStatus} from '../../constants.js';
+import {AppStatus, CommentStatus} from '../../constants.js';
 import {setActiveCity, setAppStatus} from '../app/app.reducer.js';
 import {Namespace} from '../namespace.js';
-import {reducer, Operation, setCities, setOffers, setNearbyOffers, setReviews} from './data.reducer.js';
+import {
+  reducer,
+  Operation,
+  setCities,
+  setOffers,
+  setNearbyOffers,
+  setReviews,
+  setCommentStatus,
+} from './data.reducer.js';
 import MockAdapter from 'axios-mock-adapter';
 import {createAPI} from '../../api/api.js';
 import {cities} from '../../test-mocks/cities.js';
@@ -18,6 +26,7 @@ describe(`Data reducer`, () => {
     initialState = {
       reviews: [],
       nearbyOffers: [],
+      commentStatus: CommentStatus.NOT_SEND
     };
   });
 
@@ -108,6 +117,45 @@ describe(`Data reducer API methods`, () => {
       .then(() => {
         expect(dispatch).toBeCalledTimes(1);
         expect(dispatch).toHaveBeenCalledWith(setNearbyOffers(adaptedOffers));
+      });
+  });
+
+  it(`Should make a correct API call to /comments/:hotelId ONSUCCESS`, () => {
+    const offersLoader = Operation.addComment({
+      comment: {
+        rating: 5,
+        comment: `Good hotel`
+      },
+    }, 5);
+
+    apiMock
+      .onPost(`/comments/5`)
+      .reply(200);
+
+    return offersLoader(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toBeCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledWith(setCommentStatus(CommentStatus.SUCCESS));
+      });
+  });
+
+  it(`Should make a correct API call to /comments/:hotelId ONFAIL`, () => {
+    const offersLoader = Operation.addComment({
+      comment: {
+        rating: 5,
+        comment: `Good hotel`
+      },
+    }, 5);
+
+    apiMock
+      .onPost(`/comments/5`)
+      .reply(400);
+
+    return offersLoader(dispatch, () => {}, api)
+      .then(() => {})
+      .catch(() => {
+        expect(dispatch).toBeCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledWith(setCommentStatus(CommentStatus.FAIL));
       });
   });
 });

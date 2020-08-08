@@ -1,6 +1,6 @@
 import MockAdapter from 'axios-mock-adapter';
 import React from 'react';
-import Enzyme, {mount, shallow} from 'enzyme';
+import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
 import {applyMiddleware, createStore} from 'redux';
@@ -16,7 +16,6 @@ import {setAuthStatus, setUserInfo} from '../../reducer/user/user.reducer.js';
 import {cities} from '../../test-mocks/cities.js';
 import {reviews, serverReviews} from '../../test-mocks/reviews.js';
 import {serverUserInfo, userInfo} from '../../test-mocks/user.js';
-import FavoritesList from '../favorites-list/favorites-list.jsx';
 import Card from './card.jsx';
 import {offers, serverOffers} from '../../test-mocks/offers.js';
 

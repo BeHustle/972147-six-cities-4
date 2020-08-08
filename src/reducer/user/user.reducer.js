@@ -1,6 +1,5 @@
 import {userAdapter} from '../../adapters/user-adapter.js';
 import {AuthStatus, ErrorCode} from '../../constants.js';
-import AppRoute from '../../routes.js';
 
 const initialState = {
   userInfo: null,

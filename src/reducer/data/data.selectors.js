@@ -24,3 +24,7 @@ export const getOffersByCity = createSelector(
 );
 
 export const getCommentStatus = (state) => state[Namespace.DATA].commentStatus;
+
+export const getFavoriteCities = (state) => state[Namespace.DATA].favoriteCities;
+
+export const getFavoriteOffers = (state) => state[Namespace.DATA].favoriteOffers;

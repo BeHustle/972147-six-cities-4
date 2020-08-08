@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
-import {DEFAULT_AVATAR, CARD_TYPE, NEAR_PLACES_COUNT, HouseType} from '../../constants.js';
+import {DEFAULT_AVATAR, CARD_TYPE, NEAR_PLACES_COUNT, HouseType, MAX_IMAGES_COUNT} from '../../constants.js';
 import {getNearbyOffers, getOffers} from '../../reducer/data/data.selectors.js';
 import CardList from '../card-list/card-list.jsx';
 import {Operation as DataOperation} from '../../reducer/data/data.reducer.js';
 import Header from '../header/header.jsx';
+import NotFound from '../not-found/not-found.jsx';
 import Reviews from '../reviews/reviews.jsx';
 import Map from '../map/map.jsx';
 
@@ -23,18 +24,22 @@ class CardDetail extends React.PureComponent {
   }
 
   render() {
-    const {offers, nearbyOffers, offerId, onCardTitleClick, onSignInClick} = this.props;
+    const {offers, nearbyOffers, offerId, onCardTitleClick, onFavoriteClick} = this.props;
+    const offer = offers.find((it) => it.id === offerId, 10);
+    if (typeof offer === `undefined`) {
+      return <NotFound />;
+    }
     const {
       id, images, name, price, isPremium, type, inBookmarks,
       rooms, guests, facilities, author, text, rating, coordinates, zoom
-    } = offers.find((it) => it.id === offerId);
+    } = offer;
     return <div className="page">
-      <Header onSignInClick={onSignInClick} />
+      <Header />
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {images.map((image, index) =>
+              {images.slice(0, MAX_IMAGES_COUNT).map((image, index) =>
                 <div className="property__image-wrapper" key={`img_${id}_${index}`}>
                   <img className="property__image" src={image} alt={name}/>
                 </div>,
@@ -50,7 +55,13 @@ class CardDetail extends React.PureComponent {
                 <h1 className="property__name">
                   {name}
                 </h1>
-                <button className={`property__bookmark-button button ${inBookmarks && IN_BOOKMARKS_CLASS}`} type="button">
+                <button
+                  onClick={(evt) => {
+                    evt.preventDefault();
+                    onFavoriteClick(id, +!inBookmarks);
+                  }}
+                  className={`property__bookmark-button button ${inBookmarks && IN_BOOKMARKS_CLASS}`}
+                  type="button">
                   <svg className="property__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark"/>
                   </svg>
@@ -92,7 +103,7 @@ class CardDetail extends React.PureComponent {
                 <div className="property__host-user user">
                   <div
                     className={`property__avatar-wrapper user__avatar-wrapper ${author.isSuper && SUPER_USER_CLASS}`}>
-                    <img className="property__avatar user__avatar" src={author.avatar || DEFAULT_AVATAR} width="74" height="74" alt="Host avatar"/>
+                    <img className="property__avatar user__avatar" src={`/${author.avatar}` || DEFAULT_AVATAR} width="74" height="74" alt="Host avatar"/>
                   </div>
                   <span className="property__user-name">
                     {author.name}
@@ -117,8 +128,7 @@ class CardDetail extends React.PureComponent {
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <CardList offers={nearbyOffers.slice(0, NEAR_PLACES_COUNT)} type={CARD_TYPE.CARD_DETAIL}
-              onCardTitleClick={onCardTitleClick}/>
+            <CardList offers={nearbyOffers.slice(0, NEAR_PLACES_COUNT)} type={CARD_TYPE.CARD_DETAIL} onCardTitleClick={onCardTitleClick} onFavoriteClick={onFavoriteClick}/>
           </section>
         </div>
       </main>
@@ -154,7 +164,7 @@ CardDetail.propTypes = {
   onCardTitleClick: PropTypes.func.isRequired,
   onCardDetailMount: PropTypes.func.isRequired,
   nearbyOffers: PropTypes.array,
-  onSignInClick: PropTypes.func.isRequired
+  onFavoriteClick: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = (dispatch) => ({

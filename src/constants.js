@@ -2,6 +2,8 @@ const NEAR_PLACES_COUNT = 3;
 
 const MAX_REVIEWS_COUNT = 10;
 
+const MAX_IMAGES_COUNT = 6;
+
 const DEFAULT_AVATAR = `img/avatar.svg`;
 
 const ICON_SIZE = [30, 30];
@@ -68,6 +70,7 @@ const CommentMessage = {
 export {
   NEAR_PLACES_COUNT,
   MAX_REVIEWS_COUNT,
+  MAX_IMAGES_COUNT,
   ICON_SIZE,
   ICON_PATH,
   ACTIVE_ICON_PATH,

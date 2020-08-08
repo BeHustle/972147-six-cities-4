@@ -16,6 +16,8 @@ import {cities} from '../../test-mocks/cities.js';
 import {offers, serverOffers} from '../../test-mocks/offers.js';
 import {serverUserInfo, userInfo} from '../../test-mocks/user.js';
 import {reviews, serverReviews} from '../../test-mocks/reviews.js';
+import {Router} from 'react-router-dom';
+import {history} from '../../history.js';
 
 const api = createAPI();
 const apiMock = new MockAdapter(api);
@@ -57,13 +59,15 @@ jest.mock(`../map/map.jsx`, () => `map`);
 it(`Card detail render`, () => {
   const tree = renderer
     .create(
-        <Provider store={store}>
-          <CardDetail
-            offerId={1}
-            onCardTitleClick={() => {}}
-            onSignInClick={() => {}}
-          />
-        </Provider>,
+        <Router history={history}>
+          <Provider store={store}>
+            <CardDetail
+              offerId={1}
+              onCardTitleClick={() => {}}
+              onFavoriteClick={() => {}}
+            />
+          </Provider>
+        </Router>,
     )
     .toJSON();
 

@@ -31,6 +31,7 @@ const getCardTypeImageClass = (type) => {
 const Card = ({
   onTitleClick,
   onCardHover,
+  onFavoriteClick,
   cardType,
   offer: {id, name, price, image, type, isPremium, inBookmarks, rating},
 }) => <article
@@ -52,7 +53,10 @@ const Card = ({
         <b className="place-card__price-value">&euro;{price}</b>
         <span className="place-card__price-text">&#47;&nbsp;night</span>
       </div>
-      <button className={`place-card__bookmark-button button ${inBookmarks && IN_BOOKMARKS_CLASS}`} type="button">
+      <button onClick={(evt) => {
+        evt.preventDefault();
+        onFavoriteClick(id, +!inBookmarks);
+      }} className={`place-card__bookmark-button button ${inBookmarks && IN_BOOKMARKS_CLASS}`} type="button">
         <svg className="place-card__bookmark-icon" width="18" height="19">
           <use xlinkHref="#icon-bookmark"/>
         </svg>
@@ -99,6 +103,7 @@ Card.propTypes = {
     text: PropTypes.arrayOf(PropTypes.string).isRequired,
     cityId: PropTypes.number.isRequired
   }),
+  onFavoriteClick: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -106,5 +111,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(setActiveOfferId(id));
   },
 });
+
+export {Card};
 
 export default connect(null, mapDispatchToProps)(Card);

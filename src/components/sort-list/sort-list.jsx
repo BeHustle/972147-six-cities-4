@@ -69,4 +69,6 @@ const mapStateToProps = (state) => ({
   activeSort: getActiveSort(state),
 });
 
+export {SortList};
+
 export default connect(mapStateToProps, mapDispatchToProps)(SortList);

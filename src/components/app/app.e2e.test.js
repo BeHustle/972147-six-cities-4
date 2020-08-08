@@ -18,7 +18,8 @@ import {reviews, serverReviews} from '../../test-mocks/reviews.js';
 import {serverUserInfo, userInfo} from '../../test-mocks/user.js';
 import App from './app.jsx';
 import {offers} from '../../test-mocks/offers.js';
-
+import {Router} from 'react-router-dom';
+import {history} from '../../history.js';
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -63,31 +64,15 @@ store.dispatch(setAuthStatus(AuthStatus.AUTH));
 
 describe(`Title card click:`, () => {
   let appWithProvider;
-  let app;
 
   beforeEach(() => {
-    appWithProvider = mount(<Provider store={store}>
-      <App />
-    </Provider>);
-    app = appWithProvider.find(`App`);
-  });
-
-  it(`should change app state screen to offer`, () => {
-    const card = appWithProvider.find(`Card`).first();
-    const titleCardLink = card.find(`.place-card__name a`);
-
-    titleCardLink.simulate(`click`);
-    expect(app.state().screen).toBe(`offer`);
-  });
-
-  it(`should change app state offerId to Card id`, () => {
-    const card = appWithProvider.find(`Card`).last();
-    const cardId = card.props().offer.id;
-    const titleCardLink = card.find(`.place-card__name a`);
-
-    titleCardLink.simulate(`click`);
-
-    expect(app.state().offerId).toBe(cardId);
+    appWithProvider = mount(
+        <Router history={history}>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </Router>
+    );
   });
 
   it(`should render CardDetail`, () => {
@@ -109,20 +94,5 @@ describe(`Title card click:`, () => {
 
     const cardDetail = appWithProvider.find(`CardDetail`);
     expect(cardDetail.props().offerId).toBe(cardId);
-  });
-
-  it(`should change app state screen to login`, () => {
-    const signInLink = appWithProvider.find(`.header__nav-link--profile`).first();
-
-    signInLink.simulate(`click`);
-    expect(app.state().screen).toBe(`login`);
-  });
-
-  it(`should render login screen on click to sign in`, () => {
-    const signInLink = appWithProvider.find(`.header__nav-link--profile`).first();
-
-    signInLink.simulate(`click`);
-    const loginScreen = appWithProvider.find(`.page__main--login`);
-    expect(loginScreen.length).not.toBe(0);
   });
 });

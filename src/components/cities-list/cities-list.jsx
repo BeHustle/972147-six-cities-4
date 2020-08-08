@@ -45,4 +45,6 @@ const mapStateToProps = (state) => ({
   activeCityId: getActiveCity(state).id
 });
 
+export {CitiesList};
+
 export default connect(mapStateToProps, mapDispatchToProps)(CitiesList);

@@ -59,4 +59,6 @@ const mapStateToProps = (state) => ({
   authStatus: getAuthStatus(state)
 });
 
+export {Reviews};
+
 export default connect(mapStateToProps, mapDispatchToProps)(Reviews);

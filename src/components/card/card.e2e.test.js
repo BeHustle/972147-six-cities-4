@@ -1,6 +1,6 @@
 import MockAdapter from 'axios-mock-adapter';
 import React from 'react';
-import Enzyme, {mount} from 'enzyme';
+import Enzyme, {mount, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
 import {applyMiddleware, createStore} from 'redux';
@@ -16,6 +16,7 @@ import {setAuthStatus, setUserInfo} from '../../reducer/user/user.reducer.js';
 import {cities} from '../../test-mocks/cities.js';
 import {reviews, serverReviews} from '../../test-mocks/reviews.js';
 import {serverUserInfo, userInfo} from '../../test-mocks/user.js';
+import FavoritesList from '../favorites-list/favorites-list.jsx';
 import Card from './card.jsx';
 import {offers, serverOffers} from '../../test-mocks/offers.js';
 
@@ -67,6 +68,7 @@ describe(`Card`, () => {
         offer={offers[0]}
         onCardHover={() => {}}
         onTitleClick={onTitleClick}
+        onFavoriteClick={() => {}}
         cardType={CARD_TYPE.MAIN}
       />
     </Provider>);
@@ -82,6 +84,7 @@ describe(`Card`, () => {
       <Card
         offer={offer}
         onTitleClick={() => {}}
+        onFavoriteClick={() => {}}
         cardType={CARD_TYPE.MAIN}
       />
     </Provider>);
@@ -96,6 +99,7 @@ describe(`Card`, () => {
       <Card
         offer={offer}
         onTitleClick={() => {}}
+        onFavoriteClick={() => {}}
         cardType={CARD_TYPE.MAIN}
       />
     </Provider>);
@@ -104,6 +108,23 @@ describe(`Card`, () => {
     cardElement.simulate(`mouseLeave`);
 
     expect(getActiveOfferId(store.getState())).toEqual(null);
+  });
+
+  it(`onFavoriteClick should be called on favorite btn click`, () => {
+    const onFavoriteClick = jest.fn();
+    const offer = offers[0];
+    const preventDefault = jest.fn();
+    const card = mount(<Provider store={store}>
+      <Card
+        offer={offer}
+        onTitleClick={() => {}}
+        onFavoriteClick={onFavoriteClick}
+        cardType={CARD_TYPE.MAIN}
+      />
+    </Provider>);
+    const favoriteBtn = card.find(`.place-card__bookmark-button`).first();
+    favoriteBtn.simulate(`click`, {preventDefault});
+    expect(onFavoriteClick).toBeCalled();
   });
 });
 

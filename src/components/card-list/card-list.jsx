@@ -24,12 +24,14 @@ const sortCards = (cards, sortType) => {
       return cards.sort((a, b) => b.price - a.price);
     case Sorts.TOP_RATED:
       return cards.sort((a, b) => b.rating - a.rating);
+    case Sorts.POPULAR:
+      return cards.sort((a, b) => a.id - b.id);
     default:
       return cards;
   }
 };
 
-const CardList = ({offers, onCardTitleClick, type, sortType}) =>
+const CardList = ({offers, onCardTitleClick, type, sortType, onFavoriteClick}) =>
   <div className={`places__list ${getCardListTypeClass(type)}`}>
     {sortCards(offers, sortType).map((offer) =>
       <Card
@@ -37,6 +39,7 @@ const CardList = ({offers, onCardTitleClick, type, sortType}) =>
         key={offer.id}
         offer={offer}
         onTitleClick={onCardTitleClick}
+        onFavoriteClick={onFavoriteClick}
       />)}
   </div>;
 
@@ -67,6 +70,7 @@ CardList.propTypes = {
     text: PropTypes.arrayOf(PropTypes.string).isRequired,
     cityId: PropTypes.number.isRequired
   })).isRequired,
+  onFavoriteClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({

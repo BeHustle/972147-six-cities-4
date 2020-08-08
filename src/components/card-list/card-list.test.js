@@ -59,6 +59,7 @@ it(`Render Cards list`, () => {
           <CardList
             offers={offers}
             type={CARD_TYPE.MAIN}
+            onFavoriteClick={() => {}}
             onCardTitleClick={() => {}}
           />
         </Provider>

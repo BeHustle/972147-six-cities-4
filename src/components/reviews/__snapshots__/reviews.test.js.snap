@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render Sort list 1`] = `
+exports[`Render Reviews list 1`] = `
 <section
   className="property__reviews reviews"
 >
@@ -17,65 +17,6 @@ exports[`Render Sort list 1`] = `
   <ul
     className="reviews__list"
   >
-    <li
-      className="reviews__item"
-    >
-      <div
-        className="reviews__user user"
-      >
-        <div
-          className="reviews__avatar-wrapper user__avatar-wrapper"
-        >
-          <img
-            alt="William"
-            className="reviews__avatar user__avatar"
-            height="54"
-            src="img/avatar.svg"
-            width="54"
-          />
-        </div>
-        <span
-          className="reviews__user-name"
-        >
-          William
-        </span>
-      </div>
-      <div
-        className="reviews__info"
-      >
-        <div
-          className="reviews__rating rating"
-        >
-          <div
-            className="reviews__stars rating__stars"
-          >
-            <span
-              style={
-                Object {
-                  "width": "20%",
-                }
-              }
-            />
-            <span
-              className="visually-hidden"
-            >
-              Rating
-            </span>
-          </div>
-        </div>
-        <p
-          className="reviews__text"
-        >
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. At ipsa labore libero nam sunt temporibus?
-        </p>
-        <time
-          className="reviews__time"
-          dateTime="2018-03-25"
-        >
-          March 2018
-        </time>
-      </div>
-    </li>
     <li
       className="reviews__item"
     >
@@ -145,65 +86,6 @@ exports[`Render Sort list 1`] = `
           className="reviews__avatar-wrapper user__avatar-wrapper"
         >
           <img
-            alt="Lucy"
-            className="reviews__avatar user__avatar"
-            height="54"
-            src="img/avatar-angelina.jpg"
-            width="54"
-          />
-        </div>
-        <span
-          className="reviews__user-name"
-        >
-          Lucy
-        </span>
-      </div>
-      <div
-        className="reviews__info"
-      >
-        <div
-          className="reviews__rating rating"
-        >
-          <div
-            className="reviews__stars rating__stars"
-          >
-            <span
-              style={
-                Object {
-                  "width": "80%",
-                }
-              }
-            />
-            <span
-              className="visually-hidden"
-            >
-              Rating
-            </span>
-          </div>
-        </div>
-        <p
-          className="reviews__text"
-        >
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </p>
-        <time
-          className="reviews__time"
-          dateTime="2020-01-13"
-        >
-          January 2020
-        </time>
-      </div>
-    </li>
-    <li
-      className="reviews__item"
-    >
-      <div
-        className="reviews__user user"
-      >
-        <div
-          className="reviews__avatar-wrapper user__avatar-wrapper"
-        >
-          <img
             alt="Alex"
             className="reviews__avatar user__avatar"
             height="54"
@@ -253,184 +135,124 @@ exports[`Render Sort list 1`] = `
         </time>
       </div>
     </li>
-  </ul>
-  <form
-    action="#"
-    className="reviews__form form"
-    method="post"
-    onSubmit={[Function]}
-  >
-    <label
-      className="reviews__label form__label"
-      htmlFor="review"
+    <li
+      className="reviews__item"
     >
-      Your review
-    </label>
-    <div
-      className="reviews__rating-form form__rating"
-    >
-      <input
-        className="form__rating-input visually-hidden"
-        id="5-stars"
-        name="rating"
-        onChange={[Function]}
-        type="radio"
-        value="5"
-      />
-      <label
-        className="reviews__rating-label form__rating-label"
-        htmlFor="5-stars"
-        title="perfect"
+      <div
+        className="reviews__user user"
       >
-        <svg
-          className="form__star-image"
-          height="33"
-          width="37"
+        <div
+          className="reviews__avatar-wrapper user__avatar-wrapper"
         >
-          <use
-            xlinkHref="#icon-star"
+          <img
+            alt="William"
+            className="reviews__avatar user__avatar"
+            height="54"
+            src="img/avatar.svg"
+            width="54"
           />
-        </svg>
-      </label>
-      <input
-        className="form__rating-input visually-hidden"
-        id="4-stars"
-        name="rating"
-        onChange={[Function]}
-        type="radio"
-        value="4"
-      />
-      <label
-        className="reviews__rating-label form__rating-label"
-        htmlFor="4-stars"
-        title="good"
-      >
-        <svg
-          className="form__star-image"
-          height="33"
-          width="37"
-        >
-          <use
-            xlinkHref="#icon-star"
-          />
-        </svg>
-      </label>
-      <input
-        className="form__rating-input visually-hidden"
-        id="3-stars"
-        name="rating"
-        onChange={[Function]}
-        type="radio"
-        value="3"
-      />
-      <label
-        className="reviews__rating-label form__rating-label"
-        htmlFor="3-stars"
-        title="not bad"
-      >
-        <svg
-          className="form__star-image"
-          height="33"
-          width="37"
-        >
-          <use
-            xlinkHref="#icon-star"
-          />
-        </svg>
-      </label>
-      <input
-        className="form__rating-input visually-hidden"
-        id="2-stars"
-        name="rating"
-        onChange={[Function]}
-        type="radio"
-        value="2"
-      />
-      <label
-        className="reviews__rating-label form__rating-label"
-        htmlFor="2-stars"
-        title="badly"
-      >
-        <svg
-          className="form__star-image"
-          height="33"
-          width="37"
-        >
-          <use
-            xlinkHref="#icon-star"
-          />
-        </svg>
-      </label>
-      <input
-        className="form__rating-input visually-hidden"
-        id="1-star"
-        name="rating"
-        onChange={[Function]}
-        type="radio"
-        value="1"
-      />
-      <label
-        className="reviews__rating-label form__rating-label"
-        htmlFor="1-star"
-        title="terribly"
-      >
-        <svg
-          className="form__star-image"
-          height="33"
-          width="37"
-        >
-          <use
-            xlinkHref="#icon-star"
-          />
-        </svg>
-      </label>
-    </div>
-    <textarea
-      className="reviews__textarea form__textarea"
-      id="review"
-      name="review"
-      onChange={[Function]}
-      placeholder="Tell how was your stay, what you like and what can be improved"
-    />
-    <div
-      style={
-        Object {
-          "display": "none",
-          "fontWeight": 500,
-          "marginBottom": "10px",
-          "marginTop": "10px",
-          "textAlign": "right",
-        }
-      }
-    />
-    <div
-      className="reviews__button-wrapper"
-    >
-      <p
-        className="reviews__help"
-      >
-        To submit review please make sure to set 
+        </div>
         <span
-          className="reviews__star"
+          className="reviews__user-name"
         >
-          rating
+          William
         </span>
-         and describe your stay with at least 
-        <b
-          className="reviews__text-amount"
-        >
-          50 characters
-        </b>
-        .
-      </p>
-      <button
-        className="reviews__submit form__submit button"
-        disabled={true}
-        type="submit"
+      </div>
+      <div
+        className="reviews__info"
       >
-        Submit
-      </button>
-    </div>
-  </form>
+        <div
+          className="reviews__rating rating"
+        >
+          <div
+            className="reviews__stars rating__stars"
+          >
+            <span
+              style={
+                Object {
+                  "width": "20%",
+                }
+              }
+            />
+            <span
+              className="visually-hidden"
+            >
+              Rating
+            </span>
+          </div>
+        </div>
+        <p
+          className="reviews__text"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. At ipsa labore libero nam sunt temporibus?
+        </p>
+        <time
+          className="reviews__time"
+          dateTime="2018-03-25"
+        >
+          March 2018
+        </time>
+      </div>
+    </li>
+    <li
+      className="reviews__item"
+    >
+      <div
+        className="reviews__user user"
+      >
+        <div
+          className="reviews__avatar-wrapper user__avatar-wrapper"
+        >
+          <img
+            alt="Lucy"
+            className="reviews__avatar user__avatar"
+            height="54"
+            src="img/avatar-angelina.jpg"
+            width="54"
+          />
+        </div>
+        <span
+          className="reviews__user-name"
+        >
+          Lucy
+        </span>
+      </div>
+      <div
+        className="reviews__info"
+      >
+        <div
+          className="reviews__rating rating"
+        >
+          <div
+            className="reviews__stars rating__stars"
+          >
+            <span
+              style={
+                Object {
+                  "width": "80%",
+                }
+              }
+            />
+            <span
+              className="visually-hidden"
+            >
+              Rating
+            </span>
+          </div>
+        </div>
+        <p
+          className="reviews__text"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </p>
+        <time
+          className="reviews__time"
+          dateTime="2020-01-13"
+        >
+          January 2020
+        </time>
+      </div>
+    </li>
+  </ul>
 </section>
 `;

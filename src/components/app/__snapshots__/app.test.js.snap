@@ -18,12 +18,14 @@ exports[`App snapshot 1`] = `
         >
           <a
             className="header__logo-link header__logo-link--active"
+            href="/"
+            onClick={[Function]}
           >
             <img
               alt="6 cities logo"
               className="header__logo"
               height="41"
-              src="img/logo.svg"
+              src="/img/logo.svg"
               width="81"
             />
           </a>
@@ -39,7 +41,7 @@ exports[`App snapshot 1`] = `
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/favorites"
                 onClick={[Function]}
               >
                 <div
@@ -289,6 +291,7 @@ exports[`App snapshot 1`] = `
                   </div>
                   <button
                     className="place-card__bookmark-button button place-card__bookmark-button--active"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -387,6 +390,7 @@ exports[`App snapshot 1`] = `
                   </div>
                   <button
                     className="place-card__bookmark-button button false"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg

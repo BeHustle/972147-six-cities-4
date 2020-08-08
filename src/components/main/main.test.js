@@ -16,6 +16,8 @@ import Main from './main.jsx';
 import {cities} from '../../test-mocks/cities.js';
 import {offers, serverOffers} from '../../test-mocks/offers.js';
 import {serverUserInfo, userInfo} from '../../test-mocks/user.js';
+import {Router} from 'react-router-dom';
+import {history} from '../../history.js';
 
 jest.mock(`../map/map.jsx`, () => `map`);
 
@@ -57,12 +59,14 @@ store.dispatch(setAuthStatus(AuthStatus.AUTH));
 it(`Render Main`, () => {
   const tree = renderer
     .create(
-        <Provider store={store}>
-          <Main
-            onCardTitleClick={() => {}}
-            onSignInClick={() => {}}
-          />
-        </Provider>
+        <Router history={history}>
+          <Provider store={store}>
+            <Main
+              onCardTitleClick={() => {}}
+              onFavoriteClick={() => {}}
+            />
+          </Provider>
+        </Router>
     )
     .toJSON();
 

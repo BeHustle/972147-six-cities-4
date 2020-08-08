@@ -17,6 +17,8 @@ import {cities} from '../../test-mocks/cities.js';
 import {offers, serverOffers} from '../../test-mocks/offers.js';
 import {serverUserInfo, userInfo} from '../../test-mocks/user.js';
 import SingIn from './sign-in.jsx';
+import {Router} from 'react-router-dom';
+import {history} from '../../history.js';
 
 jest.mock(`../map/map.jsx`, () => `map`);
 
@@ -62,9 +64,11 @@ store.dispatch(setAuthStatus(AuthStatus.NO_AUTH));
 it(`Should form be submitted`, () => {
   const preventDefault = jest.fn();
 
-  const signInWithProvider = mount(<Provider store={store}>
-    <SingIn />
-  </Provider>);
+  const signInWithProvider = mount(<Router history={history}>
+    <Provider store={store}>
+      <SingIn />
+    </Provider>
+  </Router>);
 
   const mockEvent = {
     preventDefault,

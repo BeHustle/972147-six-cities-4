@@ -11,9 +11,9 @@ import Header from '../header/header.jsx';
 import Map from '../map/map.jsx';
 import SortList from '../sort-list/sort-list.jsx';
 
-const Main = ({onCardTitleClick, city, offers, onSignInClick}) =>
+const Main = ({onCardTitleClick, city, offers, onFavoriteClick}) =>
   <div className="page page--gray page--main">
-    <Header onSignInClick={onSignInClick} />
+    <Header />
     <main className={`page__main page__main--index ${offers.length || `page__main--index-empty`}`}>
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
@@ -29,7 +29,7 @@ const Main = ({onCardTitleClick, city, offers, onSignInClick}) =>
 
               <SortList />
 
-              <CardList offers={offers} onCardTitleClick={onCardTitleClick} type={CARD_TYPE.MAIN}/>
+              <CardList offers={offers} onFavoriteClick={onFavoriteClick} onCardTitleClick={onCardTitleClick} type={CARD_TYPE.MAIN}/>
             </section>
             <div className="cities__right-section">
               <Map offers={offers} type={CARD_TYPE.MAIN} coordinates={city.coordinates} zoom={city.zoom} />
@@ -71,7 +71,7 @@ Main.propTypes = {
     coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
     zoom: PropTypes.number.isRequired
   }),
-  onSignInClick: PropTypes.func.isRequired
+  onFavoriteClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({

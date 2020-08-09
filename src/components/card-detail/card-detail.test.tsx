@@ -1,8 +1,7 @@
 import MockAdapter from 'axios-mock-adapter';
 import * as React from 'react';
-import Enzyme, {mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
+import * as renderer from 'react-test-renderer';
 import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
@@ -11,21 +10,14 @@ import {AppStatus, AuthStatus} from '../../constants';
 import {setActiveCity, setAppStatus} from '../../reducer/app/app.reducer';
 import {setCities, setNearbyOffers, setOffers, setReviews} from '../../reducer/data/data.reducer';
 import reducer from '../../reducer/reducer';
-import {setUserInfo, setAuthStatus} from '../../reducer/user/user.reducer';
+import {setAuthStatus, setUserInfo} from '../../reducer/user/user.reducer';
+import CardDetail from './card-detail';
 import {cities} from '../../test-mocks/cities';
-import {serverOffers} from '../../test-mocks/offers';
-import {reviews, serverReviews} from '../../test-mocks/reviews';
+import {offers, serverOffers} from '../../test-mocks/offers';
 import {serverUserInfo, userInfo} from '../../test-mocks/user';
-import App from './app.tsx';
-import {offers} from '../../test-mocks/offers';
+import {reviews, serverReviews} from '../../test-mocks/reviews';
 import {Router} from 'react-router-dom';
 import {history} from '../../history';
-
-Enzyme.configure({
-  adapter: new Adapter(),
-});
-
-jest.mock(`../map/mapx`, () => `map`);
 
 const api = createAPI();
 const apiMock = new MockAdapter(api);
@@ -49,8 +41,8 @@ apiMock
 const store = createStore(
     reducer,
     composeWithDevTools(
-        applyMiddleware(thunk.withExtraArgument(api))
-    )
+        applyMiddleware(thunk.withExtraArgument(api)),
+    ),
 );
 
 store.dispatch(setOffers(offers));
@@ -62,37 +54,22 @@ store.dispatch(setAppStatus(AppStatus.SUCCESS_LOAD));
 store.dispatch(setUserInfo(userInfo));
 store.dispatch(setAuthStatus(AuthStatus.AUTH));
 
-describe(`Title card click:`, () => {
-  let appWithProvider;
+jest.mock(`../map/mapx`, () => `map`);
 
-  beforeEach(() => {
-    appWithProvider = mount(
+it(`Card detail render`, () => {
+  const tree = renderer
+    .create(
         <Router history={history}>
           <Provider store={store}>
-            <App />
+            <CardDetail
+              offerId={1}
+              onCardTitleClick={() => {}}
+              onFavoriteClick={() => {}}
+            />
           </Provider>
-        </Router>
-    );
-  });
+        </Router>,
+    )
+    .toJSON();
 
-  it(`should render CardDetail`, () => {
-    const card = appWithProvider.find(`Card`).first();
-    const titleCardLink = card.find(`.place-card__name a`);
-
-    titleCardLink.simulate(`click`);
-
-    const cardDetail = appWithProvider.find(`CardDetail`);
-    expect(cardDetail.length).not.toBe(0);
-  });
-
-  it(`should render CardDetail with some id as Card id`, () => {
-    const card = appWithProvider.find(`Card`).last();
-    const cardId = card.props().offer.id;
-    const titleCardLink = card.find(`.place-card__name a`);
-
-    titleCardLink.simulate(`click`);
-
-    const cardDetail = appWithProvider.find(`CardDetail`);
-    expect(cardDetail.props().offerId).toBe(cardId);
-  });
+  expect(tree).toMatchSnapshot();
 });

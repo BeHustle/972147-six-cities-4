@@ -16,7 +16,7 @@ import {reviews, serverReviews} from '../../test-mocks/reviews';
 import {cities} from '../../test-mocks/cities';
 import {offers, serverOffers} from '../../test-mocks/offers';
 import {serverUserInfo, userInfo} from '../../test-mocks/user';
-import AddReview from './add-review.tsx';
+import AddReview from './add-review';
 
 jest.mock(`../map/mapx`, () => `map`);
 

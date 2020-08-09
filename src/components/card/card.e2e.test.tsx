@@ -16,7 +16,7 @@ import {setAuthStatus, setUserInfo} from '../../reducer/user/user.reducer';
 import {cities} from '../../test-mocks/cities';
 import {reviews, serverReviews} from '../../test-mocks/reviews';
 import {serverUserInfo, userInfo} from '../../test-mocks/user';
-import Card from './card.tsx';
+import Card from './card';
 import {offers, serverOffers} from '../../test-mocks/offers';
 
 Enzyme.configure({

@@ -10,8 +10,8 @@ import {Operation as DataOperation} from '../../reducer/data/data.reducer';
 import {CityInterface, OfferInterface} from "../../types";
 
 interface Props {
-  offers: Array<OfferInterface> | [];
-  cities: Array<CityInterface> | [];
+  offers: Array<OfferInterface>;
+  cities: Array<CityInterface>;
   onFavoritesDidMount: () => void;
   onFavoriteClick: () => void;
   onCardTitleClick: () => void;

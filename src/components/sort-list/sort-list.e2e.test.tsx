@@ -17,7 +17,7 @@ import {cities} from '../../test-mocks/cities';
 import {offers, serverOffers} from '../../test-mocks/offers';
 import {reviews, serverReviews} from '../../test-mocks/reviews';
 import {serverUserInfo, userInfo} from '../../test-mocks/user';
-import SortList from './sort-list.tsx';
+import SortList from './sort-list';
 
 Enzyme.configure({
   adapter: new Adapter(),

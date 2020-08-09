@@ -1,7 +1,7 @@
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
 import {CardType} from '../../constants';
-import {Card} from './card.tsx';
+import {Card} from './card';
 import {offers} from '../../test-mocks/offers';
 
 

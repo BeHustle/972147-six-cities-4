@@ -1,6 +1,6 @@
 import * as React from 'react';
-import renderer from 'react-test-renderer';
-import {SortList} from './sort-list.tsx';
+import * as renderer from 'react-test-renderer';
+import {SortList} from './sort-list';
 import {Sorts} from '../../constants';
 
 it(`Render Sort list`, () => {

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import renderer from 'react-test-renderer';
-import EmptyFavoritesScreen from './empty-favorites-screen.tsx';
+import * as renderer from 'react-test-renderer';
+import EmptyFavoritesScreen from './empty-favorites-screen';
 
 it(`Render empty favorites screen`, () => {
   const tree = renderer

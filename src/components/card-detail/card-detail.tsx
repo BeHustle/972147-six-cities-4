@@ -16,7 +16,7 @@ const IN_BOOKMARKS_CLASS = `property__bookmark-button--active`;
 interface Props {
   offerId: number;
   offers: Array<OfferInterface>;
-  nearbyOffers: Array<OfferInterface> | [];
+  nearbyOffers: Array<OfferInterface>;
   onCardTitleClick: () => void;
   onFavoriteClick: (id: number, inBookmarks: number) => void;
   onCardDetailMount: (offerId: number) => void;

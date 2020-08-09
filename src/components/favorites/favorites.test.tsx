@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Provider} from 'react-redux';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
 import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
@@ -11,7 +11,7 @@ import {setAuthStatus, setUserInfo} from '../../reducer/user/user.reducer';
 import {cities} from '../../test-mocks/cities';
 import {offers} from '../../test-mocks/offers';
 import {userInfo} from '../../test-mocks/user';
-import {Favorites} from './favorites.tsx';
+import {Favorites} from './favorites';
 import {Router} from 'react-router-dom';
 import {history} from '../../history';
 

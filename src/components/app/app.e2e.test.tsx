@@ -1,30 +1,31 @@
 import MockAdapter from 'axios-mock-adapter';
+import * as React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import * as React from 'react';
+import {Provider} from 'react-redux';
 import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
-import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {createAPI} from '../../api/api';
 import {AppStatus, AuthStatus} from '../../constants';
 import {setActiveCity, setAppStatus} from '../../reducer/app/app.reducer';
 import {setCities, setNearbyOffers, setOffers, setReviews} from '../../reducer/data/data.reducer';
 import reducer from '../../reducer/reducer';
-import {setAuthStatus, setUserInfo} from '../../reducer/user/user.reducer';
-import {reviews, serverReviews} from '../../test-mocks/reviews';
+import {setUserInfo, setAuthStatus} from '../../reducer/user/user.reducer';
 import {cities} from '../../test-mocks/cities';
-import {offers, serverOffers} from '../../test-mocks/offers';
+import {serverOffers} from '../../test-mocks/offers';
+import {reviews, serverReviews} from '../../test-mocks/reviews';
 import {serverUserInfo, userInfo} from '../../test-mocks/user';
-import SingIn from './sign-in.tsx';
+import App from './app';
+import {offers} from '../../test-mocks/offers';
 import {Router} from 'react-router-dom';
 import {history} from '../../history';
-
-jest.mock(`../map/mapx`, () => `map`);
 
 Enzyme.configure({
   adapter: new Adapter(),
 });
+
+jest.mock(`../map/mapx`, () => `map`);
 
 const api = createAPI();
 const apiMock = new MockAdapter(api);
@@ -42,14 +43,14 @@ apiMock
   .reply(200, serverOffers);
 
 apiMock
-  .onPost(`/login`)
+  .onGet(`/login`)
   .reply(200, serverUserInfo);
 
 const store = createStore(
     reducer,
     composeWithDevTools(
-        applyMiddleware(thunk.withExtraArgument(api)),
-    ),
+        applyMiddleware(thunk.withExtraArgument(api))
+    )
 );
 
 store.dispatch(setOffers(offers));
@@ -59,21 +60,39 @@ store.dispatch(setCities(cities));
 store.dispatch(setActiveCity(cities[0]));
 store.dispatch(setAppStatus(AppStatus.SUCCESS_LOAD));
 store.dispatch(setUserInfo(userInfo));
-store.dispatch(setAuthStatus(AuthStatus.NO_AUTH));
+store.dispatch(setAuthStatus(AuthStatus.AUTH));
 
-it(`Should form be submitted`, () => {
-  const preventDefault = jest.fn();
+describe(`Title card click:`, () => {
+  let appWithProvider;
 
-  const signInWithProvider = mount(<Router history={history}>
-    <Provider store={store}>
-      <SingIn />
-    </Provider>
-  </Router>);
+  beforeEach(() => {
+    appWithProvider = mount(
+        <Router history={history}>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </Router>
+    );
+  });
 
-  const mockEvent = {
-    preventDefault,
-  };
-  const authForm = signInWithProvider.find(`.login__form`).first();
-  authForm.simulate(`submit`, mockEvent);
-  expect(preventDefault).toHaveBeenCalled();
+  it(`should render CardDetail`, () => {
+    const card = appWithProvider.find(`Card`).first();
+    const titleCardLink = card.find(`.place-card__name a`);
+
+    titleCardLink.simulate(`click`);
+
+    const cardDetail = appWithProvider.find(`CardDetail`);
+    expect(cardDetail.length).not.toBe(0);
+  });
+
+  it(`should render CardDetail with some id as Card id`, () => {
+    const card = appWithProvider.find(`Card`).last();
+    const cardId = card.props().offer.id;
+    const titleCardLink = card.find(`.place-card__name a`);
+
+    titleCardLink.simulate(`click`);
+
+    const cardDetail = appWithProvider.find(`CardDetail`);
+    expect(cardDetail.props().offerId).toBe(cardId);
+  });
 });

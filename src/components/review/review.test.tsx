@@ -1,6 +1,6 @@
 import * as React from 'react';
-import renderer from 'react-test-renderer';
-import Review from './review.tsx';
+import * as renderer from 'react-test-renderer';
+import Review from './review';
 import {reviews} from '../../test-mocks/reviews';
 
 it(`Render review form`, () => {

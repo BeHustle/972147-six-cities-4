@@ -1,6 +1,6 @@
 import MockAdapter from 'axios-mock-adapter';
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
 import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {Provider} from 'react-redux';
@@ -15,7 +15,7 @@ import {reviews, serverReviews} from '../../test-mocks/reviews';
 import {cities} from '../../test-mocks/cities';
 import {offers, serverOffers} from '../../test-mocks/offers';
 import {serverUserInfo, userInfo} from '../../test-mocks/user';
-import SingIn from './sign-in.tsx';
+import SingIn from './sign-in';
 import {Router} from 'react-router-dom';
 import {history} from '../../history';
 

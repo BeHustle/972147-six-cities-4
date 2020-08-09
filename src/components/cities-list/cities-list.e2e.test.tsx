@@ -1,7 +1,8 @@
 import MockAdapter from 'axios-mock-adapter';
 import * as React from 'react';
+import Enzyme, {mount} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
-import renderer from 'react-test-renderer';
 import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
@@ -11,13 +12,15 @@ import {setActiveCity, setAppStatus} from '../../reducer/app/app.reducer';
 import {setCities, setNearbyOffers, setOffers, setReviews} from '../../reducer/data/data.reducer';
 import reducer from '../../reducer/reducer';
 import {setAuthStatus, setUserInfo} from '../../reducer/user/user.reducer';
-import CardDetail from './card-detail.tsx';
+import {reviews, serverReviews} from '../../test-mocks/reviews';
+import CitiesList from './cities-list';
 import {cities} from '../../test-mocks/cities';
 import {offers, serverOffers} from '../../test-mocks/offers';
 import {serverUserInfo, userInfo} from '../../test-mocks/user';
-import {reviews, serverReviews} from '../../test-mocks/reviews';
-import {Router} from 'react-router-dom';
-import {history} from '../../history';
+
+Enzyme.configure({
+  adapter: new Adapter(),
+});
 
 const api = createAPI();
 const apiMock = new MockAdapter(api);
@@ -54,22 +57,18 @@ store.dispatch(setAppStatus(AppStatus.SUCCESS_LOAD));
 store.dispatch(setUserInfo(userInfo));
 store.dispatch(setAuthStatus(AuthStatus.AUTH));
 
-jest.mock(`../map/mapx`, () => `map`);
+it(`Should active city to be changed`, () => {
+  const cardDetailWithProvider = mount(<Provider store={store}>
+    <CitiesList/>
+  </Provider>);
+  const citiesList = cardDetailWithProvider.find(`CitiesList`);
+  const city = cardDetailWithProvider.find(`.locations__item`).first();
+  const cityLink = cardDetailWithProvider.find(`.locations__item-link`).first();
+  const cityId = parseInt(city.key(), 10);
 
-it(`Card detail render`, () => {
-  const tree = renderer
-    .create(
-        <Router history={history}>
-          <Provider store={store}>
-            <CardDetail
-              offerId={1}
-              onCardTitleClick={() => {}}
-              onFavoriteClick={() => {}}
-            />
-          </Provider>
-        </Router>,
-    )
-    .toJSON();
+  cityLink.simulate(`click`);
 
-  expect(tree).toMatchSnapshot();
+  const activeCityId = citiesList.props().activeCityId;
+  expect(activeCityId).toBe(cityId);
 });
+

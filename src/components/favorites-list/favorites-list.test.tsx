@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Provider} from 'react-redux';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
 import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
@@ -8,7 +8,7 @@ import {createAPI} from '../../api/api';
 import reducer from '../../reducer/reducer';
 import {cities} from '../../test-mocks/cities';
 import {offers} from '../../test-mocks/offers';
-import FavoritesList from './favorites-list.tsx';
+import FavoritesList from './favorites-list';
 
 const api = createAPI();
 

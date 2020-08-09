@@ -1,23 +1,21 @@
 import MockAdapter from 'axios-mock-adapter';
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import {Provider} from 'react-redux';
+import * as renderer from 'react-test-renderer';
 import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
-import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {createAPI} from '../../api/api';
-import {AppStatus, AuthStatus} from '../../constants';
+import {AppStatus, AuthStatus, CardType} from '../../constants';
 import {setActiveCity, setAppStatus} from '../../reducer/app/app.reducer';
 import {setCities, setNearbyOffers, setOffers, setReviews} from '../../reducer/data/data.reducer';
 import reducer from '../../reducer/reducer';
 import {setAuthStatus, setUserInfo} from '../../reducer/user/user.reducer';
 import {reviews, serverReviews} from '../../test-mocks/reviews';
-import Main from './main.tsx';
+import Map from './map';
 import {cities} from '../../test-mocks/cities';
 import {offers, serverOffers} from '../../test-mocks/offers';
 import {serverUserInfo, userInfo} from '../../test-mocks/user';
-import {Router} from 'react-router-dom';
-import {history} from '../../history';
 
 jest.mock(`../map/mapx`, () => `map`);
 
@@ -56,17 +54,16 @@ store.dispatch(setAppStatus(AppStatus.SUCCESS_LOAD));
 store.dispatch(setUserInfo(userInfo));
 store.dispatch(setAuthStatus(AuthStatus.AUTH));
 
-it(`Render Main`, () => {
+it(`Render Map`, () => {
   const tree = renderer
     .create(
-        <Router history={history}>
-          <Provider store={store}>
-            <Main
-              onCardTitleClick={() => {}}
-              onFavoriteClick={() => {}}
-            />
-          </Provider>
-        </Router>
+        <Provider store={store}>
+          <Map
+            type={CardType.MAIN}
+            offers={offers}
+            coordinates={cities[0].coordinates}
+          />
+        </Provider>
     )
     .toJSON();
 

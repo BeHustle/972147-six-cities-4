@@ -1,7 +1,7 @@
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
 import {AuthStatus} from '../../constants';
-import {Header} from './header.tsx';
+import {Header} from './header';
 import {userInfo} from '../../test-mocks/user';
 import {Router} from 'react-router-dom';
 import {history} from '../../history';

@@ -1,21 +1,30 @@
 import MockAdapter from 'axios-mock-adapter';
+import Enzyme, {mount} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import * as React from 'react';
-import {Provider} from 'react-redux';
-import renderer from 'react-test-renderer';
 import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
+import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {createAPI} from '../../api/api';
-import {AppStatus, AuthStatus, CardType} from '../../constants';
+import {AppStatus, AuthStatus} from '../../constants';
 import {setActiveCity, setAppStatus} from '../../reducer/app/app.reducer';
 import {setCities, setNearbyOffers, setOffers, setReviews} from '../../reducer/data/data.reducer';
 import reducer from '../../reducer/reducer';
 import {setAuthStatus, setUserInfo} from '../../reducer/user/user.reducer';
 import {reviews, serverReviews} from '../../test-mocks/reviews';
-import CardList from './card-list.tsx';
 import {cities} from '../../test-mocks/cities';
 import {offers, serverOffers} from '../../test-mocks/offers';
 import {serverUserInfo, userInfo} from '../../test-mocks/user';
+import SingIn from './sign-in';
+import {Router} from 'react-router-dom';
+import {history} from '../../history';
+
+jest.mock(`../map/mapx`, () => `map`);
+
+Enzyme.configure({
+  adapter: new Adapter(),
+});
 
 const api = createAPI();
 const apiMock = new MockAdapter(api);
@@ -33,7 +42,7 @@ apiMock
   .reply(200, serverOffers);
 
 apiMock
-  .onGet(`/login`)
+  .onPost(`/login`)
   .reply(200, serverUserInfo);
 
 const store = createStore(
@@ -50,21 +59,21 @@ store.dispatch(setCities(cities));
 store.dispatch(setActiveCity(cities[0]));
 store.dispatch(setAppStatus(AppStatus.SUCCESS_LOAD));
 store.dispatch(setUserInfo(userInfo));
-store.dispatch(setAuthStatus(AuthStatus.AUTH));
+store.dispatch(setAuthStatus(AuthStatus.NO_AUTH));
 
-it(`Render Cards list`, () => {
-  const tree = renderer
-    .create(
-        <Provider store={store}>
-          <CardList
-            offers={offers}
-            type={CardType.MAIN}
-            onFavoriteClick={() => {}}
-            onCardTitleClick={() => {}}
-          />
-        </Provider>
-    )
-    .toJSON();
+it(`Should form be submitted`, () => {
+  const preventDefault = jest.fn();
 
-  expect(tree).toMatchSnapshot();
+  const signInWithProvider = mount(<Router history={history}>
+    <Provider store={store}>
+      <SingIn />
+    </Provider>
+  </Router>);
+
+  const mockEvent = {
+    preventDefault,
+  };
+  const authForm = signInWithProvider.find(`.login__form`).first();
+  authForm.simulate(`submit`, mockEvent);
+  expect(preventDefault).toHaveBeenCalled();
 });

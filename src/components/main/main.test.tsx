@@ -6,7 +6,7 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {createAPI} from '../../api/api';
-import {AppStatus, AuthStatus} from '../../constants';
+import {AppStatus, AuthStatus, CardType} from '../../constants';
 import {setActiveCity, setAppStatus} from '../../reducer/app/app.reducer';
 import {setCities, setNearbyOffers, setOffers, setReviews} from '../../reducer/data/data.reducer';
 import reducer from '../../reducer/reducer';
@@ -18,8 +18,6 @@ import {offers, serverOffers} from '../../test-mocks/offers';
 import {serverUserInfo, userInfo} from '../../test-mocks/user';
 import {Router} from 'react-router-dom';
 import {history} from '../../history';
-
-jest.mock(`../map/mapx`, () => `map`);
 
 const api = createAPI();
 const apiMock = new MockAdapter(api);
@@ -57,13 +55,18 @@ store.dispatch(setUserInfo(userInfo));
 store.dispatch(setAuthStatus(AuthStatus.AUTH));
 
 it(`Render Main`, () => {
+  const createMapBlock = () => {
+    const section = global.document.createElement(`section`);
+    section.setAttribute(`id`, `map-${CardType.MAIN}`);
+    global.document.body.appendChild(section);
+  };
+  createMapBlock();
   const tree = renderer
     .create(
         <Router history={history}>
           <Provider store={store}>
             <Main
-              onCardTitleClick={() => {}}
-              onFavoriteClick={() => {}}
+              onFavoriteClick={jest.fn()}
             />
           </Provider>
         </Router>

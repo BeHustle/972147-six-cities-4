@@ -14,7 +14,6 @@ interface Props {
   cities: Array<CityInterface>;
   onFavoritesDidMount: () => void;
   onFavoriteClick: () => void;
-  onCardTitleClick: () => void;
 }
 
 class Favorites extends React.PureComponent<Props, {}> {
@@ -27,7 +26,7 @@ class Favorites extends React.PureComponent<Props, {}> {
   }
 
   render() {
-    const {offers, cities, onFavoriteClick, onCardTitleClick} = this.props;
+    const {offers, cities, onFavoriteClick} = this.props;
     return <div className={`page ${offers.length || `page--favorites-empty`}`}>
 
       <Header />
@@ -39,7 +38,6 @@ class Favorites extends React.PureComponent<Props, {}> {
               <h1 className="favorites__title">Saved listing</h1>
               <FavoritesList
                 onFavoriteClick={onFavoriteClick}
-                onCardTitleClick={onCardTitleClick}
                 offers={offers}
                 cities={cities}
               />

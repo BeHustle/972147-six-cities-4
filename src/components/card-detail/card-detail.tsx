@@ -17,7 +17,6 @@ interface Props {
   offerId: number;
   offers: Array<OfferInterface>;
   nearbyOffers: Array<OfferInterface>;
-  onCardTitleClick: () => void;
   onFavoriteClick: (id: number, inBookmarks: number) => void;
   onCardDetailMount: (offerId: number) => void;
 }
@@ -33,7 +32,7 @@ class CardDetail extends React.PureComponent<Props, {}> {
   }
 
   render() {
-    const {offers, nearbyOffers, offerId, onCardTitleClick, onFavoriteClick} = this.props;
+    const {offers, nearbyOffers, offerId, onFavoriteClick} = this.props;
     const offer = offers.find((it) => it.id === offerId, 10);
     if (typeof offer === `undefined`) {
       return <NotFound />;
@@ -137,7 +136,7 @@ class CardDetail extends React.PureComponent<Props, {}> {
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <CardList offers={nearbyOffers.slice(0, NEAR_PLACES_COUNT)} type={CardType.CARD_DETAIL} onCardTitleClick={onCardTitleClick} onFavoriteClick={onFavoriteClick}/>
+            <CardList offers={nearbyOffers.slice(0, NEAR_PLACES_COUNT)} type={CardType.CARD_DETAIL} onFavoriteClick={onFavoriteClick}/>
           </section>
         </div>
       </main>

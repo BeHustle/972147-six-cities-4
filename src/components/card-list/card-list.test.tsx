@@ -16,6 +16,8 @@ import CardList from './card-list';
 import {cities} from '../../test-mocks/cities';
 import {offers, serverOffers} from '../../test-mocks/offers';
 import {serverUserInfo, userInfo} from '../../test-mocks/user';
+import {Router} from 'react-router-dom';
+import {history} from '../../history';
 
 const api = createAPI();
 const apiMock = new MockAdapter(api);
@@ -55,15 +57,15 @@ store.dispatch(setAuthStatus(AuthStatus.AUTH));
 it(`Render Cards list`, () => {
   const tree = renderer
     .create(
-        <Provider store={store}>
-          <CardList
-            offers={offers}
-            type={CardType.MAIN}
-            onFavoriteClick={() => {}}
-            onCardTitleClick={() => {}}
-          />
-        </Provider>
-    )
+        <Router history={history}>
+          <Provider store={store}>
+            <CardList
+              offers={offers}
+              type={CardType.MAIN}
+              onFavoriteClick={jest.fn()}
+            />
+          </Provider>
+        </Router>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

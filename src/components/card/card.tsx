@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {CardType} from '../../constants';
 import {setActiveOfferId} from '../../reducer/app/app.reducer';
 import {OfferInterface, CardTypeEnum} from "../../types";
+import AppRoute from '../../routes';
+import {Link} from 'react-router-dom';
 
 const IN_BOOKMARKS_CLASS = `place-card__bookmark-button--active`;
 
@@ -34,14 +36,12 @@ const getCardTypeImageClass = (type) => {
 
 interface Props {
   offer: OfferInterface;
-  onTitleClick: (id: number) => void;
   onCardHover: (id: number | null) => void;
   cardType: CardTypeEnum;
   onFavoriteClick: (id: number, inBookmarks: number) => void;
 }
 
 const Card: React.FunctionComponent<Props> = ({
-  onTitleClick,
   onCardHover,
   onFavoriteClick,
   cardType,
@@ -55,9 +55,9 @@ const Card: React.FunctionComponent<Props> = ({
     <span>Premium</span>
   </div>}
   <div className={`place-card__image-wrapper ${getCardTypeImageClass(cardType)}`}>
-    <a href="#">
+    <Link to={`${AppRoute.OFFER}/${id}`}>
       <img className="place-card__image" src={image} width="260" height="200" alt="Place image"/>
-    </a>
+    </Link>
   </div>
   <div className="place-card__info">
     <div className="place-card__price-wrapper">
@@ -82,7 +82,7 @@ const Card: React.FunctionComponent<Props> = ({
       </div>
     </div>
     <h2 className="place-card__name">
-      <a onClick={() => onTitleClick(id)} href="#">{name}</a>
+      <Link to={`${AppRoute.OFFER}/${id}`}>{name}</Link>
     </h2>
     <p className="place-card__type">{type}</p>
   </div>

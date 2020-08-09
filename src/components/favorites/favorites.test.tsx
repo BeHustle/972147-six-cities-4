@@ -35,9 +35,8 @@ it(`Render favorites`, () => {
             <Favorites
               cities={cities}
               offers={offers}
-              onFavoriteClick={() => {}}
-              onFavoritesDidMount={() => {}}
-              onCardTitleClick={() => {}}
+              onFavoriteClick={jest.fn()}
+              onFavoritesDidMount={jest.fn()}
             />
           </Provider>
         </Router>)

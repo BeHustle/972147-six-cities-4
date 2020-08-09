@@ -19,7 +19,7 @@ import SingIn from './sign-in';
 import {Router} from 'react-router-dom';
 import {history} from '../../history';
 
-jest.mock(`../map/mapx`, () => `map`);
+jest.mock(`../map/map`, () => `map`);
 
 const api = createAPI();
 const apiMock = new MockAdapter(api);

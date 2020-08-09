@@ -1,6 +1,6 @@
 import MockAdapter from 'axios-mock-adapter';
-import Enzyme, {mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import {configure, mount} from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
 import * as React from 'react';
 import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
@@ -18,11 +18,9 @@ import {offers, serverOffers} from '../../test-mocks/offers';
 import {serverUserInfo, userInfo} from '../../test-mocks/user';
 import AddReview from './add-review';
 
-jest.mock(`../map/mapx`, () => `map`);
+jest.mock(`../map/map`, () => `map`);
 
-Enzyme.configure({
-  adapter: new Adapter(),
-});
+configure({adapter: new Adapter()});
 
 const api = createAPI();
 const apiMock = new MockAdapter(api);

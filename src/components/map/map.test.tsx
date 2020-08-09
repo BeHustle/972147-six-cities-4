@@ -12,12 +12,10 @@ import {setCities, setNearbyOffers, setOffers, setReviews} from '../../reducer/d
 import reducer from '../../reducer/reducer';
 import {setAuthStatus, setUserInfo} from '../../reducer/user/user.reducer';
 import {reviews, serverReviews} from '../../test-mocks/reviews';
-import Map from './map';
+import {Map} from './map';
 import {cities} from '../../test-mocks/cities';
 import {offers, serverOffers} from '../../test-mocks/offers';
 import {serverUserInfo, userInfo} from '../../test-mocks/user';
-
-jest.mock(`../map/mapx`, () => `map`);
 
 const api = createAPI();
 const apiMock = new MockAdapter(api);
@@ -55,6 +53,12 @@ store.dispatch(setUserInfo(userInfo));
 store.dispatch(setAuthStatus(AuthStatus.AUTH));
 
 it(`Render Map`, () => {
+  const createMapBlock = () => {
+    const section = global.document.createElement(`section`);
+    section.setAttribute(`id`, `map-${CardType.MAIN}`);
+    global.document.body.appendChild(section);
+  };
+  createMapBlock();
   const tree = renderer
     .create(
         <Provider store={store}>
@@ -62,6 +66,8 @@ it(`Render Map`, () => {
             type={CardType.MAIN}
             offers={offers}
             coordinates={cities[0].coordinates}
+            activeOfferId={1}
+            zoom={5}
           />
         </Provider>
     )

@@ -24,12 +24,7 @@ interface Props {
 class App extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
-    this._handleCardClick = this._handleCardClick.bind(this);
     this._handleFavoriteClick = this._handleFavoriteClick.bind(this);
-  }
-
-  _handleCardClick(id) {
-    history.push(`${AppRoute.OFFER}/${id}`);
   }
 
   _handleFavoriteClick(offerId, status) {
@@ -51,7 +46,7 @@ class App extends React.PureComponent<Props, {}> {
           <Router history={history}>
             <Switch>
               <Route exact path={AppRoute.MAIN}>
-                <Main onCardTitleClick={this._handleCardClick} onFavoriteClick={this._handleFavoriteClick} />
+                <Main onFavoriteClick={this._handleFavoriteClick} />
               </Route>
               <Route
                 exact
@@ -59,7 +54,6 @@ class App extends React.PureComponent<Props, {}> {
                 render={(props) =>
                   <CardDetail
                     offerId={parseInt(props.match.params.offerId, 10)}
-                    onCardTitleClick={this._handleCardClick}
                     onFavoriteClick={this._handleFavoriteClick}
                   />
                 }
@@ -70,7 +64,6 @@ class App extends React.PureComponent<Props, {}> {
               <PrivateRoute exact path={AppRoute.FAVORITES}>
                 <Favorites
                   onFavoriteClick={this._handleFavoriteClick}
-                  onCardTitleClick={this._handleCardClick}
                 />
               </PrivateRoute>
               <Route>

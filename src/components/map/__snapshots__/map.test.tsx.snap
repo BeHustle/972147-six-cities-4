@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Map 1`] = `
+<section
+  className="map cities__map"
+  id="map-main"
+/>
+`;

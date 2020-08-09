@@ -8,7 +8,7 @@ import {
   CardType,
 } from '../../constants';
 import {getActiveOfferId} from '../../reducer/app/app.selectors';
-import {OfferInterface} from "../../types";
+import {OfferInterface} from '../../types';
 
 const getMapClassByType = (type) => {
   switch (type) {
@@ -100,5 +100,7 @@ class Map extends React.PureComponent<Props, {}> {
 const mapStateToProps = (state) => ({
   activeOfferId: getActiveOfferId(state)
 });
+
+export {Map};
 
 export default connect(mapStateToProps)(Map);

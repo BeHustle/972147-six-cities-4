@@ -15,7 +15,8 @@ exports[`Render empty favorites list 1`] = `
       >
         <a
           className="locations__item-link"
-          href="#"
+          href="/"
+          onClick={[Function]}
         >
           <span>
             Amsterdam
@@ -42,7 +43,8 @@ exports[`Render empty favorites list 1`] = `
           className="place-card__image-wrapper favorites__image-wrapper"
         >
           <a
-            href="#"
+            href="/offer/1"
+            onClick={[Function]}
           >
             <img
               alt="Place image"
@@ -119,7 +121,7 @@ exports[`Render empty favorites list 1`] = `
             className="place-card__name"
           >
             <a
-              href="#"
+              href="/offer/1"
               onClick={[Function]}
             >
               Beautiful & luxurious apartment at great locatccion
@@ -141,7 +143,8 @@ exports[`Render empty favorites list 1`] = `
           className="place-card__image-wrapper favorites__image-wrapper"
         >
           <a
-            href="#"
+            href="/offer/2"
+            onClick={[Function]}
           >
             <img
               alt="Place image"
@@ -218,7 +221,7 @@ exports[`Render empty favorites list 1`] = `
             className="place-card__name"
           >
             <a
-              href="#"
+              href="/offer/2"
               onClick={[Function]}
             >
               Wood and stone place
@@ -244,7 +247,8 @@ exports[`Render empty favorites list 1`] = `
       >
         <a
           className="locations__item-link"
-          href="#"
+          href="/"
+          onClick={[Function]}
         >
           <span>
             Paris
@@ -271,7 +275,8 @@ exports[`Render empty favorites list 1`] = `
           className="place-card__image-wrapper favorites__image-wrapper"
         >
           <a
-            href="#"
+            href="/offer/3"
+            onClick={[Function]}
           >
             <img
               alt="Place image"
@@ -348,7 +353,7 @@ exports[`Render empty favorites list 1`] = `
             className="place-card__name"
           >
             <a
-              href="#"
+              href="/offer/3"
               onClick={[Function]}
             >
               Canal View Prinsengracht
@@ -374,7 +379,8 @@ exports[`Render empty favorites list 1`] = `
       >
         <a
           className="locations__item-link"
-          href="#"
+          href="/"
+          onClick={[Function]}
         >
           <span>
             Cologne
@@ -401,7 +407,8 @@ exports[`Render empty favorites list 1`] = `
           className="place-card__image-wrapper favorites__image-wrapper"
         >
           <a
-            href="#"
+            href="/offer/4"
+            onClick={[Function]}
           >
             <img
               alt="Place image"
@@ -478,7 +485,7 @@ exports[`Render empty favorites list 1`] = `
             className="place-card__name"
           >
             <a
-              href="#"
+              href="/offer/4"
               onClick={[Function]}
             >
               Nice, cozy, warm big bed apartment

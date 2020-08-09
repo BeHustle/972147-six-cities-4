@@ -12,13 +12,12 @@ import SortList from '../sort-list/sort-list';
 import {CityInterface, OfferInterface} from "../../types";
 
 interface Props {
-  onCardTitleClick: () => void;
   offers: Array<OfferInterface>;
   city: CityInterface;
   onFavoriteClick: () => void;
 }
 
-const Main: React.FunctionComponent<Props> = ({onCardTitleClick, city, offers, onFavoriteClick}: Props) =>
+const Main: React.FunctionComponent<Props> = ({city, offers, onFavoriteClick}: Props) =>
   <div className="page page--gray page--main">
     <Header />
     <main className={`page__main page__main--index ${offers.length || `page__main--index-empty`}`}>
@@ -36,7 +35,7 @@ const Main: React.FunctionComponent<Props> = ({onCardTitleClick, city, offers, o
 
               <SortList />
 
-              <CardList offers={offers} onFavoriteClick={onFavoriteClick} onCardTitleClick={onCardTitleClick} type={CardType.MAIN}/>
+              <CardList offers={offers} onFavoriteClick={onFavoriteClick} type={CardType.MAIN}/>
             </section>
             <div className="cities__right-section">
               <Map offers={offers} type={CardType.MAIN} coordinates={city.coordinates} zoom={city.zoom} />

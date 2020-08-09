@@ -192,7 +192,7 @@ exports[`Render Main 1`] = `
             </span>
             <span
               className="places__sorting-type"
-              tabIndex="0"
+              tabIndex={0}
             >
               Popular
               <svg
@@ -211,28 +211,28 @@ exports[`Render Main 1`] = `
               <li
                 className="places__option places__option--active"
                 onClick={[Function]}
-                tabIndex="0"
+                tabIndex={0}
               >
                 Popular
               </li>
               <li
                 className="places__option false"
                 onClick={[Function]}
-                tabIndex="0"
+                tabIndex={0}
               >
                 Price: low to high
               </li>
               <li
                 className="places__option false"
                 onClick={[Function]}
-                tabIndex="0"
+                tabIndex={0}
               >
                 Price: high to low
               </li>
               <li
                 className="places__option false"
                 onClick={[Function]}
-                tabIndex="0"
+                tabIndex={0}
               >
                 Top rated first
               </li>
@@ -257,7 +257,8 @@ exports[`Render Main 1`] = `
                 className="place-card__image-wrapper cities__image-wrapper"
               >
                 <a
-                  href="#"
+                  href="/offer/1"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"
@@ -334,7 +335,7 @@ exports[`Render Main 1`] = `
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    href="/offer/1"
                     onClick={[Function]}
                   >
                     Beautiful & luxurious apartment at great locatccion
@@ -356,7 +357,8 @@ exports[`Render Main 1`] = `
                 className="place-card__image-wrapper cities__image-wrapper"
               >
                 <a
-                  href="#"
+                  href="/offer/2"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"
@@ -433,7 +435,7 @@ exports[`Render Main 1`] = `
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    href="/offer/2"
                     onClick={[Function]}
                   >
                     Wood and stone place
@@ -451,110 +453,9 @@ exports[`Render Main 1`] = `
         <div
           className="cities__right-section"
         >
-          <map
-            coordinates={
-              Array [
-                52.38333,
-                4.9,
-              ]
-            }
-            offers={
-              Array [
-                Object {
-                  "author": Object {
-                    "avatar": "img/avatar-angelina.jpg",
-                    "isSuper": true,
-                    "name": "Angelina",
-                  },
-                  "cityId": 1,
-                  "coordinates": Array [
-                    52.3909553943508,
-                    4.85309666406198,
-                  ],
-                  "facilities": Array [
-                    "Wi-Fi",
-                    "Washing machine",
-                    "Towels",
-                    "Heating",
-                    "Coffee machine",
-                    "Baby seat",
-                    "Kitchen",
-                    "Dishwasher",
-                    "Cabel TV",
-                    "Fridge",
-                  ],
-                  "guests": "Max 4 adults",
-                  "id": 1,
-                  "image": "img/apartment-01.jpg",
-                  "images": Array [
-                    "img/room.jpg",
-                    "img/apartment-01.jpg",
-                    "img/apartment-02.jpg",
-                    "img/apartment-03.jpg",
-                    "img/studio-01.jpg",
-                    "img/apartment-01.jpg",
-                  ],
-                  "inBookmarks": true,
-                  "isPremium": true,
-                  "name": "Beautiful & luxurious apartment at great locatccion",
-                  "price": 132,
-                  "rating": 4.1,
-                  "rooms": "3 Bedrooms",
-                  "text": Array [
-                    "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
-      The building is green and from 18th century.",
-                    "An independent House, strategically located between Rembrand Square and National Opera, but where the
-      bustle of the city comes to rest in this alley flowery and colorful.",
-                  ],
-                  "type": "hotel",
-                  "zoom": 10,
-                },
-                Object {
-                  "author": Object {
-                    "avatar": "img/avatar-max.jpg",
-                    "isSuper": true,
-                    "name": "Max",
-                  },
-                  "cityId": 1,
-                  "coordinates": Array [
-                    52.369553943508,
-                    4.85309666406198,
-                  ],
-                  "facilities": Array [
-                    "Wi-Fi",
-                    "Washing machine",
-                    "Towels",
-                  ],
-                  "guests": "Max 2 adults",
-                  "id": 2,
-                  "image": "img/apartment-02.jpg",
-                  "images": Array [
-                    "img/room.jpg",
-                    "img/apartment-01.jpg",
-                    "img/apartment-02.jpg",
-                    "img/apartment-03.jpg",
-                    "img/studio-01.jpg",
-                    "img/apartment-01.jpg",
-                  ],
-                  "inBookmarks": false,
-                  "isPremium": false,
-                  "name": "Wood and stone place",
-                  "price": 254,
-                  "rating": 5,
-                  "rooms": "1 Bedrooms",
-                  "text": Array [
-                    "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
-      The building is green and from 18th century.",
-                    "An independent House, strategically located between Rembrand Square and National Opera, but where the
-      bustle of the city comes to rest in this alley flowery and colorful.",
-                  ],
-                  "type": "apartment",
-                  "zoom": 10,
-                },
-              ]
-            }
-            type="main"
-            zoom={10}
+          <section
+            className="map cities__map"
+            id="map-main"
           />
         </div>
       </div>

@@ -1,7 +1,7 @@
 import MockAdapter from 'axios-mock-adapter';
 import * as React from 'react';
-import Enzyme, {mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import {configure, mount} from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
 import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
@@ -18,10 +18,10 @@ import {reviews, serverReviews} from '../../test-mocks/reviews';
 import {serverUserInfo, userInfo} from '../../test-mocks/user';
 import Card from './card';
 import {offers, serverOffers} from '../../test-mocks/offers';
+import {Router} from 'react-router-dom';
+import {history} from '../../history';
 
-Enzyme.configure({
-  adapter: new Adapter(),
-});
+configure({adapter: new Adapter()});
 
 const api = createAPI();
 const apiMock = new MockAdapter(api);
@@ -59,34 +59,18 @@ store.dispatch(setUserInfo(userInfo));
 store.dispatch(setAuthStatus(AuthStatus.AUTH));
 
 describe(`Card`, () => {
-
-  it(`Title link should be clicked`, () => {
-    const onTitleClick = jest.fn();
-    const card = mount(<Provider store={store}>
-      <Card
-        offer={offers[0]}
-        onCardHover={() => {}}
-        onTitleClick={onTitleClick}
-        onFavoriteClick={() => {}}
-        cardType={CardType.MAIN}
-      />
-    </Provider>);
-    const titleLink = card.find(`.place-card__name a`);
-    titleLink.simulate(`click`);
-
-    expect(onTitleClick).toBeCalled();
-  });
-
   it(`On mouse enter onCardHover should be called with offer id`, () => {
     const offer = offers[0];
-    const card = mount(<Provider store={store}>
-      <Card
-        offer={offer}
-        onTitleClick={() => {}}
-        onFavoriteClick={() => {}}
-        cardType={CardType.MAIN}
-      />
-    </Provider>);
+    const card = mount(
+        <Router history={history}>
+          <Provider store={store}>
+            <Card
+              offer={offer}
+              onFavoriteClick={jest.fn()}
+              cardType={CardType.MAIN}/>
+          </Provider>
+        </Router>
+    );
     const cardElement = card.find(`.place-card`);
     cardElement.simulate(`mouseEnter`);
     expect(getActiveOfferId(store.getState())).toEqual(offer.id);
@@ -94,14 +78,16 @@ describe(`Card`, () => {
 
   it(`On mouse leave onCardHover should be called with offer null`, () => {
     const offer = offers[0];
-    const card = mount(<Provider store={store}>
-      <Card
-        offer={offer}
-        onTitleClick={() => {}}
-        onFavoriteClick={() => {}}
-        cardType={CardType.MAIN}
-      />
-    </Provider>);
+    const card = mount(
+        <Router history={history}>
+          <Provider store={store}>
+            <Card
+              offer={offer}
+              onFavoriteClick={jest.fn()}
+              cardType={CardType.MAIN}/>
+          </Provider>
+        </Router>
+    );
     const cardElement = card.find(`.place-card`);
     cardElement.simulate(`mouseEnter`);
     cardElement.simulate(`mouseLeave`);
@@ -113,17 +99,18 @@ describe(`Card`, () => {
     const onFavoriteClick = jest.fn();
     const offer = offers[0];
     const preventDefault = jest.fn();
-    const card = mount(<Provider store={store}>
-      <Card
-        offer={offer}
-        onTitleClick={() => {}}
-        onFavoriteClick={onFavoriteClick}
-        cardType={CardType.MAIN}
-      />
-    </Provider>);
+    const card = mount(
+        <Router history={history}>
+          <Provider store={store}>
+            <Card
+              offer={offer}
+              onFavoriteClick={onFavoriteClick}
+              cardType={CardType.MAIN}/>
+          </Provider>
+        </Router>
+    );
     const favoriteBtn = card.find(`.place-card__bookmark-button`).first();
     favoriteBtn.simulate(`click`, {preventDefault});
     expect(onFavoriteClick).toBeCalled();
   });
 });
-

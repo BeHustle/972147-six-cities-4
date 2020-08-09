@@ -7,8 +7,8 @@ it(`Render review form`, () => {
   const tree = renderer
     .create(<AddReview
       offerId={1}
-      onFormSubmit={() => {}}
-      resetCommentStatus={() => {}}
+      onFormSubmit={jest.fn()}
+      resetCommentStatus={jest.fn()}
       commentStatus={CommentStatus.NOT_SEND}
     />)
     .toJSON();

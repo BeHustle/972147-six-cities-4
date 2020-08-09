@@ -10,7 +10,7 @@ it(`Render Cities list`, () => {
         <CitiesList
           cities={cities}
           activeCityId={cities[0].id}
-          onCityLinkClick={() => {}}
+          onCityLinkClick={jest.fn()}
         />
     )
     .toJSON();

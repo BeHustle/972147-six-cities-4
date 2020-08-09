@@ -9,6 +9,8 @@ import reducer from '../../reducer/reducer';
 import {cities} from '../../test-mocks/cities';
 import {offers} from '../../test-mocks/offers';
 import FavoritesList from './favorites-list';
+import {Router} from 'react-router-dom';
+import {history} from '../../history';
 
 const api = createAPI();
 
@@ -22,13 +24,14 @@ const store = createStore(
 it(`Render empty favorites list`, () => {
   const tree = renderer
     .create(
-        <Provider store={store}>
-          <FavoritesList
-            offers={offers}
-            cities={cities}
-            onFavoriteClick={() => {}}
-            onCardTitleClick={() => {}}/>
-        </Provider>
+        <Router history={history}>
+          <Provider store={store}>
+            <FavoritesList
+              offers={offers}
+              cities={cities}
+              onFavoriteClick={jest.fn()}/>
+          </Provider>
+        </Router>
     )
     .toJSON();
 

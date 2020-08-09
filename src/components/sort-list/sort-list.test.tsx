@@ -8,7 +8,7 @@ it(`Render Sort list`, () => {
     .create(
         <SortList
           activeSort={Sorts.POPULAR}
-          onSortClick={() => {}}
+          onSortClick={jest.fn()}
         />
     )
     .toJSON();

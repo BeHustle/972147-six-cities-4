@@ -35,18 +35,16 @@ interface Props {
   offers: Array<OfferInterface>;
   type: string;
   sortType: string;
-  onCardTitleClick: () => void;
   onFavoriteClick: () => void;
 }
 
-const CardList: React.FunctionComponent<Props> = ({offers, onCardTitleClick, type, sortType, onFavoriteClick}: Props) =>
+const CardList: React.FunctionComponent<Props> = ({offers, type, sortType, onFavoriteClick}: Props) =>
   <div className={`places__list ${getCardListTypeClass(type)}`}>
     {sortCards(offers, sortType).map((offer) =>
       <Card
         cardType={type}
         key={offer.id}
         offer={offer}
-        onTitleClick={onCardTitleClick}
         onFavoriteClick={onFavoriteClick}
       />)}
   </div>;

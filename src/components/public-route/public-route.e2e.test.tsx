@@ -1,14 +1,12 @@
 import * as React from 'react';
-import Enzyme, {mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import {configure, mount} from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
 import {PublicRoute} from './public-route';
 import {MemoryRouter} from "react-router";
 import AppRoute from '../../routes';
 import {AuthStatus} from '../../constants';
 
-Enzyme.configure({
-  adapter: new Adapter(),
-});
+configure({adapter: new Adapter()});
 
 const MockComponent = () => <div />;
 

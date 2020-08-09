@@ -1,13 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {setActiveCity} from '../../reducer/app/app.reducer';
 import {getActiveCity} from '../../reducer/app/app.selectors';
 import {getCities} from '../../reducer/data/data.selectors';
+import {CityInterface} from "../../types";
 
 const ACTIVE_CITY_CLASS = `tabs__item--active`;
 
-const CitiesList = ({cities, activeCityId, onCityLinkClick}) =>
+interface Props {
+  cities: Array<CityInterface>;
+  activeCityId: number;
+  onCityLinkClick: (evt: object, item: object) => void;
+}
+
+const CitiesList: React.FunctionComponent<Props> = ({cities, activeCityId, onCityLinkClick}: Props) =>
   <section className="locations container">
     <ul className="locations__list tabs__list">
       {cities.map((item) =>
@@ -21,17 +27,6 @@ const CitiesList = ({cities, activeCityId, onCityLinkClick}) =>
       )}
     </ul>
   </section>;
-
-CitiesList.propTypes = {
-  cities: PropTypes.arrayOf(PropTypes.exact({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
-    zoom: PropTypes.number.isRequired
-  })).isRequired,
-  activeCityId: PropTypes.number.isRequired,
-  onCityLinkClick: PropTypes.func.isRequired
-};
 
 const mapDispatchToProps = (dispatch) => ({
   onCityLinkClick(evt, city) {

@@ -1,16 +1,23 @@
-import React from 'react';
+import * as React from 'react';
 import {Link} from 'react-router-dom';
-import {HouseType} from '../../constants';
 import {getFavoriteCities, getFavoriteOffers} from '../../reducer/data/data.selectors';
 import AppRoute from '../../routes';
-import EmptyFavoritesScreen from '../empty-favorites-screen/empty-favorites-screen.tsx';
+import EmptyFavoritesScreen from '../empty-favorites-screen/empty-favorites-screen';
 import FavoritesList from '../favorites-list/favorites-list';
 import Header from '../header/header';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
 import {Operation as DataOperation} from '../../reducer/data/data.reducer';
+import {CityInterface, OfferInterface} from "../../types";
 
-class Favorites extends React.PureComponent {
+interface Props {
+  offers: Array<OfferInterface> | [];
+  cities: Array<CityInterface> | [];
+  onFavoritesDidMount: () => void;
+  onFavoriteClick: () => void;
+  onCardTitleClick: () => void;
+}
+
+class Favorites extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
   }
@@ -49,42 +56,6 @@ class Favorites extends React.PureComponent {
     </div>;
   }
 }
-
-
-Favorites.propTypes = {
-  offers: PropTypes.arrayOf(PropTypes.exact({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(HouseType).isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    inBookmarks: PropTypes.bool.isRequired,
-    rating: PropTypes.number.isRequired,
-    coordinates: PropTypes.arrayOf(PropTypes.number),
-    zoom: PropTypes.number.isRequired,
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
-    rooms: PropTypes.string.isRequired,
-    guests: PropTypes.string.isRequired,
-    facilities: PropTypes.arrayOf(PropTypes.string),
-    author: PropTypes.exact({
-      name: PropTypes.string.isRequired,
-      avatar: PropTypes.string,
-      isSuper: PropTypes.bool.isRequired
-    }).isRequired,
-    text: PropTypes.arrayOf(PropTypes.string).isRequired,
-    cityId: PropTypes.number.isRequired
-  })),
-  cities: PropTypes.arrayOf(PropTypes.exact({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
-    zoom: PropTypes.number.isRequired
-  })),
-  onFavoritesDidMount: PropTypes.func.isRequired,
-  onFavoriteClick: PropTypes.func.isRequired,
-  onCardTitleClick: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = (state) => ({
   offers: getFavoriteOffers(state),

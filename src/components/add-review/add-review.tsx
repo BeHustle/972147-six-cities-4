@@ -1,12 +1,29 @@
-import React from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
 import {CommentMessage, CommentStatus} from '../../constants';
 import {ReviewLength} from '../../constants';
 import {Operation as DataOperation, setCommentStatus} from '../../reducer/data/data.reducer';
 import {getCommentStatus} from '../../reducer/data/data.selectors';
 
-class AddReview extends React.PureComponent {
+interface Props {
+  offerId: number;
+  commentStatus: string;
+  onFormSubmit: (obj: {rating: number; comment: string}, offerId: number) => void;
+  resetCommentStatus: () => void;
+}
+
+interface State {
+  formInSubmitting: boolean;
+  isTextareaCorrect: boolean;
+  rating: number;
+}
+
+class AddReview extends React.PureComponent<Props, State> {
+  private textAreaRef: React.RefObject<HTMLTextAreaElement>;
+  private submitBtnRef: React.RefObject<HTMLButtonElement>;
+  private formRef: React.RefObject<HTMLFormElement>;
+  private messageRef: React.RefObject<HTMLDivElement>;
+
   constructor(props) {
     super(props);
     this.textAreaRef = React.createRef();
@@ -16,7 +33,7 @@ class AddReview extends React.PureComponent {
     this.state = {
       formInSubmitting: false,
       isTextareaCorrect: false,
-      rating: null,
+      rating: 0,
     };
     this.handleRatingChange = this.handleRatingChange.bind(this);
     this.handleTextAreaChange = this.handleTextAreaChange.bind(this);
@@ -155,13 +172,6 @@ class AddReview extends React.PureComponent {
     </form>;
   }
 }
-
-AddReview.propTypes = {
-  offerId: PropTypes.number.isRequired,
-  commentStatus: PropTypes.string,
-  onFormSubmit: PropTypes.func.isRequired,
-  resetCommentStatus: PropTypes.func.isRequired
-};
 
 const mapDispatchToProps = (dispatch) => ({
   onFormSubmit(comment, offerId) {

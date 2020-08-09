@@ -1,7 +1,6 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux';
-import {DEFAULT_AVATAR, CardType, NEAR_PLACES_COUNT, HouseType, MAX_IMAGES_COUNT} from '../../constants';
+import {DEFAULT_AVATAR, CardType, NEAR_PLACES_COUNT, MAX_IMAGES_COUNT} from '../../constants';
 import {getNearbyOffers, getOffers} from '../../reducer/data/data.selectors';
 import CardList from '../card-list/card-list';
 import {Operation as DataOperation} from '../../reducer/data/data.reducer';
@@ -9,11 +8,21 @@ import Header from '../header/header';
 import NotFound from '../not-found/not-found';
 import Reviews from '../reviews/reviews';
 import Map from '../map/map';
+import {OfferInterface} from "../../types";
 
 const SUPER_USER_CLASS = `property__avatar-wrapper--pro`;
 const IN_BOOKMARKS_CLASS = `property__bookmark-button--active`;
 
-class CardDetail extends React.PureComponent {
+interface Props {
+  offerId: number;
+  offers: Array<OfferInterface>;
+  nearbyOffers: Array<OfferInterface> | [];
+  onCardTitleClick: () => void;
+  onFavoriteClick: (id: number, inBookmarks: number) => void;
+  onCardDetailMount: (offerId: number) => void;
+}
+
+class CardDetail extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
   }
@@ -135,37 +144,6 @@ class CardDetail extends React.PureComponent {
     </div>;
   }
 }
-
-CardDetail.propTypes = {
-  offerId: PropTypes.number.isRequired,
-  offers: PropTypes.arrayOf(PropTypes.exact({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(HouseType).isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    inBookmarks: PropTypes.bool.isRequired,
-    rating: PropTypes.number.isRequired,
-    coordinates: PropTypes.arrayOf(PropTypes.number),
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
-    rooms: PropTypes.string.isRequired,
-    guests: PropTypes.string.isRequired,
-    facilities: PropTypes.arrayOf(PropTypes.string),
-    zoom: PropTypes.number.isRequired,
-    author: PropTypes.exact({
-      name: PropTypes.string.isRequired,
-      avatar: PropTypes.string,
-      isSuper: PropTypes.bool.isRequired,
-    }).isRequired,
-    text: PropTypes.arrayOf(PropTypes.string).isRequired,
-    cityId: PropTypes.number.isRequired,
-  })).isRequired,
-  onCardTitleClick: PropTypes.func.isRequired,
-  onCardDetailMount: PropTypes.func.isRequired,
-  nearbyOffers: PropTypes.array,
-  onFavoriteClick: PropTypes.func.isRequired
-};
 
 const mapDispatchToProps = (dispatch) => ({
   onCardDetailMount(offerId) {

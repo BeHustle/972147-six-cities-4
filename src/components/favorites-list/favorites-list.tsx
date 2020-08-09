@@ -1,11 +1,18 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import {CardType, HouseType} from '../../constants';
-import Card from '../card/card.tsx';
+import * as React from 'react';
+import {CardType} from '../../constants';
+import Card from '../card/card';
+import {CityInterface, OfferInterface} from "../../types";
 
 const getOffersByCityId = (offers, cityId) => offers.filter((offer) => offer.cityId === cityId);
 
-const FavoritesList = ({offers, cities, onFavoriteClick, onCardTitleClick}) =>
+interface Props {
+  offers: Array<OfferInterface>;
+  cities: Array<CityInterface>;
+  onFavoriteClick: () => void;
+  onCardTitleClick: () => void;
+}
+
+const FavoritesList: React.FunctionComponent<Props> = ({offers, cities, onFavoriteClick, onCardTitleClick}: Props) =>
   <ul className="favorites__list">
     {cities.map((city) =>
       getOffersByCityId(offers, city.id).length
@@ -21,7 +28,7 @@ const FavoritesList = ({offers, cities, onFavoriteClick, onCardTitleClick}) =>
             {getOffersByCityId(offers, city.id).map((offer) =>
               <Card
                 key={offer.id}
-                onCardHover={() => {}}
+                onCardHover={() => null}
                 onFavoriteClick={onFavoriteClick}
                 onTitleClick={onCardTitleClick}
                 offer={offer}
@@ -32,39 +39,5 @@ const FavoritesList = ({offers, cities, onFavoriteClick, onCardTitleClick}) =>
         : ``
     )}
   </ul>;
-
-FavoritesList.propTypes = {
-  offers: PropTypes.arrayOf(PropTypes.exact({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(HouseType).isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    inBookmarks: PropTypes.bool.isRequired,
-    rating: PropTypes.number.isRequired,
-    coordinates: PropTypes.arrayOf(PropTypes.number),
-    zoom: PropTypes.number.isRequired,
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
-    rooms: PropTypes.string.isRequired,
-    guests: PropTypes.string.isRequired,
-    facilities: PropTypes.arrayOf(PropTypes.string),
-    author: PropTypes.exact({
-      name: PropTypes.string.isRequired,
-      avatar: PropTypes.string,
-      isSuper: PropTypes.bool.isRequired
-    }).isRequired,
-    text: PropTypes.arrayOf(PropTypes.string).isRequired,
-    cityId: PropTypes.number.isRequired
-  })),
-  cities: PropTypes.arrayOf(PropTypes.exact({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
-    zoom: PropTypes.number.isRequired
-  })),
-  onFavoriteClick: PropTypes.func.isRequired,
-  onCardTitleClick: PropTypes.func.isRequired
-};
 
 export default FavoritesList;

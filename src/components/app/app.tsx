@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {Router, Switch, Route, Link} from 'react-router-dom';
 import {getAppStatus} from '../../reducer/app/app.selectors';
 import {getAuthStatus} from '../../reducer/user/user.selectors';
@@ -7,7 +7,6 @@ import CardDetail from '../card-detail/card-detail';
 import Favorites from '../favorites/favorites';
 import Main from '../main/main';
 import {AppStatus, AuthStatus} from '../../constants';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import NotFound from '../not-found/not-found';
 import PublicRoute from '../public-route/public-route';
@@ -16,7 +15,13 @@ import {history} from '../../history';
 import PrivateRoute from '../private-route/private-route';
 import {Operation as DataOperation} from '../../reducer/data/data.reducer';
 
-class App extends React.PureComponent {
+interface Props {
+  appStatus: string;
+  authStatus: string;
+  onFavoriteClick: (offerId: number, status: string) => void;
+}
+
+class App extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
     this._handleCardClick = this._handleCardClick.bind(this);
@@ -79,12 +84,6 @@ class App extends React.PureComponent {
     }
   }
 }
-
-App.propTypes = {
-  appStatus: PropTypes.oneOf(Object.values(AppStatus)),
-  authStatus: PropTypes.oneOf(Object.values(AuthStatus)),
-  onFavoriteClick: PropTypes.func.isRequired
-};
 
 const mapStateToProps = (state) => ({
   appStatus: getAppStatus(state),

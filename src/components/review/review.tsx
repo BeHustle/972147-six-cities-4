@@ -1,11 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {DEFAULT_AVATAR} from '../../constants';
-import moment from 'moment';
+import * as moment from 'moment';
 
-const Review = ({
+interface Props {
+  review: {
+    id: number;
+    author: {
+      name: string;
+      avatar: string;
+    };
+    text: string;
+    rating: number;
+    date: Date;
+  };
+}
+
+const Review: React.FunctionComponent<Props> = ({
   review: {author, text, rating, date}
-}) =>
+}: Props) =>
   <li className="reviews__item">
     <div className="reviews__user user">
       <div className="reviews__avatar-wrapper user__avatar-wrapper">
@@ -24,18 +36,5 @@ const Review = ({
       <time className="reviews__time" dateTime={moment(date).format(`YYYY-MM-DD`)}>{moment(date).format(`MMMM YYYY`)}</time>
     </div>
   </li>;
-
-Review.propTypes = {
-  review: PropTypes.exact({
-    id: PropTypes.number.isRequired,
-    author: PropTypes.exact({
-      name: PropTypes.string.isRequired,
-      avatar: PropTypes.string
-    }),
-    text: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    date: PropTypes.instanceOf(Date)
-  })
-};
 
 export default Review;

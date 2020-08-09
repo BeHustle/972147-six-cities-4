@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import renderer from 'react-test-renderer';
 import Review from './review.tsx';
 import {reviews} from '../../test-mocks/reviews';

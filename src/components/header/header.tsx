@@ -1,12 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {AuthStatus} from '../../constants';
 import {getAuthStatus, getUserInfo} from '../../reducer/user/user.selectors';
 import {Link} from 'react-router-dom';
 import AppRoute from '../../routes';
+import {UserInfoInterface} from "../../types";
 
-const Header = ({userInfo, authStatus}) =>
+interface Props {
+  userInfo: UserInfoInterface;
+  authStatus: string;
+}
+
+const Header: React.FunctionComponent<Props> = ({userInfo, authStatus}: Props) =>
   <header className="header">
     <div className="container">
       <div className="header__wrapper">
@@ -30,15 +35,6 @@ const Header = ({userInfo, authStatus}) =>
     </div>
   </header>;
 
-Header.propTypes = {
-  userInfo: PropTypes.exact({
-    img: PropTypes.string,
-    email: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    isPro: PropTypes.bool.isRequired
-  }),
-  authStatus: PropTypes.oneOf(Object.values(AuthStatus)),
-};
 
 const mapStateToProps = (state) => ({
   userInfo: getUserInfo(state),

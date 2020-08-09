@@ -50,13 +50,6 @@ const ReviewLength = {
   MAX: 300
 };
 
-const HouseType = [
-  `apartment`,
-  `room`,
-  `house`,
-  `hotel`
-];
-
 const CommentStatus = {
   SUCCESS: `SUCCESS`,
   FAIL: `FAIL`,
@@ -80,7 +73,6 @@ export {
   Sorts,
   CardType,
   AppStatus,
-  HouseType,
   AuthStatus,
   ErrorCode,
   ReviewLength,

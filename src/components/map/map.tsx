@@ -1,15 +1,14 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import L from 'leaflet';
+import * as React from 'react';
+import * as L from 'leaflet';
 import {connect} from 'react-redux';
 import {
   ICON_SIZE,
   ICON_PATH,
   ACTIVE_ICON_PATH,
   CardType,
-  HouseType,
 } from '../../constants';
 import {getActiveOfferId} from '../../reducer/app/app.selectors';
+import {OfferInterface} from "../../types";
 
 const getMapClassByType = (type) => {
   switch (type) {
@@ -24,7 +23,18 @@ const getMapClassByType = (type) => {
 
 const getMapIdByType = (type) => `map-${type}`;
 
-class Map extends React.PureComponent {
+interface Props {
+  type: string;
+  offers: Array<OfferInterface>;
+  coordinates: Array<number>;
+  zoom: number;
+  activeOfferId: number | null;
+}
+
+class Map extends React.PureComponent<Props, {}> {
+  private _map: null | L.map;
+  private _activeLayer: L.LayerGroup;
+
   constructor(props) {
     super(props);
     this._map = null;
@@ -86,36 +96,6 @@ class Map extends React.PureComponent {
     return <section id={getMapIdByType(type)} className={`map ${getMapClassByType(type)}`} />;
   }
 }
-
-Map.propTypes = {
-  type: PropTypes.string.isRequired,
-  offers: PropTypes.arrayOf(PropTypes.exact({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(HouseType).isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    inBookmarks: PropTypes.bool.isRequired,
-    rating: PropTypes.number.isRequired,
-    coordinates: PropTypes.arrayOf(PropTypes.number),
-    zoom: PropTypes.number.isRequired,
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
-    rooms: PropTypes.string.isRequired,
-    guests: PropTypes.string.isRequired,
-    facilities: PropTypes.arrayOf(PropTypes.string),
-    author: PropTypes.exact({
-      name: PropTypes.string.isRequired,
-      avatar: PropTypes.string,
-      isSuper: PropTypes.bool.isRequired
-    }).isRequired,
-    text: PropTypes.arrayOf(PropTypes.string).isRequired,
-    cityId: PropTypes.number.isRequired
-  })).isRequired,
-  coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
-  zoom: PropTypes.number.isRequired,
-  activeOfferId: PropTypes.number,
-};
 
 const mapStateToProps = (state) => ({
   activeOfferId: getActiveOfferId(state)

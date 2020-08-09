@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from 'react-redux';
-import {CardType, HouseType} from '../../constants';
+import {CardType} from '../../constants';
 import {setActiveOfferId} from '../../reducer/app/app.reducer';
+import {OfferInterface, CardTypeEnum} from "../../types";
 
 const IN_BOOKMARKS_CLASS = `place-card__bookmark-button--active`;
 
@@ -32,13 +32,21 @@ const getCardTypeImageClass = (type) => {
   }
 };
 
-const Card = ({
+interface Props {
+  offer: OfferInterface;
+  onTitleClick: (id: number) => void;
+  onCardHover: (id: number | null) => void;
+  cardType: CardTypeEnum;
+  onFavoriteClick: (id: number, inBookmarks: number) => void;
+}
+
+const Card: React.FunctionComponent<Props> = ({
   onTitleClick,
   onCardHover,
   onFavoriteClick,
   cardType,
   offer: {id, name, price, image, type, isPremium, inBookmarks, rating},
-}) => <article
+}: Props) => <article
   className={`place-card ${getCardTypeClass(cardType)}`}
   onMouseEnter={() => onCardHover(id)}
   onMouseLeave={() => onCardHover(null)}>
@@ -79,36 +87,6 @@ const Card = ({
     <p className="place-card__type">{type}</p>
   </div>
 </article>;
-
-Card.propTypes = {
-  onTitleClick: PropTypes.func.isRequired,
-  onCardHover: PropTypes.func.isRequired,
-  cardType: PropTypes.string.isRequired,
-  offer: PropTypes.exact({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(HouseType).isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    inBookmarks: PropTypes.bool.isRequired,
-    rating: PropTypes.number.isRequired,
-    coordinates: PropTypes.arrayOf(PropTypes.number),
-    zoom: PropTypes.number.isRequired,
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
-    rooms: PropTypes.string.isRequired,
-    guests: PropTypes.string.isRequired,
-    facilities: PropTypes.arrayOf(PropTypes.string),
-    author: PropTypes.exact({
-      name: PropTypes.string.isRequired,
-      avatar: PropTypes.string,
-      isSuper: PropTypes.bool.isRequired
-    }).isRequired,
-    text: PropTypes.arrayOf(PropTypes.string).isRequired,
-    cityId: PropTypes.number.isRequired
-  }),
-  onFavoriteClick: PropTypes.func.isRequired
-};
 
 const mapDispatchToProps = (dispatch) => ({
   onCardHover(id) {

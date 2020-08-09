@@ -1,14 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {AuthStatus} from '../../constants';
 import {Operation as DataOperation} from '../../reducer/data/data.reducer';
 import {getReviews} from '../../reducer/data/data.selectors';
 import {getAuthStatus} from '../../reducer/user/user.selectors';
-import AddReview from '../add-review/add-review.tsx';
-import Review from '../review/review.tsx';
+import AddReview from '../add-review/add-review';
+import Review from '../review/review';
+import {ReviewInterface} from "../../types";
 
-class Reviews extends React.PureComponent {
+interface Props {
+  offerId: number;
+  onReviewsMount: (offerId: number) => void;
+  reviews: Array<ReviewInterface>;
+  authStatus: string;
+}
+
+class Reviews extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
   }
@@ -31,22 +38,6 @@ class Reviews extends React.PureComponent {
     </section>;
   }
 }
-
-Reviews.propTypes = {
-  offerId: PropTypes.number.isRequired,
-  reviews: PropTypes.arrayOf(PropTypes.exact({
-    id: PropTypes.number.isRequired,
-    author: PropTypes.exact({
-      name: PropTypes.string.isRequired,
-      avatar: PropTypes.string,
-    }),
-    text: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    date: PropTypes.instanceOf(Date),
-  })),
-  onReviewsMount: PropTypes.func.isRequired,
-  authStatus: PropTypes.oneOf(Object.values(AuthStatus)),
-};
 
 const mapDispatchToProps = (dispatch) => ({
   onReviewsMount(offerId) {

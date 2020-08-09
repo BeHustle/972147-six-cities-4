@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import renderer from 'react-test-renderer';
 import NotFound from './not-found.tsx';
 import {Router} from 'react-router-dom';

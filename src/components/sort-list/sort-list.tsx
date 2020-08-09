@@ -1,6 +1,5 @@
-import React from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
 import {setActiveSort} from '../../reducer/app/app.reducer';
 import {getActiveSort} from '../../reducer/app/app.selectors';
 import {Sorts} from '../../constants';
@@ -8,7 +7,16 @@ import {Sorts} from '../../constants';
 const activeSortClass = `places__option--active`;
 const hoveredSortListClass = `places__options--opened`;
 
-class SortList extends React.PureComponent {
+interface Props {
+  activeSort: string;
+  onSortClick: (evt: {}, type: string) => void;
+}
+
+interface State {
+  hovered: boolean;
+}
+
+class SortList extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,7 +39,7 @@ class SortList extends React.PureComponent {
       onMouseLeave={() => this._handleCardListHover(false)}
       className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by</span>
-      <span className="places__sorting-type" tabIndex="0">
+      <span className="places__sorting-type" tabIndex={0}>
         {activeSort}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"/>
@@ -44,7 +52,7 @@ class SortList extends React.PureComponent {
             onClick={(evt) => onSortClick(evt, Sorts[key])}
             key={key}
             className={`places__option ${Sorts[key] === activeSort && activeSortClass}`}
-            tabIndex="0">
+            tabIndex={0}>
             {Sorts[key]}
           </li>
         )}
@@ -52,11 +60,6 @@ class SortList extends React.PureComponent {
     </form>;
   }
 }
-
-SortList.propTypes = {
-  activeSort: PropTypes.string.isRequired,
-  onSortClick: PropTypes.func.isRequired,
-};
 
 const mapDispatchToProps = (dispatch) => ({
   onSortClick(evt, sort) {

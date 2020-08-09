@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import renderer from 'react-test-renderer';
 import EmptyFavoritesScreen from './empty-favorites-screen.tsx';
 

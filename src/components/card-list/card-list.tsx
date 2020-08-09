@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux';
-import {CardType, HouseType, Sorts} from '../../constants';
+import {CardType, Sorts} from '../../constants';
 import {getActiveSort} from '../../reducer/app/app.selectors';
-import Card from '../card/card.tsx';
+import Card from '../card/card';
+import {OfferInterface} from "../../types";
 
 const getCardListTypeClass = (type) => {
   switch (type) {
@@ -31,7 +31,15 @@ const sortCards = (cards, sortType) => {
   }
 };
 
-const CardList = ({offers, onCardTitleClick, type, sortType, onFavoriteClick}) =>
+interface Props {
+  offers: Array<OfferInterface>;
+  type: string;
+  sortType: string;
+  onCardTitleClick: () => void;
+  onFavoriteClick: () => void;
+}
+
+const CardList: React.FunctionComponent<Props> = ({offers, onCardTitleClick, type, sortType, onFavoriteClick}: Props) =>
   <div className={`places__list ${getCardListTypeClass(type)}`}>
     {sortCards(offers, sortType).map((offer) =>
       <Card
@@ -42,36 +50,6 @@ const CardList = ({offers, onCardTitleClick, type, sortType, onFavoriteClick}) =
         onFavoriteClick={onFavoriteClick}
       />)}
   </div>;
-
-CardList.propTypes = {
-  onCardTitleClick: PropTypes.func.isRequired,
-  type: PropTypes.string.isRequired,
-  sortType: PropTypes.string.isRequired,
-  offers: PropTypes.arrayOf(PropTypes.exact({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(HouseType).isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    inBookmarks: PropTypes.bool.isRequired,
-    rating: PropTypes.number.isRequired,
-    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
-    zoom: PropTypes.number.isRequired,
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
-    rooms: PropTypes.string.isRequired,
-    guests: PropTypes.string.isRequired,
-    facilities: PropTypes.arrayOf(PropTypes.string),
-    author: PropTypes.exact({
-      name: PropTypes.string.isRequired,
-      avatar: PropTypes.string,
-      isSuper: PropTypes.bool.isRequired
-    }).isRequired,
-    text: PropTypes.arrayOf(PropTypes.string).isRequired,
-    cityId: PropTypes.number.isRequired
-  })).isRequired,
-  onFavoriteClick: PropTypes.func.isRequired
-};
 
 const mapStateToProps = (state) => ({
   sortType: getActiveSort(state)

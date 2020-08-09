@@ -10,6 +10,14 @@ import {
 import {getActiveOfferId} from '../../reducer/app/app.selectors';
 import {OfferInterface} from '../../types';
 
+interface Props {
+  type: string;
+  offers: Array<OfferInterface>;
+  coordinates: Array<number>;
+  zoom: number;
+  activeOfferId: number | null;
+}
+
 const getMapClassByType = (type) => {
   switch (type) {
     case CardType.MAIN:
@@ -22,14 +30,6 @@ const getMapClassByType = (type) => {
 };
 
 const getMapIdByType = (type) => `map-${type}`;
-
-interface Props {
-  type: string;
-  offers: Array<OfferInterface>;
-  coordinates: Array<number>;
-  zoom: number;
-  activeOfferId: number | null;
-}
 
 class Map extends React.PureComponent<Props, {}> {
   private _map: null | L.map;

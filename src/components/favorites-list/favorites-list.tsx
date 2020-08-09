@@ -5,13 +5,13 @@ import {CityInterface, OfferInterface} from "../../types";
 import {Link} from 'react-router-dom';
 import AppRoute from '../../routes';
 
-const getOffersByCityId = (offers, cityId) => offers.filter((offer) => offer.cityId === cityId);
-
 interface Props {
   offers: Array<OfferInterface>;
   cities: Array<CityInterface>;
   onFavoriteClick: () => void;
 }
+
+const getOffersByCityId = (offers, cityId) => offers.filter((offer) => offer.cityId === cityId);
 
 const FavoritesList: React.FunctionComponent<Props> = ({offers, cities, onFavoriteClick}: Props) =>
   <ul className="favorites__list">

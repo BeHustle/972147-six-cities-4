@@ -31,7 +31,7 @@ it(`Should redirect to Login if user is not authenticated`, () => {
         <PrivateRoute
           exact
           path={AppRoute.FAVORITES}
-          authorizationStatus={AuthStatus.NO_AUTH}>
+          authStatus={AuthStatus.NO_AUTH}>
           <MockComponent />
         </PrivateRoute>
       </MemoryRouter>

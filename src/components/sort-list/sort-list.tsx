@@ -4,9 +4,6 @@ import {setActiveSort} from '../../reducer/app/app.reducer';
 import {getActiveSort} from '../../reducer/app/app.selectors';
 import {Sorts} from '../../constants';
 
-const activeSortClass = `places__option--active`;
-const hoveredSortListClass = `places__options--opened`;
-
 interface Props {
   activeSort: string;
   onSortClick: (evt: {}, type: string) => void;
@@ -15,6 +12,9 @@ interface Props {
 interface State {
   hovered: boolean;
 }
+
+const activeSortClass = `places__option--active`;
+const hoveredSortListClass = `places__options--opened`;
 
 class SortList extends React.PureComponent<Props, State> {
   constructor(props) {

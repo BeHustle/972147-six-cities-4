@@ -8,6 +8,13 @@ import {Link} from 'react-router-dom';
 
 const IN_BOOKMARKS_CLASS = `place-card__bookmark-button--active`;
 
+interface Props {
+  offer: OfferInterface;
+  onCardHover: (id: number | null) => void;
+  cardType: CardTypeEnum;
+  onFavoriteClick: (id: number, inBookmarks: number) => void;
+}
+
 const getCardTypeClass = (type) => {
   switch (type) {
     case CardType.MAIN:
@@ -33,13 +40,6 @@ const getCardTypeImageClass = (type) => {
       return ``;
   }
 };
-
-interface Props {
-  offer: OfferInterface;
-  onCardHover: (id: number | null) => void;
-  cardType: CardTypeEnum;
-  onFavoriteClick: (id: number, inBookmarks: number) => void;
-}
 
 const Card: React.FunctionComponent<Props> = ({
   onCardHover,

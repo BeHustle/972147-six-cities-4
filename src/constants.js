@@ -11,12 +11,6 @@ const ICON_SIZE = [30, 30];
 const ICON_PATH = `/img/pin.svg`;
 const ACTIVE_ICON_PATH = `/img/pin-active.svg`;
 
-const Screen = {
-  MAIN: `main`,
-  OFFER: `offer`,
-  LOGIN: `login`
-};
-
 const AppStatus = {
   LOADING: `LOADING`,
   SUCCESS_LOAD: `SUCCESS_LOAD`,
@@ -69,7 +63,6 @@ export {
   ICON_PATH,
   ACTIVE_ICON_PATH,
   DEFAULT_AVATAR,
-  Screen,
   Sorts,
   CardType,
   AppStatus,

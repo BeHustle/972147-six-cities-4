@@ -5,6 +5,13 @@ import {getActiveSort} from '../../reducer/app/app.selectors';
 import Card from '../card/card';
 import {OfferInterface} from "../../types";
 
+interface Props {
+  offers: Array<OfferInterface>;
+  type: string;
+  sortType: string;
+  onFavoriteClick: () => void;
+}
+
 const getCardListTypeClass = (type) => {
   switch (type) {
     case CardType.MAIN:
@@ -30,13 +37,6 @@ const sortCards = (cards, sortType) => {
       return cards;
   }
 };
-
-interface Props {
-  offers: Array<OfferInterface>;
-  type: string;
-  sortType: string;
-  onFavoriteClick: () => void;
-}
 
 const CardList: React.FunctionComponent<Props> = ({offers, type, sortType, onFavoriteClick}: Props) =>
   <div className={`places__list ${getCardListTypeClass(type)}`}>

@@ -18,6 +18,8 @@ const AppStatus = {
 };
 
 const AuthStatus = {
+  LOADING: `LOADING`,
+  FAIL_LOAD: `FAIL_LOAD`,
   NO_AUTH: `NO_AUTH`,
   AUTH: `AUTH`
 };

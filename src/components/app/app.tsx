@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Router, Switch, Route, Link} from 'react-router-dom';
+import {Router, Switch, Route} from 'react-router-dom';
 import {getAppStatus} from '../../reducer/app/app.selectors';
 import {getAuthStatus} from '../../reducer/user/user.selectors';
 import AppRoute from '../../routes';
@@ -8,6 +8,8 @@ import Favorites from '../favorites/favorites';
 import Main from '../main/main';
 import {AppStatus, AuthStatus} from '../../constants';
 import {connect} from 'react-redux';
+import FailLoad from '../fail-load/fail-load';
+import Loading from '../loading/loading';
 import NotFound from '../not-found/not-found';
 import PublicRoute from '../public-route/public-route';
 import SingIn from '../sign-in/sign-in';
@@ -38,9 +40,9 @@ class App extends React.PureComponent<Props, {}> {
   render() {
     switch (this.props.appStatus) {
       case AppStatus.LOADING:
-        return <h1>Loading...</h1>;
+        return <Loading />;
       case AppStatus.FAIL_LOAD:
-        return <h1>Error while loading. Try <Link to={AppRoute.MAIN}>refresh page</Link></h1>;
+        return <FailLoad />;
       case AppStatus.SUCCESS_LOAD:
         return (
           <Router history={history}>

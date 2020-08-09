@@ -8,10 +8,10 @@ import {AuthStatus} from '../../constants';
 
 configure({adapter: new Adapter()});
 
-const MockComponent = () => <div />;
-
-it(`Should render PrivateRoute if user has been authenticated`, () => {
-  const wrapper = mount(
+describe(`PrivateRoute`, () => {
+  it(`Should render PrivateRoute if user has been authenticated`, () => {
+    const MockComponent = () => <div />;
+    const wrapper = mount(
       <MemoryRouter initialEntries={[AppRoute.FAVORITES]}>
         <PrivateRoute
           exact
@@ -20,13 +20,14 @@ it(`Should render PrivateRoute if user has been authenticated`, () => {
           <MockComponent />
         </PrivateRoute>
       </MemoryRouter>
-  );
+    );
 
-  expect(wrapper.exists(MockComponent)).toBe(true);
-});
+    expect(wrapper.exists(MockComponent)).toBe(true);
+  });
 
-it(`Should redirect to Login if user is not authenticated`, () => {
-  const wrapper = mount(
+  it(`Should redirect to Login if user is not authenticated`, () => {
+    const MockComponent = () => <div />;
+    const wrapper = mount(
       <MemoryRouter initialEntries={[AppRoute.FAVORITES]}>
         <PrivateRoute
           exact
@@ -35,8 +36,44 @@ it(`Should redirect to Login if user is not authenticated`, () => {
           <MockComponent />
         </PrivateRoute>
       </MemoryRouter>
-  );
+    );
 
-  const history = wrapper.find(`Router`).prop(`history`);
-  expect(history.location.pathname).toBe(AppRoute.LOGIN);
+    const history = wrapper.find(`Router`).prop(`history`);
+    expect(wrapper.exists(MockComponent)).toBe(false);
+    expect(history.location.pathname).toBe(AppRoute.LOGIN);
+  });
+
+  it(`Should render Loading component if auth status is Loading`, () => {
+    const MockComponent = () => <div />;
+    const wrapper = mount(
+      <MemoryRouter initialEntries={[AppRoute.FAVORITES]}>
+        <PrivateRoute
+          exact
+          path={AppRoute.FAVORITES}
+          authStatus={AuthStatus.LOADING}>
+          <MockComponent />
+        </PrivateRoute>
+      </MemoryRouter>
+    );
+
+    expect(wrapper.exists(MockComponent)).toBe(false);
+    expect(wrapper.exists(`Loading`)).toBe(true);
+  });
+
+  it(`Should render FailLoad component if auth status is fail load`, () => {
+    const MockComponent = () => <div />;
+    const wrapper = mount(
+      <MemoryRouter initialEntries={[AppRoute.FAVORITES]}>
+        <PrivateRoute
+          exact
+          path={AppRoute.FAVORITES}
+          authStatus={AuthStatus.FAIL_LOAD}>
+          <MockComponent />
+        </PrivateRoute>
+      </MemoryRouter>
+    );
+
+    expect(wrapper.exists(MockComponent)).toBe(false);
+    expect(wrapper.exists(`FailLoad`)).toBe(true);
+  });
 });

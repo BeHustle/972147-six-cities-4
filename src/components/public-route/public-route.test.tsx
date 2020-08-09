@@ -6,6 +6,8 @@ import AppRoute from '../../routes';
 import {Router} from 'react-router-dom';
 import {history} from '../../history';
 
+const MockComponent = () => <div />;
+
 it(`Render public route`, () => {
   const tree = renderer
     .create(
@@ -14,7 +16,7 @@ it(`Render public route`, () => {
             authStatus={AuthStatus.NO_AUTH}
             path={AppRoute.LOGIN}
             exact={true}>
-            <div />
+            <MockComponent />
           </PublicRoute>
         </Router>)
     .toJSON();

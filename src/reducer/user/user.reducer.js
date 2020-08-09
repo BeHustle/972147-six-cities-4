@@ -3,7 +3,7 @@ import {AuthStatus, ErrorCode} from '../../constants';
 
 const initialState = {
   userInfo: null,
-  authStatus: AuthStatus.NO_AUTH
+  authStatus: AuthStatus.LOADING
 };
 
 const ActionTypes = {
@@ -31,7 +31,9 @@ export const Operation = {
       const {response} = e;
       if (response.status === ErrorCode.UNAUTHORIZED) {
         dispatch(setAuthStatus(AuthStatus.NO_AUTH));
+        throw e;
       }
+      dispatch(setAuthStatus(AuthStatus.FAIL_LOAD));
       throw e;
     }
   },

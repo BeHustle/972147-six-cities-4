@@ -19,8 +19,8 @@ const store = createStore(
     )
 );
 
-store.dispatch(DataOperation.loadData());
 store.dispatch(UserOperation.checkAuth());
+store.dispatch(DataOperation.loadData());
 
 ReactDOM.render(
     <Provider store={store}>

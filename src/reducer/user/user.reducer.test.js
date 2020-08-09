@@ -11,7 +11,7 @@ describe(`User reducer`, () => {
   beforeEach(() => {
     initialState = {
       userInfo: null,
-      authStatus: AuthStatus.NO_AUTH
+      authStatus: AuthStatus.LOADING
     };
   });
 

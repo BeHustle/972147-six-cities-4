@@ -67,10 +67,10 @@ class AddReview extends React.PureComponent<Props, State> {
       this.textAreaRef.current.disabled = true;
       switch (this.props.commentStatus) {
         case CommentStatus.FAIL:
-          this.onErrorFormSubmit();
+          this.handleErrorFormSubmit();
           break;
         case CommentStatus.SUCCESS:
-          this.onSuccessFormSubmit();
+          this.handleSuccessFormSubmit();
           break;
         default:
           break;
@@ -78,7 +78,7 @@ class AddReview extends React.PureComponent<Props, State> {
     }
   }
 
-  onSuccessFormSubmit() {
+  handleSuccessFormSubmit() {
     this.messageRef.current.innerText = CommentMessage.SUCCESS;
     this.messageRef.current.style.color = `green`;
     this.messageRef.current.style.display = `block`;
@@ -91,7 +91,7 @@ class AddReview extends React.PureComponent<Props, State> {
     this.props.resetCommentStatus();
   }
 
-  onErrorFormSubmit() {
+  handleErrorFormSubmit() {
     this.messageRef.current.innerText = CommentMessage.ERROR;
     this.messageRef.current.style.color = `red`;
     this.messageRef.current.style.display = `block`;

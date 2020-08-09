@@ -1,7 +1,7 @@
 import React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {PublicRoute} from './public-route.jsx';
+import {PublicRoute} from './public-route.tsx';
 import {MemoryRouter} from "react-router";
 import AppRoute from '../../routes.js';
 import {AuthStatus} from '../../constants.js';

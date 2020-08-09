@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {getActiveCity} from '../../reducer/app/app.selectors.js';
 import AppRoute from '../../routes.js';
-import Header from '../header/header.jsx';
+import Header from '../header/header.tsx';
 import {connect} from 'react-redux';
 import {Operation as UserOperation} from '../../reducer/user/user.reducer.js';
 import PropTypes from 'prop-types';

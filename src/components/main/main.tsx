@@ -4,12 +4,12 @@ import {connect} from 'react-redux';
 import {CardType, HouseType} from '../../constants.js';
 import {getActiveCity} from '../../reducer/app/app.selectors.js';
 import {getOffersByCity} from '../../reducer/data/data.selectors.js';
-import CardList from '../card-list/card-list.jsx';
-import CitiesList from '../cities-list/cities-list.jsx';
-import EmptyOffersScreen from '../empty-offers-screen/empty-offers-screen.jsx';
-import Header from '../header/header.jsx';
-import Map from '../map/map.jsx';
-import SortList from '../sort-list/sort-list.jsx';
+import CardList from '../card-list/card-list.tsx';
+import CitiesList from '../cities-list/cities-list.tsx';
+import EmptyOffersScreen from '../empty-offers-screen/empty-offers-screen.tsx';
+import Header from '../header/header.tsx';
+import Map from '../map/map.js';
+import SortList from '../sort-list/sort-list.js';
 
 const Main = ({onCardTitleClick, city, offers, onFavoriteClick}) =>
   <div className="page page--gray page--main">

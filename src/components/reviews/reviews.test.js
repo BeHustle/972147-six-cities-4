@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {AuthStatus} from '../../constants.js';
-import {Reviews} from './reviews.jsx';
+import {Reviews} from './reviews.tsx';
 import {reviews} from '../../test-mocks/reviews.js';
 
 it(`Render Reviews list`, () => {

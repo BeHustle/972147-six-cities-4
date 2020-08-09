@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import EmptyOffersScreen from './empty-offers-screen.jsx';
+import EmptyOffersScreen from './empty-offers-screen.tsx';
 
 it(`Render empty offers screen`, () => {
   const tree = renderer

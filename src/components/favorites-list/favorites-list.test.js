@@ -8,7 +8,7 @@ import {createAPI} from '../../api/api.js';
 import reducer from '../../reducer/reducer.js';
 import {cities} from '../../test-mocks/cities.js';
 import {offers} from '../../test-mocks/offers.js';
-import FavoritesList from './favorites-list.jsx';
+import FavoritesList from './favorites-list.tsx';
 
 const api = createAPI();
 

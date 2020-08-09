@@ -3,7 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {CardType, HouseType, Sorts} from '../../constants.js';
 import {getActiveSort} from '../../reducer/app/app.selectors.js';
-import Card from '../card/card.jsx';
+import Card from '../card/card.tsx';
 
 const getCardListTypeClass = (type) => {
   switch (type) {

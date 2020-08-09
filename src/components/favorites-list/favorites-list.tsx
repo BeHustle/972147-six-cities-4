@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {CardType, HouseType} from '../../constants.js';
-import Card from '../card/card.jsx';
+import Card from '../card/card.tsx';
 
 const getOffersByCityId = (offers, cityId) => offers.filter((offer) => offer.cityId === cityId);
 

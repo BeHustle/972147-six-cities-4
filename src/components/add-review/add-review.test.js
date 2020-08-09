@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {CommentStatus} from '../../constants.js';
-import {AddReview} from './add-review.jsx';
+import {AddReview} from './add-review.tsx';
 
 it(`Render review form`, () => {
   const tree = renderer

@@ -13,7 +13,7 @@ import {setCities, setNearbyOffers, setOffers, setReviews} from '../../reducer/d
 import reducer from '../../reducer/reducer.js';
 import {setAuthStatus, setUserInfo} from '../../reducer/user/user.reducer.js';
 import {reviews, serverReviews} from '../../test-mocks/reviews.js';
-import CitiesList from './cities-list.jsx';
+import CitiesList from './cities-list.tsx';
 import {cities} from '../../test-mocks/cities.js';
 import {offers, serverOffers} from '../../test-mocks/offers.js';
 import {serverUserInfo, userInfo} from '../../test-mocks/user.js';

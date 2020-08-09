@@ -3,17 +3,17 @@ import {Router, Switch, Route, Link} from 'react-router-dom';
 import {getAppStatus} from '../../reducer/app/app.selectors.js';
 import {getAuthStatus} from '../../reducer/user/user.selectors.js';
 import AppRoute from '../../routes.js';
-import CardDetail from '../card-detail/card-detail.jsx';
-import Favorites from '../favorites/favorites.jsx';
-import Main from '../main/main.jsx';
+import CardDetail from '../card-detail/card-detail.js';
+import Favorites from '../favorites/favorites.js';
+import Main from '../main/main.js';
 import {AppStatus, AuthStatus} from '../../constants.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import NotFound from '../not-found/not-found.jsx';
-import PublicRoute from '../public-route/public-route.jsx';
-import SingIn from '../sign-in/sign-in.jsx';
+import NotFound from '../not-found/not-found.js';
+import PublicRoute from '../public-route/public-route.js';
+import SingIn from '../sign-in/sign-in.js';
 import {history} from '../../history.js';
-import PrivateRoute from '../private-route/private-route.jsx';
+import PrivateRoute from '../private-route/private-route.js';
 import {Operation as DataOperation} from '../../reducer/data/data.reducer.js';
 
 class App extends React.PureComponent {

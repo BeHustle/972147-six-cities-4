@@ -5,8 +5,8 @@ import {AuthStatus} from '../../constants.js';
 import {Operation as DataOperation} from '../../reducer/data/data.reducer.js';
 import {getReviews} from '../../reducer/data/data.selectors.js';
 import {getAuthStatus} from '../../reducer/user/user.selectors.js';
-import AddReview from '../add-review/add-review.jsx';
-import Review from '../review/review.jsx';
+import AddReview from '../add-review/add-review.tsx';
+import Review from '../review/review.tsx';
 
 class Reviews extends React.PureComponent {
   constructor(props) {

@@ -3,12 +3,12 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {DEFAULT_AVATAR, CardType, NEAR_PLACES_COUNT, HouseType, MAX_IMAGES_COUNT} from '../../constants.js';
 import {getNearbyOffers, getOffers} from '../../reducer/data/data.selectors.js';
-import CardList from '../card-list/card-list.jsx';
+import CardList from '../card-list/card-list.js';
 import {Operation as DataOperation} from '../../reducer/data/data.reducer.js';
-import Header from '../header/header.jsx';
-import NotFound from '../not-found/not-found.jsx';
-import Reviews from '../reviews/reviews.jsx';
-import Map from '../map/map.jsx';
+import Header from '../header/header.js';
+import NotFound from '../not-found/not-found.js';
+import Reviews from '../reviews/reviews.js';
+import Map from '../map/map.js';
 
 const SUPER_USER_CLASS = `property__avatar-wrapper--pro`;
 const IN_BOOKMARKS_CLASS = `property__bookmark-button--active`;

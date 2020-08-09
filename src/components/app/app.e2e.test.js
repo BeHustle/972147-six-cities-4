@@ -16,7 +16,7 @@ import {cities} from '../../test-mocks/cities.js';
 import {serverOffers} from '../../test-mocks/offers.js';
 import {reviews, serverReviews} from '../../test-mocks/reviews.js';
 import {serverUserInfo, userInfo} from '../../test-mocks/user.js';
-import App from './app.jsx';
+import App from './app.tsx';
 import {offers} from '../../test-mocks/offers.js';
 import {Router} from 'react-router-dom';
 import {history} from '../../history.js';

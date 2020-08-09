@@ -11,7 +11,7 @@ import {setAuthStatus, setUserInfo} from '../../reducer/user/user.reducer.js';
 import {cities} from '../../test-mocks/cities.js';
 import {offers} from '../../test-mocks/offers.js';
 import {userInfo} from '../../test-mocks/user.js';
-import {Favorites} from './favorites.jsx';
+import {Favorites} from './favorites.tsx';
 import {Router} from 'react-router-dom';
 import {history} from '../../history.js';
 

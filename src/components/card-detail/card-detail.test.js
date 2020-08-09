@@ -11,7 +11,7 @@ import {setActiveCity, setAppStatus} from '../../reducer/app/app.reducer.js';
 import {setCities, setNearbyOffers, setOffers, setReviews} from '../../reducer/data/data.reducer.js';
 import reducer from '../../reducer/reducer.js';
 import {setAuthStatus, setUserInfo} from '../../reducer/user/user.reducer.js';
-import CardDetail from './card-detail.jsx';
+import CardDetail from './card-detail.tsx';
 import {cities} from '../../test-mocks/cities.js';
 import {offers, serverOffers} from '../../test-mocks/offers.js';
 import {serverUserInfo, userInfo} from '../../test-mocks/user.js';

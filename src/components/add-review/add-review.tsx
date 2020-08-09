@@ -35,18 +35,37 @@ class AddReview extends React.PureComponent<Props, State> {
       isTextareaCorrect: false,
       rating: 0,
     };
-    this.handleRatingChange = this.handleRatingChange.bind(this);
-    this.handleTextAreaChange = this.handleTextAreaChange.bind(this);
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this._handleRatingChange = this._handleRatingChange.bind(this);
+    this._handleTextAreaChange = this._handleTextAreaChange.bind(this);
+    this._handleFormSubmit = this._handleFormSubmit.bind(this);
   }
 
-  handleRatingChange(evt) {
+  componentDidUpdate() {
+    this.submitBtnRef.current.disabled = !((this.state.rating !== null) && this.state.isTextareaCorrect);
+    this.textAreaRef.current.disabled = false;
+    if (this.state.formInSubmitting) {
+      this.submitBtnRef.current.disabled = true;
+      this.textAreaRef.current.disabled = true;
+      switch (this.props.commentStatus) {
+        case CommentStatus.FAIL:
+          this._handleErrorFormSubmit();
+          break;
+        case CommentStatus.SUCCESS:
+          this._handleSuccessFormSubmit();
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
+  _handleRatingChange(evt) {
     this.setState({
       rating: parseInt(evt.currentTarget.value, 10)
     });
   }
 
-  handleTextAreaChange() {
+  _handleTextAreaChange() {
     if (this.textAreaRef.current.value.length >= ReviewLength.MIN
       && this.textAreaRef.current.value.length <= ReviewLength.MAX) {
       this.setState({
@@ -59,26 +78,7 @@ class AddReview extends React.PureComponent<Props, State> {
     }
   }
 
-  componentDidUpdate() {
-    this.submitBtnRef.current.disabled = !((this.state.rating !== null) && this.state.isTextareaCorrect);
-    this.textAreaRef.current.disabled = false;
-    if (this.state.formInSubmitting) {
-      this.submitBtnRef.current.disabled = true;
-      this.textAreaRef.current.disabled = true;
-      switch (this.props.commentStatus) {
-        case CommentStatus.FAIL:
-          this.handleErrorFormSubmit();
-          break;
-        case CommentStatus.SUCCESS:
-          this.handleSuccessFormSubmit();
-          break;
-        default:
-          break;
-      }
-    }
-  }
-
-  handleSuccessFormSubmit() {
+  _handleSuccessFormSubmit() {
     this.messageRef.current.innerText = CommentMessage.SUCCESS;
     this.messageRef.current.style.color = `green`;
     this.messageRef.current.style.display = `block`;
@@ -91,7 +91,7 @@ class AddReview extends React.PureComponent<Props, State> {
     this.props.resetCommentStatus();
   }
 
-  handleErrorFormSubmit() {
+  _handleErrorFormSubmit() {
     this.messageRef.current.innerText = CommentMessage.ERROR;
     this.messageRef.current.style.color = `red`;
     this.messageRef.current.style.display = `block`;
@@ -101,7 +101,7 @@ class AddReview extends React.PureComponent<Props, State> {
     this.props.resetCommentStatus();
   }
 
-  handleFormSubmit(evt) {
+  _handleFormSubmit(evt) {
     evt.preventDefault();
     this.props.onFormSubmit({
       rating: this.state.rating,
@@ -116,45 +116,45 @@ class AddReview extends React.PureComponent<Props, State> {
   }
 
   render() {
-    return <form onSubmit={this.handleFormSubmit} ref={this.formRef} className="reviews__form form" action="#" method="post">
+    return <form onSubmit={this._handleFormSubmit} ref={this.formRef} className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
-        <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" onChange={this.handleRatingChange} type="radio" />
+        <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" onChange={this._handleRatingChange} type="radio" />
         <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
           <svg className="form__star-image" width="37" height="33">
             <use xlinkHref="#icon-star" />
           </svg>
         </label>
 
-        <input className="form__rating-input visually-hidden" name="rating" value="4" id="4-stars" onChange={this.handleRatingChange} type="radio" />
+        <input className="form__rating-input visually-hidden" name="rating" value="4" id="4-stars" onChange={this._handleRatingChange} type="radio" />
         <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
           <svg className="form__star-image" width="37" height="33">
             <use xlinkHref="#icon-star" />
           </svg>
         </label>
 
-        <input className="form__rating-input visually-hidden" name="rating" value="3" id="3-stars" onChange={this.handleRatingChange} type="radio" />
+        <input className="form__rating-input visually-hidden" name="rating" value="3" id="3-stars" onChange={this._handleRatingChange} type="radio" />
         <label htmlFor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
           <svg className="form__star-image" width="37" height="33">
             <use xlinkHref="#icon-star" />
           </svg>
         </label>
 
-        <input className="form__rating-input visually-hidden" name="rating" value="2" id="2-stars" onChange={this.handleRatingChange} type="radio" />
+        <input className="form__rating-input visually-hidden" name="rating" value="2" id="2-stars" onChange={this._handleRatingChange} type="radio" />
         <label htmlFor="2-stars" className="reviews__rating-label form__rating-label" title="badly">
           <svg className="form__star-image" width="37" height="33">
             <use xlinkHref="#icon-star" />
           </svg>
         </label>
 
-        <input className="form__rating-input visually-hidden" name="rating" value="1" id="1-star" onChange={this.handleRatingChange} type="radio" />
+        <input className="form__rating-input visually-hidden" name="rating" value="1" id="1-star" onChange={this._handleRatingChange} type="radio" />
         <label htmlFor="1-star" className="reviews__rating-label form__rating-label" title="terribly">
           <svg className="form__star-image" width="37" height="33">
             <use xlinkHref="#icon-star" />
           </svg>
         </label>
       </div>
-      <textarea onChange={this.handleTextAreaChange} ref={this.textAreaRef} className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved" />
+      <textarea onChange={this._handleTextAreaChange} ref={this.textAreaRef} className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved" />
       <div ref={this.messageRef} style={{
         textAlign: `right`,
         marginTop: `10px`,

@@ -41,6 +41,15 @@ class Map extends React.PureComponent<Props, {}> {
     this._activeLayer = new L.LayerGroup();
   }
 
+  componentDidMount() {
+    this._initMap();
+    this._renderOffers();
+  }
+
+  componentDidUpdate() {
+    this._updateMap();
+  }
+
   _initMap() {
     const {coordinates, type, zoom} = this.props;
     this._map = L.map(getMapIdByType(type), {
@@ -80,15 +89,6 @@ class Map extends React.PureComponent<Props, {}> {
   _updateMap() {
     this._activeLayer.clearLayers();
     this._renderOffers();
-  }
-
-  componentDidMount() {
-    this._initMap();
-    this._renderOffers();
-  }
-
-  componentDidUpdate() {
-    this._updateMap();
   }
 
   render() {

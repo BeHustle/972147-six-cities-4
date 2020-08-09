@@ -1,9 +1,9 @@
-import {citiesFromOffersAdapter} from '../../adapters/cities-from-offers-adapter.js';
-import {commentAdapter} from '../../adapters/comment-adapter.js';
-import {offerAdapter} from '../../adapters/offer-adapter.js';
-import {AppStatus, CommentStatus} from '../../constants.js';
-import {setActiveCity, setAppStatus} from '../app/app.reducer.js';
-import {Namespace} from '../namespace.js';
+import {citiesFromOffersAdapter} from '../../adapters/cities-from-offers-adapter';
+import {commentAdapter} from '../../adapters/comment-adapter';
+import {offerAdapter} from '../../adapters/offer-adapter';
+import {AppStatus, CommentStatus} from '../../constants';
+import {setActiveCity, setAppStatus} from '../app/app.reducer';
+import {Namespace} from '../namespace';
 import {
   reducer,
   Operation,
@@ -12,12 +12,13 @@ import {
   setNearbyOffers,
   setReviews,
   setCommentStatus,
-} from './data.reducer.js';
+  setFavoriteOffers, setFavoriteCities, updateOffer, removeOffer,
+} from './data.reducer';
 import MockAdapter from 'axios-mock-adapter';
-import {createAPI} from '../../api/api.js';
-import {cities} from '../../test-mocks/cities.js';
-import {offers, serverOffers} from '../../test-mocks/offers.js';
-import {reviews, serverReviews} from '../../test-mocks/reviews.js';
+import {createAPI} from '../../api/api';
+import {cities} from '../../test-mocks/cities';
+import {offers, serverOffers} from '../../test-mocks/offers';
+import {reviews, serverReviews} from '../../test-mocks/reviews';
 
 describe(`Data reducer`, () => {
   let initialState;
@@ -26,6 +27,8 @@ describe(`Data reducer`, () => {
     initialState = {
       reviews: [],
       nearbyOffers: [],
+      favoriteOffers: [],
+      favoriteCities: [],
       commentStatus: CommentStatus.NOT_SEND
     };
   });
@@ -52,6 +55,21 @@ describe(`Data reducer`, () => {
   it(`should change reviews to a given value`, () => {
     expect(reducer(initialState, setReviews(reviews)))
       .toEqual(Object.assign({}, initialState, {reviews}));
+  });
+
+  it(`should change commentStatus to a given value`, () => {
+    expect(reducer(initialState, setCommentStatus(CommentStatus.SUCCESS)))
+      .toEqual(Object.assign({}, initialState, {commentStatus: CommentStatus.SUCCESS}));
+  });
+
+  it(`should change favorite offers to a given value`, () => {
+    expect(reducer(initialState, setFavoriteOffers(offers)))
+      .toEqual(Object.assign({}, initialState, {favoriteOffers: offers}));
+  });
+
+  it(`should change favorite cities to a given value`, () => {
+    expect(reducer(initialState, setFavoriteCities(cities)))
+      .toEqual(Object.assign({}, initialState, {favoriteCities: cities}));
   });
 });
 
@@ -156,6 +174,56 @@ describe(`Data reducer API methods`, () => {
       .catch(() => {
         expect(dispatch).toBeCalledTimes(1);
         expect(dispatch).toHaveBeenCalledWith(setCommentStatus(CommentStatus.FAIL));
+      });
+  });
+
+  it(`Should make a correct API call to /favorite`, () => {
+    const favoriteOffersLoader = Operation.loadFavoriteData();
+    const adaptedOffers = serverOffers.map((it) => offerAdapter(it, cities));
+    const state = {
+      [Namespace.DATA]: {
+        cities
+      }
+    };
+
+    apiMock
+      .onGet(`/favorite`)
+      .reply(200, serverOffers);
+
+    return favoriteOffersLoader(dispatch, () => state, api)
+      .then(() => {
+        expect(dispatch).toBeCalledTimes(2);
+        expect(dispatch).toHaveBeenNthCalledWith(1, setFavoriteOffers(adaptedOffers));
+        expect(dispatch).toHaveBeenNthCalledWith(2, setFavoriteCities(citiesFromOffersAdapter(serverOffers)));
+      });
+  });
+
+  it(`Should make a correct API call to /favorite/:hotelId/:status`, () => {
+    const favoriteLoader = Operation.addFavoriteOffer({
+      hotelId: 5,
+      status: 1
+    });
+    const adaptedCities = citiesFromOffersAdapter(serverOffers);
+    const adaptedOffers = serverOffers.map((it) => offerAdapter(it, adaptedCities));
+    const state = {
+      [Namespace.DATA]: {
+        offers: adaptedOffers,
+        nearbyOffers: adaptedOffers,
+        favoriteOffers: adaptedOffers,
+        cities
+      }
+    };
+
+    apiMock
+      .onPost(`/favorite/5/1`)
+      .reply(200, serverOffers[0]);
+
+    return favoriteLoader(dispatch, () => state, api)
+      .then(() => {
+        expect(dispatch).toBeCalledTimes(3);
+        expect(dispatch).toHaveBeenNthCalledWith(1, setOffers(updateOffer(adaptedOffers[0], adaptedOffers)));
+        expect(dispatch).toHaveBeenNthCalledWith(2, setNearbyOffers(updateOffer(adaptedOffers[0], adaptedOffers)));
+        expect(dispatch).toHaveBeenNthCalledWith(3, setFavoriteOffers(removeOffer(adaptedOffers[0], adaptedOffers)));
       });
   });
 });

@@ -1,4 +1,4 @@
-import {Namespace} from '../namespace.js';
+import {Namespace} from '../namespace';
 
 export const getActiveSort = (state) => state[Namespace.APP].activeSort;
 

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render notFound screen 1`] = `
+<h1>
+  Page not found. 
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+    Go to main
+  </a>
+</h1>
+`;

@@ -1,4 +1,4 @@
-import {AppStatus, Sorts} from '../../constants.js';
+import {AppStatus, Sorts} from '../../constants';
 
 const initialState = {
   activeSort: Sorts.POPULAR,

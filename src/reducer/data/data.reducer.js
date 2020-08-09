@@ -1,13 +1,35 @@
-import {citiesFromOffersAdapter} from '../../adapters/cities-from-offers-adapter.js';
-import {commentAdapter} from '../../adapters/comment-adapter.js';
-import {offerAdapter} from '../../adapters/offer-adapter.js';
-import {setActiveCity, setAppStatus} from '../app/app.reducer.js';
-import {AppStatus, CommentStatus} from '../../constants.js';
-import {getCities} from './data.selectors.js';
+import {citiesFromOffersAdapter} from '../../adapters/cities-from-offers-adapter';
+import {commentAdapter} from '../../adapters/comment-adapter';
+import {offerAdapter} from '../../adapters/offer-adapter';
+import {setActiveCity, setAppStatus} from '../app/app.reducer';
+import {AppStatus, CommentStatus} from '../../constants';
+import {getCities, getFavoriteOffers, getNearbyOffers, getOffers} from './data.selectors';
+
+export const updateOffer = (offer, offers) => {
+  const index = offers.findIndex((it) => it.id === offer.id);
+  if (index === -1) {
+    return offers;
+  }
+  const newOffers = offers.slice();
+  newOffers[index] = offer;
+  return newOffers;
+};
+
+export const removeOffer = (offer, offers) => {
+  const index = offers.findIndex((it) => it.id === offer.id);
+  if (index === -1) {
+    return offers;
+  }
+  const newOffers = offers.slice();
+  newOffers.splice(index, 1);
+  return newOffers;
+};
 
 const initialState = {
   reviews: [],
   nearbyOffers: [],
+  favoriteOffers: [],
+  favoriteCities: [],
   commentStatus: CommentStatus.NOT_SEND
 };
 
@@ -16,6 +38,8 @@ const ActionTypes = {
   SET_REVIEWS: `SET_REVIEWS`,
   SET_NEARBY_OFFERS: `SET_NEARBY_OFFERS`,
   SET_CITIES: `SET_CITIES`,
+  SET_FAVORITE_OFFERS: `SET_FAVORITE_OFFERS`,
+  SET_FAVORITE_CITIES: `SET_FAVORITE_CITIES`,
   SET_COMMENT_STATUS: `SET_COMMENT_STATUS`
 };
 
@@ -42,6 +66,16 @@ export const setCities = (cities) => ({
 export const setCommentStatus = (status) => ({
   type: ActionTypes.SET_COMMENT_STATUS,
   payload: status,
+});
+
+export const setFavoriteOffers = (offers) => ({
+  type: ActionTypes.SET_FAVORITE_OFFERS,
+  payload: offers,
+});
+
+export const setFavoriteCities = (cities) => ({
+  type: ActionTypes.SET_FAVORITE_CITIES,
+  payload: cities,
 });
 
 
@@ -86,6 +120,29 @@ export const Operation = {
       throw e;
     }
   },
+  loadFavoriteData: () => async (dispatch, getState, api) => {
+    try {
+      const response = await api.get(`/favorite`);
+      if (response.data.length) {
+        const cities = citiesFromOffersAdapter(response.data);
+        dispatch(setFavoriteOffers(response.data.map((it) => offerAdapter(it, cities))));
+        dispatch(setFavoriteCities(cities));
+      }
+    } catch (e) {
+      throw e;
+    }
+  },
+  addFavoriteOffer: ({hotelId, status}) => async (dispatch, getState, api) => {
+    try {
+      const response = await api.post(`/favorite/${hotelId}/${status}`);
+      const offer = offerAdapter(response.data, getCities(getState()));
+      dispatch(setOffers(updateOffer(offer, getOffers(getState()))));
+      dispatch(setNearbyOffers(updateOffer(offer, getNearbyOffers(getState()))));
+      dispatch(setFavoriteOffers(removeOffer(offer, getFavoriteOffers(getState()))));
+    } catch (e) {
+      throw e;
+    }
+  }
 };
 
 export const reducer = (state = initialState, action = {}) => {
@@ -100,6 +157,10 @@ export const reducer = (state = initialState, action = {}) => {
       return Object.assign({}, state, {nearbyOffers: action.payload});
     case ActionTypes.SET_COMMENT_STATUS:
       return Object.assign({}, state, {commentStatus: action.payload});
+    case ActionTypes.SET_FAVORITE_OFFERS:
+      return Object.assign({}, state, {favoriteOffers: action.payload});
+    case ActionTypes.SET_FAVORITE_CITIES:
+      return Object.assign({}, state, {favoriteCities: action.payload});
     default:
       return state;
   }

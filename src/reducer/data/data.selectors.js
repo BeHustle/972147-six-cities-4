@@ -1,6 +1,6 @@
-import {MAX_REVIEWS_COUNT} from '../../constants.js';
-import {getActiveCity} from '../app/app.selectors.js';
-import {Namespace} from '../namespace.js';
+import {MAX_REVIEWS_COUNT} from '../../constants';
+import {getActiveCity} from '../app/app.selectors';
+import {Namespace} from '../namespace';
 import {createSelector} from 'reselect';
 
 export const getOffers = (state) => state[Namespace.DATA].offers;
@@ -10,7 +10,7 @@ export const getReviews = (state) => {
   if (reviews.length < 2) {
     return reviews;
   }
-  return reviews.sort((a, b) => a.date.getTime() - b.date.getTime()).slice(0, MAX_REVIEWS_COUNT);
+  return reviews.sort((a, b) => b.date.getTime() - a.date.getTime()).slice(0, MAX_REVIEWS_COUNT);
 };
 
 export const getNearbyOffers = (state) => state[Namespace.DATA].nearbyOffers;
@@ -24,3 +24,7 @@ export const getOffersByCity = createSelector(
 );
 
 export const getCommentStatus = (state) => state[Namespace.DATA].commentStatus;
+
+export const getFavoriteCities = (state) => state[Namespace.DATA].favoriteCities;
+
+export const getFavoriteOffers = (state) => state[Namespace.DATA].favoriteOffers;

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {setActiveCity} from '../../reducer/app/app.reducer.js';
-import {getActiveCity} from '../../reducer/app/app.selectors.js';
-import {getCities} from '../../reducer/data/data.selectors.js';
+import {setActiveCity} from '../../reducer/app/app.reducer';
+import {getActiveCity} from '../../reducer/app/app.selectors';
+import {getCities} from '../../reducer/data/data.selectors';
 
 const ACTIVE_CITY_CLASS = `tabs__item--active`;
 

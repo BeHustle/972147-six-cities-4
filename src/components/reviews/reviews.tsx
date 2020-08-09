@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {AuthStatus} from '../../constants.js';
-import {Operation as DataOperation} from '../../reducer/data/data.reducer.js';
-import {getReviews} from '../../reducer/data/data.selectors.js';
-import {getAuthStatus} from '../../reducer/user/user.selectors.js';
+import {AuthStatus} from '../../constants';
+import {Operation as DataOperation} from '../../reducer/data/data.reducer';
+import {getReviews} from '../../reducer/data/data.selectors';
+import {getAuthStatus} from '../../reducer/user/user.selectors';
 import AddReview from '../add-review/add-review.tsx';
 import Review from '../review/review.tsx';
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {getActiveCity} from '../../reducer/app/app.selectors.js';
-import AppRoute from '../../routes.js';
+import {getActiveCity} from '../../reducer/app/app.selectors';
+import AppRoute from '../../routes';
 import Header from '../header/header.tsx';
 import {connect} from 'react-redux';
-import {Operation as UserOperation} from '../../reducer/user/user.reducer.js';
+import {Operation as UserOperation} from '../../reducer/user/user.reducer';
 import PropTypes from 'prop-types';
 
 class SingIn extends React.PureComponent {

@@ -1,9 +1,9 @@
 import MockAdapter from 'axios-mock-adapter';
-import {userAdapter} from '../../adapters/user-adapter.js';
-import {createAPI} from '../../api/api.js';
-import {AuthStatus} from '../../constants.js';
-import {userInfo, serverUserInfo, postUserInfo} from '../../test-mocks/user.js';
-import {reducer, setUserInfo, setAuthStatus, Operation} from './user.reducer.js';
+import {userAdapter} from '../../adapters/user-adapter';
+import {createAPI} from '../../api/api';
+import {AuthStatus} from '../../constants';
+import {userInfo, serverUserInfo, postUserInfo} from '../../test-mocks/user';
+import {reducer, setUserInfo, setAuthStatus, Operation} from './user.reducer';
 
 describe(`User reducer`, () => {
   let initialState;

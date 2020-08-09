@@ -8,8 +8,8 @@ import {
   ACTIVE_ICON_PATH,
   CardType,
   HouseType,
-} from '../../constants.js';
-import {getActiveOfferId} from '../../reducer/app/app.selectors.js';
+} from '../../constants';
+import {getActiveOfferId} from '../../reducer/app/app.selectors';
 
 const getMapClassByType = (type) => {
   switch (type) {

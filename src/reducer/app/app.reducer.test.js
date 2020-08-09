@@ -1,5 +1,5 @@
-import {AppStatus, Sorts} from '../../constants.js';
-import {setActiveSort, setActiveCity, setAppStatus, setActiveOfferId, reducer} from './app.reducer.js';
+import {AppStatus, Sorts} from '../../constants';
+import {setActiveSort, setActiveCity, setAppStatus, setActiveOfferId, reducer} from './app.reducer';
 
 describe(`App reducer`, () => {
   let initialState;

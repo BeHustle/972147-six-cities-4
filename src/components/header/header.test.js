@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {AuthStatus} from '../../constants.js';
+import {AuthStatus} from '../../constants';
 import {Header} from './header.tsx';
-import {userInfo} from '../../test-mocks/user.js';
+import {userInfo} from '../../test-mocks/user';
 import {Router} from 'react-router-dom';
-import {history} from '../../history.js';
+import {history} from '../../history';
 
 it(`Render Header`, () => {
   const tree = renderer

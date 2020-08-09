@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {DEFAULT_AVATAR} from '../../constants.js';
+import {DEFAULT_AVATAR} from '../../constants';
 import moment from 'moment';
 
 const Review = ({

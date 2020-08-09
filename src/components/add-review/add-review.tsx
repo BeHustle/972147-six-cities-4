@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {CommentMessage, CommentStatus} from '../../constants.js';
-import {ReviewLength} from '../../constants.js';
-import {Operation as DataOperation, setCommentStatus} from '../../reducer/data/data.reducer.js';
-import {getCommentStatus} from '../../reducer/data/data.selectors.js';
+import {CommentMessage, CommentStatus} from '../../constants';
+import {ReviewLength} from '../../constants';
+import {Operation as DataOperation, setCommentStatus} from '../../reducer/data/data.reducer';
+import {getCommentStatus} from '../../reducer/data/data.selectors';
 
 class AddReview extends React.PureComponent {
   constructor(props) {

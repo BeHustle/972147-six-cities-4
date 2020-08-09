@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
-import {CardType, HouseType, Sorts} from '../../constants.js';
-import {getActiveSort} from '../../reducer/app/app.selectors.js';
+import {CardType, HouseType, Sorts} from '../../constants';
+import {getActiveSort} from '../../reducer/app/app.selectors';
 import Card from '../card/card.tsx';
 
 const getCardListTypeClass = (type) => {

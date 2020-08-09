@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/app/app.js';
-import {createAPI} from './api/api.js';
+import App from './components/app/app';
+import {createAPI} from './api/api';
 import {createStore, applyMiddleware} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
-import reducer from './reducer/reducer.js';
+import reducer from './reducer/reducer';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
-import {Operation as DataOperation} from './reducer/data/data.reducer.js';
-import {Operation as UserOperation} from './reducer/user/user.reducer.js';
+import {Operation as DataOperation} from './reducer/data/data.reducer';
+import {Operation as UserOperation} from './reducer/user/user.reducer';
 
 const api = createAPI();
 

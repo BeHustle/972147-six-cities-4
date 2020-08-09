@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {SortList} from './sort-list.tsx';
-import {Sorts} from '../../constants.js';
+import {Sorts} from '../../constants';
 
 it(`Render Sort list`, () => {
   const tree = renderer

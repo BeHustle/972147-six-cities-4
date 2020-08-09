@@ -1,6 +1,6 @@
-import {MAX_REVIEWS_COUNT} from '../../constants.js';
-import {getActiveCity} from '../app/app.selectors.js';
-import {Namespace} from '../namespace.js';
+import {MAX_REVIEWS_COUNT} from '../../constants';
+import {getActiveCity} from '../app/app.selectors';
+import {Namespace} from '../namespace';
 import {createSelector} from 'reselect';
 
 export const getOffers = (state) => state[Namespace.DATA].offers;

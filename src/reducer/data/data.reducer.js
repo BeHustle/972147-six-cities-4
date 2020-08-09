@@ -1,9 +1,9 @@
-import {citiesFromOffersAdapter} from '../../adapters/cities-from-offers-adapter.js';
-import {commentAdapter} from '../../adapters/comment-adapter.js';
-import {offerAdapter} from '../../adapters/offer-adapter.js';
-import {setActiveCity, setAppStatus} from '../app/app.reducer.js';
-import {AppStatus, CommentStatus} from '../../constants.js';
-import {getCities, getFavoriteOffers, getNearbyOffers, getOffers} from './data.selectors.js';
+import {citiesFromOffersAdapter} from '../../adapters/cities-from-offers-adapter';
+import {commentAdapter} from '../../adapters/comment-adapter';
+import {offerAdapter} from '../../adapters/offer-adapter';
+import {setActiveCity, setAppStatus} from '../app/app.reducer';
+import {AppStatus, CommentStatus} from '../../constants';
+import {getCities, getFavoriteOffers, getNearbyOffers, getOffers} from './data.selectors';
 
 export const updateOffer = (offer, offers) => {
   const index = offers.findIndex((it) => it.id === offer.id);

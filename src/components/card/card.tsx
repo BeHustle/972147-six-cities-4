@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {CardType, HouseType} from '../../constants';
-import {setActiveOfferId} from '../../reducer/app/app.reducer.js';
+import {setActiveOfferId} from '../../reducer/app/app.reducer';
 
 const IN_BOOKMARKS_CLASS = `place-card__bookmark-button--active`;
 

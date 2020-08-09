@@ -5,19 +5,19 @@ import renderer from 'react-test-renderer';
 import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import {createAPI} from '../../api/api.js';
-import {AppStatus, AuthStatus} from '../../constants.js';
-import {setActiveCity, setAppStatus} from '../../reducer/app/app.reducer.js';
-import {setCities, setNearbyOffers, setOffers, setReviews} from '../../reducer/data/data.reducer.js';
-import reducer from '../../reducer/reducer.js';
-import {setAuthStatus, setUserInfo} from '../../reducer/user/user.reducer.js';
+import {createAPI} from '../../api/api';
+import {AppStatus, AuthStatus} from '../../constants';
+import {setActiveCity, setAppStatus} from '../../reducer/app/app.reducer';
+import {setCities, setNearbyOffers, setOffers, setReviews} from '../../reducer/data/data.reducer';
+import reducer from '../../reducer/reducer';
+import {setAuthStatus, setUserInfo} from '../../reducer/user/user.reducer';
 import CardDetail from './card-detail.tsx';
-import {cities} from '../../test-mocks/cities.js';
-import {offers, serverOffers} from '../../test-mocks/offers.js';
-import {serverUserInfo, userInfo} from '../../test-mocks/user.js';
-import {reviews, serverReviews} from '../../test-mocks/reviews.js';
+import {cities} from '../../test-mocks/cities';
+import {offers, serverOffers} from '../../test-mocks/offers';
+import {serverUserInfo, userInfo} from '../../test-mocks/user';
+import {reviews, serverReviews} from '../../test-mocks/reviews';
 import {Router} from 'react-router-dom';
-import {history} from '../../history.js';
+import {history} from '../../history';
 
 const api = createAPI();
 const apiMock = new MockAdapter(api);
@@ -54,7 +54,7 @@ store.dispatch(setAppStatus(AppStatus.SUCCESS_LOAD));
 store.dispatch(setUserInfo(userInfo));
 store.dispatch(setAuthStatus(AuthStatus.AUTH));
 
-jest.mock(`../map/map.jsx`, () => `map`);
+jest.mock(`../map/mapx`, () => `map`);
 
 it(`Card detail render`, () => {
   const tree = renderer

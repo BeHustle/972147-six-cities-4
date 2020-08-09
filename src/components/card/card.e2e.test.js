@@ -6,18 +6,18 @@ import {Provider} from 'react-redux';
 import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import {createAPI} from '../../api/api.js';
-import {AppStatus, AuthStatus, CardType} from '../../constants.js';
-import {setActiveCity, setAppStatus} from '../../reducer/app/app.reducer.js';
-import {getActiveOfferId} from '../../reducer/app/app.selectors.js';
-import {setCities, setNearbyOffers, setOffers, setReviews} from '../../reducer/data/data.reducer.js';
-import reducer from '../../reducer/reducer.js';
-import {setAuthStatus, setUserInfo} from '../../reducer/user/user.reducer.js';
-import {cities} from '../../test-mocks/cities.js';
-import {reviews, serverReviews} from '../../test-mocks/reviews.js';
-import {serverUserInfo, userInfo} from '../../test-mocks/user.js';
+import {createAPI} from '../../api/api';
+import {AppStatus, AuthStatus, CardType} from '../../constants';
+import {setActiveCity, setAppStatus} from '../../reducer/app/app.reducer';
+import {getActiveOfferId} from '../../reducer/app/app.selectors';
+import {setCities, setNearbyOffers, setOffers, setReviews} from '../../reducer/data/data.reducer';
+import reducer from '../../reducer/reducer';
+import {setAuthStatus, setUserInfo} from '../../reducer/user/user.reducer';
+import {cities} from '../../test-mocks/cities';
+import {reviews, serverReviews} from '../../test-mocks/reviews';
+import {serverUserInfo, userInfo} from '../../test-mocks/user';
 import Card from './card.tsx';
-import {offers, serverOffers} from '../../test-mocks/offers.js';
+import {offers, serverOffers} from '../../test-mocks/offers';
 
 Enzyme.configure({
   adapter: new Adapter(),

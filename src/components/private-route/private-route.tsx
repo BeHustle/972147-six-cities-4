@@ -1,9 +1,9 @@
 import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
 import {connect} from "react-redux";
-import AppRoute from '../../routes.js';
-import {AuthStatus} from '../../constants.js';
-import {getAuthStatus} from '../../reducer/user/user.selectors.js';
+import AppRoute from '../../routes';
+import {AuthStatus} from '../../constants';
+import {getAuthStatus} from '../../reducer/user/user.selectors';
 import PropTypes from 'prop-types';
 
 

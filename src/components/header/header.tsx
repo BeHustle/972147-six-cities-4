@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {AuthStatus} from '../../constants.js';
-import {getAuthStatus, getUserInfo} from '../../reducer/user/user.selectors.js';
+import {AuthStatus} from '../../constants';
+import {getAuthStatus, getUserInfo} from '../../reducer/user/user.selectors';
 import {Link} from 'react-router-dom';
-import AppRoute from '../../routes.js';
+import AppRoute from '../../routes';
 
 const Header = ({userInfo, authStatus}) =>
   <header className="header">

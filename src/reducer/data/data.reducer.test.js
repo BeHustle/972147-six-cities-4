@@ -1,9 +1,9 @@
-import {citiesFromOffersAdapter} from '../../adapters/cities-from-offers-adapter.js';
-import {commentAdapter} from '../../adapters/comment-adapter.js';
-import {offerAdapter} from '../../adapters/offer-adapter.js';
-import {AppStatus, CommentStatus} from '../../constants.js';
-import {setActiveCity, setAppStatus} from '../app/app.reducer.js';
-import {Namespace} from '../namespace.js';
+import {citiesFromOffersAdapter} from '../../adapters/cities-from-offers-adapter';
+import {commentAdapter} from '../../adapters/comment-adapter';
+import {offerAdapter} from '../../adapters/offer-adapter';
+import {AppStatus, CommentStatus} from '../../constants';
+import {setActiveCity, setAppStatus} from '../app/app.reducer';
+import {Namespace} from '../namespace';
 import {
   reducer,
   Operation,
@@ -13,12 +13,12 @@ import {
   setReviews,
   setCommentStatus,
   setFavoriteOffers, setFavoriteCities, updateOffer, removeOffer,
-} from './data.reducer.js';
+} from './data.reducer';
 import MockAdapter from 'axios-mock-adapter';
-import {createAPI} from '../../api/api.js';
-import {cities} from '../../test-mocks/cities.js';
-import {offers, serverOffers} from '../../test-mocks/offers.js';
-import {reviews, serverReviews} from '../../test-mocks/reviews.js';
+import {createAPI} from '../../api/api';
+import {cities} from '../../test-mocks/cities';
+import {offers, serverOffers} from '../../test-mocks/offers';
+import {reviews, serverReviews} from '../../test-mocks/reviews';
 
 describe(`Data reducer`, () => {
   let initialState;

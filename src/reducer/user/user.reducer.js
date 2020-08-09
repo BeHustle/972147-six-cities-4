@@ -1,5 +1,5 @@
-import {userAdapter} from '../../adapters/user-adapter.js';
-import {AuthStatus, ErrorCode} from '../../constants.js';
+import {userAdapter} from '../../adapters/user-adapter';
+import {AuthStatus, ErrorCode} from '../../constants';
 
 const initialState = {
   userInfo: null,

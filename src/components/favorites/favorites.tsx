@@ -1,14 +1,14 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {HouseType} from '../../constants.js';
-import {getFavoriteCities, getFavoriteOffers} from '../../reducer/data/data.selectors.js';
-import AppRoute from '../../routes.js';
+import {HouseType} from '../../constants';
+import {getFavoriteCities, getFavoriteOffers} from '../../reducer/data/data.selectors';
+import AppRoute from '../../routes';
 import EmptyFavoritesScreen from '../empty-favorites-screen/empty-favorites-screen.tsx';
-import FavoritesList from '../favorites-list/favorites-list.js';
-import Header from '../header/header.js';
+import FavoritesList from '../favorites-list/favorites-list';
+import Header from '../header/header';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {Operation as DataOperation} from '../../reducer/data/data.reducer.js';
+import {Operation as DataOperation} from '../../reducer/data/data.reducer';
 
 class Favorites extends React.PureComponent {
   constructor(props) {

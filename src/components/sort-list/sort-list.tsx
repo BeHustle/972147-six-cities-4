@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {setActiveSort} from '../../reducer/app/app.reducer.js';
-import {getActiveSort} from '../../reducer/app/app.selectors.js';
-import {Sorts} from '../../constants.js';
+import {setActiveSort} from '../../reducer/app/app.reducer';
+import {getActiveSort} from '../../reducer/app/app.selectors';
+import {Sorts} from '../../constants';
 
 const activeSortClass = `places__option--active`;
 const hoveredSortListClass = `places__options--opened`;

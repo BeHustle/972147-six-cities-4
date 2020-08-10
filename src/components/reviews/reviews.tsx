@@ -10,7 +10,7 @@ import {ReviewInterface} from "../../types";
 
 interface Props {
   offerId: number;
-  onReviewsMount: (offerId: number) => void;
+  updateReviews: (offerId: number) => void;
   reviews: Array<ReviewInterface>;
   authStatus: string;
 }
@@ -21,8 +21,13 @@ class Reviews extends React.PureComponent<Props, {}> {
   }
 
   componentDidMount() {
-    const {onReviewsMount, offerId} = this.props;
-    onReviewsMount(offerId);
+    const {updateReviews, offerId} = this.props;
+    updateReviews(offerId);
+  }
+
+  componentDidUpdate() {
+    const {updateReviews, offerId} = this.props;
+    updateReviews(offerId);
   }
 
   render() {
@@ -40,7 +45,7 @@ class Reviews extends React.PureComponent<Props, {}> {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  onReviewsMount(offerId) {
+  updateReviews(offerId) {
     dispatch(DataOperation.loadReviews(offerId));
   },
 });

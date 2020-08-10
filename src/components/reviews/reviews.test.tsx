@@ -10,7 +10,7 @@ it(`Render Reviews list`, () => {
       offerId={1}
       reviews={reviews}
       authStatus={AuthStatus.NO_AUTH}
-      onReviewsMount={jest.fn()}
+      updateReviews={jest.fn()}
     />)
     .toJSON();
 

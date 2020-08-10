@@ -1,5 +1,5 @@
 import {AppStatus, Sorts} from '../../constants';
-import {setActiveSort, setActiveCity, setAppStatus, setActiveOfferId, reducer} from './app.reducer';
+import {setActiveSort, setActiveCity, setAppStatus, reducer} from './app.reducer';
 
 describe(`App reducer`, () => {
   let initialState;
@@ -7,7 +7,6 @@ describe(`App reducer`, () => {
   beforeEach(() => {
     initialState = {
       activeSort: Sorts.POPULAR,
-      activeOfferId: null,
       activeCity: null,
       appStatus: AppStatus.LOADING,
     };
@@ -30,10 +29,5 @@ describe(`App reducer`, () => {
   it(`should change appStatus to a given value`, () => {
     expect(reducer(initialState, setAppStatus(AppStatus.SUCCESS_LOAD)))
       .toEqual(Object.assign({}, initialState, {appStatus: AppStatus.SUCCESS_LOAD}));
-  });
-
-  it(`should change activeOfferId to a given value`, () => {
-    expect(reducer(initialState, setActiveOfferId(500)))
-      .toEqual(Object.assign({}, initialState, {activeOfferId: 500}));
   });
 });

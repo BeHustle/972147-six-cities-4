@@ -15,9 +15,11 @@ interface Props {
   offers: Array<OfferInterface>;
   city: CityInterface;
   onFavoriteClick: () => void;
+  activeOfferId: number | null;
+  onCardHover: () => void;
 }
 
-const Main: React.FunctionComponent<Props> = ({city, offers, onFavoriteClick}: Props) =>
+const Main: React.FunctionComponent<Props> = ({city, offers, onFavoriteClick, activeOfferId, onCardHover}: Props) =>
   <div className="page page--gray page--main">
     <Header />
     <main className={`page__main page__main--index ${offers.length || `page__main--index-empty`}`}>
@@ -35,10 +37,21 @@ const Main: React.FunctionComponent<Props> = ({city, offers, onFavoriteClick}: P
 
               <SortList />
 
-              <CardList offers={offers} onFavoriteClick={onFavoriteClick} type={CardType.MAIN}/>
+              <CardList
+                offers={offers}
+                onFavoriteClick={onFavoriteClick}
+                type={CardType.MAIN}
+                onCardHover={onCardHover}
+              />
             </section>
             <div className="cities__right-section">
-              <Map offers={offers} type={CardType.MAIN} coordinates={city.coordinates} zoom={city.zoom} />
+              <Map
+                activeOfferId={activeOfferId}
+                offers={offers}
+                type={CardType.MAIN}
+                coordinates={city.coordinates}
+                zoom={city.zoom}
+              />
             </div>
           </div>
           : <EmptyOffersScreen />}

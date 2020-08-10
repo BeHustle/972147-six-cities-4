@@ -21,6 +21,20 @@ class SingIn extends React.PureComponent<Props, {}> {
     this.emailRef = React.createRef();
     this.passwordRef = React.createRef();
     this._handleFormSubmit = this._handleFormSubmit.bind(this);
+    this._handleEmailChange = this._handleEmailChange.bind(this);
+  }
+
+  _validateEmail(email) {
+    const regular = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+    return regular.test(String(email).toLowerCase());
+  }
+
+  _handleEmailChange() {
+    if (this._validateEmail(this.emailRef.current.value)) {
+      this.emailRef.current.setCustomValidity(``);
+    } else {
+      this.emailRef.current.setCustomValidity(`Not valid email address`);
+    }
   }
 
   _handleFormSubmit(evt) {
@@ -41,7 +55,7 @@ class SingIn extends React.PureComponent<Props, {}> {
             <form className="login__form form" action="#" method="post" onSubmit={this._handleFormSubmit}>
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">E-mail</label>
-                <input className="login__input form__input" type="email" name="email" placeholder="Email" required ref={this.emailRef}/>
+                <input className="login__input form__input" type="email" name="email" placeholder="Email" onChange={this._handleEmailChange} required ref={this.emailRef}/>
               </div>
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">Password</label>

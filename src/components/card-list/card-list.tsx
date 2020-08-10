@@ -10,6 +10,7 @@ interface Props {
   type: string;
   sortType: string;
   onFavoriteClick: () => void;
+  onCardHover: () => void;
 }
 
 const getCardListTypeClass = (type) => {
@@ -38,7 +39,7 @@ const sortCards = (cards, sortType) => {
   }
 };
 
-const CardList: React.FunctionComponent<Props> = ({offers, type, sortType, onFavoriteClick}: Props) =>
+const CardList: React.FunctionComponent<Props> = ({offers, type, sortType, onFavoriteClick, onCardHover}: Props) =>
   <div className={`places__list ${getCardListTypeClass(type)}`}>
     {sortCards(offers, sortType).map((offer) =>
       <Card
@@ -46,6 +47,7 @@ const CardList: React.FunctionComponent<Props> = ({offers, type, sortType, onFav
         key={offer.id}
         offer={offer}
         onFavoriteClick={onFavoriteClick}
+        onCardHover={onCardHover}
       />)}
   </div>;
 

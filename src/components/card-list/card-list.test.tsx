@@ -63,6 +63,7 @@ it(`Render Cards list`, () => {
               offers={offers}
               type={CardType.MAIN}
               onFavoriteClick={jest.fn()}
+              onCardHover={jest.fn()}
             />
           </Provider>
         </Router>)

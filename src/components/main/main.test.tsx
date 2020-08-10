@@ -67,6 +67,7 @@ it(`Render Main`, () => {
           <Provider store={store}>
             <Main
               onFavoriteClick={jest.fn()}
+              onCardHover={jest.fn()}
             />
           </Provider>
         </Router>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import {CardType} from '../../constants';
-import {Card} from './card';
+import Card from './card';
 import {offers} from '../../test-mocks/offers';
 import {Router} from 'react-router-dom';
 import {history} from '../../history';

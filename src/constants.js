@@ -53,7 +53,7 @@ const CommentStatus = {
 };
 
 const CommentMessage = {
-  SUCCESS: `Your comment has been successfully added. Wait moderation`,
+  SUCCESS: `Your comment has been successfully added`,
   ERROR: `Error while adding a comment. Check your comment and try again`
 };
 

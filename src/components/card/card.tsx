@@ -1,8 +1,6 @@
 import * as React from 'react';
-import {connect} from 'react-redux';
 import {CardType} from '../../constants';
-import {setActiveOfferId} from '../../reducer/app/app.reducer';
-import {OfferInterface, CardTypeEnum} from "../../types";
+import {OfferInterface} from "../../types";
 import AppRoute from '../../routes';
 import {Link} from 'react-router-dom';
 
@@ -11,7 +9,7 @@ const IN_BOOKMARKS_CLASS = `place-card__bookmark-button--active`;
 interface Props {
   offer: OfferInterface;
   onCardHover: (id: number | null) => void;
-  cardType: CardTypeEnum;
+  cardType: string;
   onFavoriteClick: (id: number, inBookmarks: number) => void;
 }
 
@@ -42,14 +40,14 @@ const getCardTypeImageClass = (type) => {
 };
 
 const Card: React.FunctionComponent<Props> = ({
-  onCardHover,
+  onCardHover = void (0),
   onFavoriteClick,
   cardType,
   offer: {id, name, price, image, type, isPremium, inBookmarks, rating},
 }: Props) => <article
   className={`place-card ${getCardTypeClass(cardType)}`}
-  onMouseEnter={() => onCardHover(id)}
-  onMouseLeave={() => onCardHover(null)}>
+  onMouseEnter={() => typeof onCardHover === `function` ? onCardHover(id) : ``}
+  onMouseLeave={() => typeof onCardHover === `function` ? onCardHover(null) : ``}>
 
   {isPremium && <div className="place-card__mark">
     <span>Premium</span>
@@ -88,12 +86,4 @@ const Card: React.FunctionComponent<Props> = ({
   </div>
 </article>;
 
-const mapDispatchToProps = (dispatch) => ({
-  onCardHover(id) {
-    dispatch(setActiveOfferId(id));
-  },
-});
-
-export {Card};
-
-export default connect(null, mapDispatchToProps)(Card);
+export default Card;

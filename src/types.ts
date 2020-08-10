@@ -1,15 +1,9 @@
-export enum CardTypeEnum {
-  MAIN = `main`,
-  CARD_DETAIL = `detail`,
-  FAVORITE = `favorite`
-}
-
 export interface OfferInterface {
   id: number,
   name: string,
   price: number,
   image: string,
-  type: CardTypeEnum,
+  type: string,
   isPremium: boolean,
   inBookmarks: boolean,
   rating: number,

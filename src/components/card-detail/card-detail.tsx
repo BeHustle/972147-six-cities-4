@@ -19,6 +19,8 @@ interface Props {
   nearbyOffers: Array<OfferInterface>;
   onFavoriteClick: (id: number, inBookmarks: number) => void;
   onCardDetailMount: (offerId: number) => void;
+  onCardHover: () => void;
+  activeOfferId: number | null;
 }
 
 class CardDetail extends React.PureComponent<Props, {}> {
@@ -32,11 +34,13 @@ class CardDetail extends React.PureComponent<Props, {}> {
   }
 
   render() {
-    const {offers, nearbyOffers, offerId, onFavoriteClick} = this.props;
+    const {offers, nearbyOffers, offerId, onFavoriteClick, onCardHover} = this.props;
     const offer = offers.find((it) => it.id === offerId, 10);
     if (typeof offer === `undefined`) {
       return <NotFound />;
     }
+    const mapOffers = nearbyOffers.slice(0, NEAR_PLACES_COUNT);
+    mapOffers.push(offer);
     const {
       id, images, name, price, isPremium, type, inBookmarks,
       rooms, guests, facilities, author, text, rating, coordinates, zoom
@@ -128,15 +132,21 @@ class CardDetail extends React.PureComponent<Props, {}> {
           </div>
           <Map
             type={CardType.CARD_DETAIL}
-            offers={nearbyOffers.slice(0, NEAR_PLACES_COUNT)}
+            offers={mapOffers}
             coordinates={coordinates}
             zoom={zoom}
+            activeOfferId={offerId}
           />
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <CardList offers={nearbyOffers.slice(0, NEAR_PLACES_COUNT)} type={CardType.CARD_DETAIL} onFavoriteClick={onFavoriteClick}/>
+            <CardList
+              offers={nearbyOffers.slice(0, NEAR_PLACES_COUNT)}
+              type={CardType.CARD_DETAIL}
+              onFavoriteClick={onFavoriteClick}
+              onCardHover={onCardHover}
+            />
           </section>
         </div>
       </main>

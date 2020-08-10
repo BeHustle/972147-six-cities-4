@@ -25,7 +25,7 @@ const PublicRoute: React.FunctionComponent<Props> = ({children, path, exact, aut
     default:
       return <Route path={path} exact={exact} />;
   }
-}
+};
 
 const mapStateToProps = (state) => ({
   authStatus: getAuthStatus(state),

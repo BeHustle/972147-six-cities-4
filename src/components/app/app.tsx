@@ -23,10 +23,18 @@ interface Props {
   onFavoriteClick: (offerId: number, status: string) => void;
 }
 
-class App extends React.PureComponent<Props, {}> {
+interface State {
+  activeOfferId: number | null;
+}
+
+class App extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
     this._handleFavoriteClick = this._handleFavoriteClick.bind(this);
+    this._handleActiveOfferChange = this._handleActiveOfferChange.bind(this);
+    this.state = {
+      activeOfferId: null
+    };
   }
 
   _handleFavoriteClick(offerId, status) {
@@ -35,6 +43,12 @@ class App extends React.PureComponent<Props, {}> {
     } else {
       history.push(AppRoute.LOGIN);
     }
+  }
+
+  _handleActiveOfferChange(offerId) {
+    this.setState({
+      activeOfferId: offerId
+    });
   }
 
   render() {
@@ -48,7 +62,11 @@ class App extends React.PureComponent<Props, {}> {
           <Router history={history}>
             <Switch>
               <Route exact path={AppRoute.MAIN}>
-                <Main onFavoriteClick={this._handleFavoriteClick} />
+                <Main
+                  activeOfferId={this.state.activeOfferId}
+                  onCardHover={this._handleActiveOfferChange}
+                  onFavoriteClick={this._handleFavoriteClick}
+                />
               </Route>
               <Route
                 exact

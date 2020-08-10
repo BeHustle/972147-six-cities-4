@@ -71,6 +71,7 @@ it(`Card detail snapshot`, () => {
           <CardDetail
             offerId={1}
             onFavoriteClick={jest.fn()}
+            onCardHover={jest.fn()}
           />
         </Provider>
       </Router>

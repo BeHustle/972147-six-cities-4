@@ -113,8 +113,9 @@ export const Operation = {
   },
   addComment: ({comment, rating} = comment, offerId) => async (dispatch, getState, api) => {
     try {
-      await api.post(`/comments/${offerId}`, {rating, comment});
+      const response = await api.post(`/comments/${offerId}`, {rating, comment});
       dispatch(setCommentStatus(CommentStatus.SUCCESS));
+      dispatch(setReviews(response.data.map((it) => commentAdapter(it))));
     } catch (e) {
       dispatch(setCommentStatus(CommentStatus.FAIL));
       throw e;

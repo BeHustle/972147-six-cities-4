@@ -1,13 +1,11 @@
 import * as React from 'react';
 import * as L from 'leaflet';
-import {connect} from 'react-redux';
 import {
   ICON_SIZE,
   ICON_PATH,
   ACTIVE_ICON_PATH,
   CardType,
 } from '../../constants';
-import {getActiveOfferId} from '../../reducer/app/app.selectors';
 import {OfferInterface} from '../../types';
 
 interface Props {
@@ -97,10 +95,4 @@ class Map extends React.PureComponent<Props, {}> {
   }
 }
 
-const mapStateToProps = (state) => ({
-  activeOfferId: getActiveOfferId(state)
-});
-
-export {Map};
-
-export default connect(mapStateToProps)(Map);
+export default Map;

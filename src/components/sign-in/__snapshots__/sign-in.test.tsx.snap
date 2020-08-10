@@ -90,6 +90,7 @@ exports[`Render Sign in 1`] = `
             <input
               className="login__input form__input"
               name="email"
+              onChange={[Function]}
               placeholder="Email"
               required={true}
               type="email"

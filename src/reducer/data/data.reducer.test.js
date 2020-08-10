@@ -139,6 +139,7 @@ describe(`Data reducer API methods`, () => {
   });
 
   it(`Should make a correct API call to /comments/:hotelId ONSUCCESS`, () => {
+    const adaptedReviews = serverReviews.map((it) => commentAdapter(it));
     const offersLoader = Operation.addComment({
       comment: {
         rating: 5,
@@ -148,12 +149,13 @@ describe(`Data reducer API methods`, () => {
 
     apiMock
       .onPost(`/comments/5`)
-      .reply(200);
+      .reply(200, serverReviews);
 
     return offersLoader(dispatch, () => {}, api)
       .then(() => {
-        expect(dispatch).toBeCalledTimes(1);
-        expect(dispatch).toHaveBeenCalledWith(setCommentStatus(CommentStatus.SUCCESS));
+        expect(dispatch).toBeCalledTimes(2);
+        expect(dispatch).toHaveBeenNthCalledWith(1, setCommentStatus(CommentStatus.SUCCESS));
+        expect(dispatch).toHaveBeenNthCalledWith(2, setReviews(adaptedReviews));
       });
   });
 

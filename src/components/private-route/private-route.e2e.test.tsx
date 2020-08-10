@@ -12,14 +12,14 @@ describe(`PrivateRoute`, () => {
   it(`Should render PrivateRoute if user has been authenticated`, () => {
     const MockComponent = () => <div />;
     const wrapper = mount(
-      <MemoryRouter initialEntries={[AppRoute.FAVORITES]}>
-        <PrivateRoute
-          exact
-          path={AppRoute.FAVORITES}
-          authStatus={AuthStatus.AUTH}>
-          <MockComponent />
-        </PrivateRoute>
-      </MemoryRouter>
+        <MemoryRouter initialEntries={[AppRoute.FAVORITES]}>
+          <PrivateRoute
+            exact
+            path={AppRoute.FAVORITES}
+            authStatus={AuthStatus.AUTH}>
+            <MockComponent />
+          </PrivateRoute>
+        </MemoryRouter>
     );
 
     expect(wrapper.exists(MockComponent)).toBe(true);
@@ -28,14 +28,14 @@ describe(`PrivateRoute`, () => {
   it(`Should redirect to Login if user is not authenticated`, () => {
     const MockComponent = () => <div />;
     const wrapper = mount(
-      <MemoryRouter initialEntries={[AppRoute.FAVORITES]}>
-        <PrivateRoute
-          exact
-          path={AppRoute.FAVORITES}
-          authStatus={AuthStatus.NO_AUTH}>
-          <MockComponent />
-        </PrivateRoute>
-      </MemoryRouter>
+        <MemoryRouter initialEntries={[AppRoute.FAVORITES]}>
+          <PrivateRoute
+            exact
+            path={AppRoute.FAVORITES}
+            authStatus={AuthStatus.NO_AUTH}>
+            <MockComponent />
+          </PrivateRoute>
+        </MemoryRouter>
     );
 
     const history = wrapper.find(`Router`).prop(`history`);
@@ -46,14 +46,14 @@ describe(`PrivateRoute`, () => {
   it(`Should render Loading component if auth status is Loading`, () => {
     const MockComponent = () => <div />;
     const wrapper = mount(
-      <MemoryRouter initialEntries={[AppRoute.FAVORITES]}>
-        <PrivateRoute
-          exact
-          path={AppRoute.FAVORITES}
-          authStatus={AuthStatus.LOADING}>
-          <MockComponent />
-        </PrivateRoute>
-      </MemoryRouter>
+        <MemoryRouter initialEntries={[AppRoute.FAVORITES]}>
+          <PrivateRoute
+            exact
+            path={AppRoute.FAVORITES}
+            authStatus={AuthStatus.LOADING}>
+            <MockComponent />
+          </PrivateRoute>
+        </MemoryRouter>
     );
 
     expect(wrapper.exists(MockComponent)).toBe(false);
@@ -63,14 +63,14 @@ describe(`PrivateRoute`, () => {
   it(`Should render FailLoad component if auth status is fail load`, () => {
     const MockComponent = () => <div />;
     const wrapper = mount(
-      <MemoryRouter initialEntries={[AppRoute.FAVORITES]}>
-        <PrivateRoute
-          exact
-          path={AppRoute.FAVORITES}
-          authStatus={AuthStatus.FAIL_LOAD}>
-          <MockComponent />
-        </PrivateRoute>
-      </MemoryRouter>
+        <MemoryRouter initialEntries={[AppRoute.FAVORITES]}>
+          <PrivateRoute
+            exact
+            path={AppRoute.FAVORITES}
+            authStatus={AuthStatus.FAIL_LOAD}>
+            <MockComponent />
+          </PrivateRoute>
+        </MemoryRouter>
     );
 
     expect(wrapper.exists(MockComponent)).toBe(false);

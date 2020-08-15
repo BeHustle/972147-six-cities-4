@@ -12,6 +12,6 @@
 #### Styleguide - ES2017 JS + TS (Eslint + TS Plugin)
 #### Дополнительные библиотеки - React Router, Moment, History, Reselect
 
-Сайт готового проекта
+##### Сайт проекта: <a href="https://behustle.github.io/six-cities">Шесть городов</a>
 
 ##### Автор: Владислав Клева

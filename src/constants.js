@@ -4,12 +4,12 @@ const MAX_REVIEWS_COUNT = 10;
 
 const MAX_IMAGES_COUNT = 6;
 
-const DEFAULT_AVATAR = `img/avatar.svg`;
+const DEFAULT_AVATAR = `./img/avatar.svg`;
 
 const ICON_SIZE = [30, 30];
 
-const ICON_PATH = `/img/pin.svg`;
-const ACTIVE_ICON_PATH = `/img/pin-active.svg`;
+const ICON_PATH = `./img/pin.svg`;
+const ACTIVE_ICON_PATH = `./img/pin-active.svg`;
 
 const AppStatus = {
   LOADING: `LOADING`,

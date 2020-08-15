@@ -12,4 +12,6 @@
 #### Styleguide - ES2017 JS + TS (Eslint + TS Plugin)
 #### Дополнительные библиотеки - React Router, Moment, History, Reselect
 
+Сайт готового проекта
+
 ##### Автор: Владислав Клева

@@ -1,8 +1,8 @@
 const AppRoute = {
-  MAIN: `/`,
-  LOGIN: `/login`,
-  FAVORITES: `/favorites`,
-  OFFER: `/offer`
+  MAIN: `/six-cities/`,
+  LOGIN: `/six-cities/login`,
+  FAVORITES: `/six-cities/favorites`,
+  OFFER: `/six-cities/offer`
 };
 
 export default AppRoute;

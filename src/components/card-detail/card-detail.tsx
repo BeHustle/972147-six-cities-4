@@ -115,7 +115,7 @@ class CardDetail extends React.PureComponent<Props, {}> {
                 <div className="property__host-user user">
                   <div
                     className={`property__avatar-wrapper user__avatar-wrapper ${author.isSuper && SUPER_USER_CLASS}`}>
-                    <img className="property__avatar user__avatar" src={`./${author.avatar}` || DEFAULT_AVATAR} width="74" height="74" alt="Host avatar"/>
+                    <img className="property__avatar user__avatar" src={`/${author.avatar}` || DEFAULT_AVATAR} width="74" height="74" alt="Host avatar"/>
                   </div>
                   <span className="property__user-name">
                     {author.name}

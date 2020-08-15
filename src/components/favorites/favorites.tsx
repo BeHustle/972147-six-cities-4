@@ -48,7 +48,7 @@ class Favorites extends React.PureComponent<Props, {}> {
 
       <footer className="footer container">
         <Link to={AppRoute.MAIN} className="footer__logo-link">
-          <img className="footer__logo" src="./img/logo.svg" alt="6 cities logo" width="64" height="33" />
+          <img className="footer__logo" src="/img/logo.svg" alt="6 cities logo" width="64" height="33" />
         </Link>
       </footer>
     </div>;
